@@ -91,4 +91,4 @@ public enum MpaaRating {
 ```
 
 ### UML-диаграмма классов
-<img src="./diagram.png" width="800" alt="diagram">
+<img src="./diagram.png" width="1200" alt="diagram">
