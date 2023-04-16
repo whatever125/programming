@@ -1,0 +1,3 @@
+info
+execute_script ../lab5/scripts/script1.txt
+info
