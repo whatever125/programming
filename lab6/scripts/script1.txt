@@ -1,0 +1,13 @@
+insert 3
+name
+1
+2
+3
+western
+g
+Ivan Ivanov
+10.07.1986
+75
+1234567891111
+save
+show
