@@ -4,6 +4,8 @@ import sources.models.Movie;
 
 import java.time.ZonedDateTime;
 import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * The MovieCollection class represents a collection of movies stored in a HashMap with Integer keys.
@@ -47,11 +49,9 @@ public class MovieCollection {
      * @return the movie with the specified ID, or null if no movie with the ID is present in the collection
      */
     public Movie getElementByID(Integer id) {
-        for (Movie movie : movieHashMap.values()) {
-            if (Objects.equals(movie.getID(), id))
-                return movie;
-        }
-        return null;
+        Optional<Movie> optionalMovie = movieHashMap.values().stream()
+                .filter(movie -> Objects.equals(movie.getID(), id)).findFirst();
+        return optionalMovie.orElse(null);
     }
 
     /**
@@ -113,15 +113,11 @@ public class MovieCollection {
      * @return the number of movies removed from the collection
      */
     public int removeGreater(Movie movie) {
-        HashMap<Integer, Movie> newMovieHashMap = new HashMap<>(movieHashMap);
-        int count = 0;
-        for (Integer key : movieHashMap.keySet()) {
-            if (getElementByKey(key).compareTo(movie) > 0) {
-                newMovieHashMap.remove(key);
-                count += 1;
-            }
-        }
-        movieHashMap = newMovieHashMap;
+        Map<Integer, Movie> filteredMap = movieHashMap.entrySet().stream()
+                .filter(entry -> entry.getValue().compareTo(movie) <= 0)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        int count = movieHashMap.size() - filteredMap.size();
+        movieHashMap = new HashMap<>(filteredMap);
         return count;
     }
 
@@ -134,11 +130,12 @@ public class MovieCollection {
      * @return true if the value was replaced, false otherwise
      */
     public boolean replaceIfLowe(Integer key, Movie movie) {
-        if (getElementByKey(key).compareTo(movie) > 0) {
-            put(key, movie);
-            return true;
-        }
-        return false;
+        return movieHashMap.entrySet()
+                .stream()
+                .filter(entry -> Objects.equals(entry.getKey(), key) && entry.getValue().compareTo(movie) > 0)
+                .map(entry -> movieHashMap.compute(key, (k, v) -> movie))
+                .findFirst()
+                .orElse(null) != null;
     }
 
     /**
@@ -148,15 +145,11 @@ public class MovieCollection {
      * @return the number of entries removed from the map
      */
     public int removeLowerKey(Integer key) {
-        HashMap<Integer, Movie> newMovieHashMap = new HashMap<>(movieHashMap);
-        int count = 0;
-        for (Integer i : movieHashMap.keySet()) {
-            if (i < key) {
-                newMovieHashMap.remove(i);
-                count += 1;
-            }
-        }
-        movieHashMap = newMovieHashMap;
+        Map<Integer, Movie> filteredMap = movieHashMap.entrySet().stream()
+                .filter(entry -> entry.getKey().compareTo(key) >= 0)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        int count = movieHashMap.size() - filteredMap.size();
+        movieHashMap = new HashMap<>(filteredMap);
         return count;
     }
 
@@ -194,11 +187,7 @@ public class MovieCollection {
      */
     public List<Movie> printFieldDescendingOscarsCount() {
         List<Movie> movieList = new ArrayList<>(movieHashMap.values());
-        movieList.sort(new Comparator<>() {
-            public int compare(Movie o1, Movie o2) {
-                return (int) (o2.getOscarsCount() - o1.getOscarsCount());
-            }
-        });
+        movieList.sort((movie1, movie2) -> (int) (movie2.getOscarsCount() - movie1.getOscarsCount()));
         return movieList;
     }
 }
