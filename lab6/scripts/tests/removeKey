@@ -1,0 +1,5 @@
+// execute_script scripts/tests/removeKey
+
+show
+remove_key 1
+show

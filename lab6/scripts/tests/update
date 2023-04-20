@@ -1,0 +1,17 @@
+// execute_script scripts/tests/update
+
+show
+
+update 1
+Film test
+100
+200
+700
+FANTASY
+PG
+Alfred Hitchcock
+13.08.1899
+800
+f890ggs0aaDDHj*
+
+show

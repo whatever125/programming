@@ -1,6 +1,8 @@
-// execute_script scripts/tests/testRemoveGreater
+// execute_script scripts/tests/getElementByID
+
 show
-remove_greater
+
+update 1
 Film test
 100
 200
@@ -11,4 +13,5 @@ Alfred Hitchcock
 13.08.1899
 800
 f890ggs0aaDDHj*
+
 show

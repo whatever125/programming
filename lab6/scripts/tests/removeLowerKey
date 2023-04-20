@@ -1,0 +1,5 @@
+// execute_script scripts/tests/removeLowerKey
+
+show
+remove_lower_key 2
+show
