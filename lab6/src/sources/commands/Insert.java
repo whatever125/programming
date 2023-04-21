@@ -5,8 +5,12 @@ import sources.exceptions.io.WrongArgumentException;
 import sources.exceptions.receiver.CollectionKeyException;
 import sources.models.MovieGenre;
 import sources.models.MpaaRating;
+import sources.receiver.QueryHandler;
 import sources.receiver.Receiver;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.time.LocalDateTime;
 
 public class Insert extends AbstractCommand {
@@ -41,8 +45,18 @@ public class Insert extends AbstractCommand {
 
     @Override
     public void execute() throws CollectionKeyException, WrongArgumentException {
-        receiver.insert(key, movieName, x, y, oscarsCount, movieGenre,
-                mpaaRating, directorName, birthday, weight, passportID);
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(baos);
+            oos.writeObject(this);
+            oos.close();
+
+            new QueryHandler().handle(baos.toByteArray());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+//        receiver.insert(key, movieName, x, y, oscarsCount, movieGenre,
+//                mpaaRating, directorName, birthday, weight, passportID);
     }
 
     @Override
