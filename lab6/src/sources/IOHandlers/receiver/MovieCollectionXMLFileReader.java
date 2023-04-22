@@ -10,7 +10,7 @@ import sources.exceptions.io.FilePermissionException;
 import sources.exceptions.io.InvalidFileDataException;
 import sources.exceptions.io.WrongArgumentException;
 import sources.models.*;
-import sources.receiver.MovieCollection;
+import sources.server.MovieCollection;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;

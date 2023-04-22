@@ -3,7 +3,7 @@ package sources.client;
 import sources.IOHandlers.client.BasicReader;
 import sources.IOHandlers.client.CustomConsoleReader;
 import sources.IOHandlers.client.CustomFileReader;
-import sources.commands.*;
+import sources.client.commands.*;
 import sources.exceptions.client.FileRecursionError;
 import sources.exceptions.client.InvalidCommandException;
 import sources.exceptions.client.InvalidScriptException;
@@ -14,7 +14,7 @@ import sources.models.Movie;
 import sources.models.MovieGenre;
 import sources.models.MpaaRating;
 import sources.models.helpers.MovieArgumentChecker;
-import sources.receiver.Receiver;
+import sources.server.Executor;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -35,7 +35,7 @@ import static sources.client.MovieDataConsoleReader.*;
  */
 public class ConsoleClient implements Client {
     Invoker invoker;
-    Receiver receiver;
+    Executor executor;
     private final Stack<String> pathStack = new Stack<>();
     private boolean canExit = false;
 
@@ -47,7 +47,7 @@ public class ConsoleClient implements Client {
         try {
             // Initialize Invoker, Receiver and Reader
             invoker = new Invoker();
-            receiver = new Receiver();
+            executor = new Executor();
             BasicReader consoleReader = new CustomConsoleReader();
 
             System.out.println("Data loaded successfully. You are now in interactive mode\nType 'help' to see the list of commands\n");
@@ -100,23 +100,23 @@ public class ConsoleClient implements Client {
             case "help" -> {
                 if (args.length != 0)
                     throw new WrongNumberOfArgumentsException();
-                invoker.execute(new Help(this, receiver));
+                invoker.execute(new Help(this, executor));
             }
             case "history" -> {
                 if (args.length != 0)
                     throw new WrongNumberOfArgumentsException();
-                invoker.execute(new History(this, receiver));
+                invoker.execute(new History(this, executor));
             }
             case "info" -> {
                 if (args.length != 0)
                     throw new WrongNumberOfArgumentsException();
-                String result = invoker.executeAndReturn(new Info(this, receiver));
+                String result = invoker.executeAndReturn(new Info(this, executor));
                 System.out.println(result);
             }
             case "show" -> {
                 if (args.length != 0)
                     throw new WrongNumberOfArgumentsException();
-                HashMap<Integer, Movie> result = invoker.executeAndReturn(new Show(this, receiver));
+                HashMap<Integer, Movie> result = invoker.executeAndReturn(new Show(this, executor));
                 PrettyPrinter.printMovieHashMap(result);
             }
             case "insert" -> {
@@ -136,7 +136,7 @@ public class ConsoleClient implements Client {
                     LocalDateTime birthday = readBirthday(basicReader, inScriptMode);
                     Integer weight = readWeight(basicReader, inScriptMode);
                     String passportID = readPassportID(basicReader, inScriptMode);
-                    invoker.execute(new Insert(this, receiver, key, movieName, x, y, oscarsCount,
+                    invoker.execute(new Insert(this, executor, key, movieName, x, y, oscarsCount,
                             movieGenre, mpaaRating, directorName, birthday, weight, passportID));
                 } catch (NumberFormatException e) {
                     String errorMessage = "! not an integer !";
@@ -163,7 +163,7 @@ public class ConsoleClient implements Client {
                     LocalDateTime birthday = readBirthday(basicReader, inScriptMode);
                     Integer weight = readWeight(basicReader, inScriptMode);
                     String passportID = readPassportID(basicReader, inScriptMode);
-                    invoker.execute(new Update(this, receiver, id, movieName, x, y, oscarsCount,
+                    invoker.execute(new Update(this, executor, id, movieName, x, y, oscarsCount,
                             movieGenre, mpaaRating, directorName, birthday, weight, passportID));
                 } catch (NumberFormatException e) {
                     String errorMessage = "! not an integer !";
@@ -180,7 +180,7 @@ public class ConsoleClient implements Client {
                 try {
                     Integer key = Integer.parseInt(args[0]);
                     MovieArgumentChecker.checkKey(key);
-                    invoker.execute(new RemoveKey(this, receiver, key));
+                    invoker.execute(new RemoveKey(this, executor, key));
                 } catch (NumberFormatException e) {
                     String errorMessage = "! not an integer !";
                     if (inScriptMode()) {
@@ -193,23 +193,23 @@ public class ConsoleClient implements Client {
             case "clear" -> {
                 if (args.length != 0)
                     throw new WrongNumberOfArgumentsException();
-                invoker.execute(new Clear(this, receiver));
+                invoker.execute(new Clear(this, executor));
             }
             case "save" -> {
                 if (args.length != 0)
                     throw new WrongNumberOfArgumentsException();
-                invoker.execute(new Save(this, receiver));
+                invoker.execute(new Save(this, executor));
             }
             case "execute_script" -> {
                 if (args.length != 1)
                     throw new WrongNumberOfArgumentsException();
                 String path = args[0];
-                invoker.execute(new ExecuteScript(this, receiver, path));
+                invoker.execute(new ExecuteScript(this, executor, path));
             }
             case "exit" -> {
                 if (args.length != 0)
                     throw new WrongNumberOfArgumentsException();
-                invoker.execute(new Exit(this, receiver));
+                invoker.execute(new Exit(this, executor));
             }
             case "remove_greater" -> {
                 if (args.length != 0)
@@ -225,7 +225,7 @@ public class ConsoleClient implements Client {
                 LocalDateTime birthday = readBirthday(basicReader, inScriptMode);
                 Integer weight = readWeight(basicReader, inScriptMode);
                 String passportID = readPassportID(basicReader, inScriptMode);
-                invoker.execute(new RemoveGreater(this, receiver, movieName, x, y,
+                invoker.execute(new RemoveGreater(this, executor, movieName, x, y,
                         oscarsCount, movieGenre, mpaaRating, directorName, birthday, weight, passportID));
             }
             case "replace_if_lowe" -> {
@@ -245,7 +245,7 @@ public class ConsoleClient implements Client {
                     LocalDateTime birthday = readBirthday(basicReader, inScriptMode);
                     Integer weight = readWeight(basicReader, inScriptMode);
                     String passportID = readPassportID(basicReader, inScriptMode);
-                    invoker.execute(new ReplaceIfLowe(this, receiver, key, movieName, x, y,
+                    invoker.execute(new ReplaceIfLowe(this, executor, key, movieName, x, y,
                             oscarsCount, movieGenre, mpaaRating, directorName, birthday, weight, passportID));
                 } catch (NumberFormatException e) {
                     String errorMessage = "! not an integer !";
@@ -262,7 +262,7 @@ public class ConsoleClient implements Client {
                 try {
                     Integer key = Integer.parseInt(args[0]);
                     MovieArgumentChecker.checkKey(key);
-                    invoker.execute(new RemoveLowerKey(this, receiver, key));
+                    invoker.execute(new RemoveLowerKey(this, executor, key));
                 } catch (NumberFormatException e) {
                     String errorMessage = "! not an integer !";
                     if (inScriptMode()) {
@@ -275,21 +275,21 @@ public class ConsoleClient implements Client {
             case "print_ascending" -> {
                 if (args.length != 0)
                     throw new WrongNumberOfArgumentsException();
-                List<Movie> movieList = invoker.executeAndReturn(new PrintAscending(this, receiver));
+                List<Movie> movieList = invoker.executeAndReturn(new PrintAscending(this, executor));
                 System.out.println("*elements of collection ascended*");
                 PrettyPrinter.printMovieList(movieList);
             }
             case "print_descending" -> {
                 if (args.length != 0)
                     throw new WrongNumberOfArgumentsException();
-                List<Movie> movieList = invoker.executeAndReturn(new PrintDescending(this, receiver));
+                List<Movie> movieList = invoker.executeAndReturn(new PrintDescending(this, executor));
                 System.out.println("*elements of collection descended*");
                 PrettyPrinter.printMovieList(movieList);
             }
             case "print_field_descending_oscars_count" -> {
                 if (args.length != 0)
                     throw new WrongNumberOfArgumentsException();
-                List<Movie> movieList = invoker.executeAndReturn(new PrintFieldDescendingOscarsCount(this, receiver));
+                List<Movie> movieList = invoker.executeAndReturn(new PrintFieldDescendingOscarsCount(this, executor));
                 System.out.println("*oscars count descended*");
                 PrettyPrinter.printMovieListOscars(movieList);
             }

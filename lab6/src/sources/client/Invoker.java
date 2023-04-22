@@ -1,7 +1,7 @@
 package sources.client;
 
-import sources.commands.AbstractCommand;
-import sources.commands.AbstractCommandWithResult;
+import sources.client.commands.AbstractCommand;
+import sources.client.commands.AbstractCommandWithResult;
 import sources.exceptions.io.CustomIOException;
 import sources.exceptions.io.WrongArgumentException;
 import sources.exceptions.receiver.CollectionKeyException;

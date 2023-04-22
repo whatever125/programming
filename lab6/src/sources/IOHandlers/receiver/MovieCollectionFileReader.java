@@ -2,7 +2,7 @@ package sources.IOHandlers.receiver;
 
 import sources.exceptions.io.FilePermissionException;
 import sources.exceptions.io.InvalidFileDataException;
-import sources.receiver.MovieCollection;
+import sources.server.MovieCollection;
 
 import java.io.FileNotFoundException;
 
