@@ -1,6 +1,6 @@
 package common.models.helpers;
 
-import server.exceptions.WrongArgumentException;
+import common.exceptions.WrongArgumentException;
 import common.models.Coordinates;
 import common.models.MovieGenre;
 import common.models.MpaaRating;

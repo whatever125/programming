@@ -3,6 +3,7 @@ package client;
 import client.commands.AbstractCommand;
 import client.commands.AbstractCommandWithResult;
 import client.exceptions.*;
+import common.exceptions.WrongArgumentException;
 import server.exceptions.CollectionKeyException;
 
 import java.util.Stack;

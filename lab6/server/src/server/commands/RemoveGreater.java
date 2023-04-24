@@ -2,7 +2,7 @@ package server.commands;
 
 import common.requests.RemoveGreaterRequest;
 import common.requests.Request;
-import server.exceptions.WrongArgumentException;
+import common.exceptions.WrongArgumentException;
 import server.Executor;
 
 public class RemoveGreater extends AbstractCommand {

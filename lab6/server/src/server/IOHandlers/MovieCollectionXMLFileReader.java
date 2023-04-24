@@ -8,7 +8,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import server.exceptions.FilePermissionException;
 import server.exceptions.InvalidFileDataException;
-import server.exceptions.WrongArgumentException;
+import common.exceptions.WrongArgumentException;
 import common.models.*;
 import server.MovieCollection;
 

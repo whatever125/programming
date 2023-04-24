@@ -1,6 +1,6 @@
 package common.models.helpers;
 
-import server.exceptions.WrongArgumentException;
+import common.exceptions.WrongArgumentException;
 
 public class ArgumentChecker {
     public static void checkNull(Object argument, String argumentName) throws WrongArgumentException {

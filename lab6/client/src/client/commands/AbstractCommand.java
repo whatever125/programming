@@ -7,13 +7,11 @@ import java.io.Serializable;
 
 public abstract class AbstractCommand implements Command, Serializable {
     final transient Client client;
-    final transient Executor executor;
     final String name;
 
-    public AbstractCommand(String name, Client client, Executor executor) {
+    public AbstractCommand(String name, Client client) {
         this.name = name;
         this.client = client;
-        this.executor = executor;
     }
 
     public String getName() {

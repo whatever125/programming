@@ -7,14 +7,14 @@ import server.Executor;
 public class RemoveKey extends AbstractCommand {
     private final Integer key;
 
-    public RemoveKey(Client client, Executor executor, Integer key) {
-        super("remove_key", client, executor);
+    public RemoveKey(Client client, Integer key) {
+        super("remove_key", client);
         this.key = key;
     }
 
     @Override
     public void execute() throws CollectionKeyException {
-        executor.removeKey(key);
+//        executor.removeKey(key);
     }
 
     @Override

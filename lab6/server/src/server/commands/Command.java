@@ -2,7 +2,7 @@ package server.commands;
 
 import common.requests.Request;
 import server.exceptions.CustomIOException;
-import server.exceptions.WrongArgumentException;
+import common.exceptions.WrongArgumentException;
 import server.exceptions.CollectionKeyException;
 
 public interface Command {

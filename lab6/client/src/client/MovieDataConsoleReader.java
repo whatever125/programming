@@ -2,7 +2,7 @@ package client;
 
 import client.IOHandlers.BasicReader;
 import client.exceptions.InvalidScriptException;
-import server.exceptions.WrongArgumentException;
+import common.exceptions.WrongArgumentException;
 import common.models.MovieGenre;
 import common.models.MpaaRating;
 import common.models.helpers.MovieArgumentChecker;

@@ -1,12 +1,12 @@
 package server;
 
+import common.exceptions.WrongArgumentException;
 import common.requests.Request;
 import server.commands.*;
-import server.exceptions.CustomIOException;
-import server.exceptions.WrongArgumentException;
-import server.exceptions.CollectionKeyException;
+import server.exceptions.*;
 
 import java.io.ByteArrayInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.nio.charset.StandardCharsets;
@@ -16,8 +16,8 @@ public class QueryHandler {
     final private HashMap<String, Command> commands = new HashMap<>();
     private final Executor executor;
 
-    public QueryHandler(Executor executor) {
-        this.executor = executor;
+    public QueryHandler() throws FileNotFoundException, InvalidFileDataException, FilePermissionException {
+        this.executor = new Executor();
         registerCommand("info", new Info(executor));
         registerCommand("show", new Show(executor));
         registerCommand("insert", new Insert(executor));

@@ -4,8 +4,8 @@ import client.Client;
 import server.Executor;
 
 public class Help extends AbstractCommand {
-    public Help(Client client, Executor executor) {
-        super("help", client, executor);
+    public Help(Client client) {
+        super("help", client);
     }
 
     @Override

@@ -1,7 +1,7 @@
 package common.models;
 
 import common.models.helpers.PersonArgumentChecker;
-import server.exceptions.WrongArgumentException;
+import common.exceptions.WrongArgumentException;
 
 import java.time.LocalDateTime;
 

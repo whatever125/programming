@@ -1,10 +1,9 @@
 package client.commands;
 
 import client.Client;
-import client.exceptions.WrongArgumentException;
+import common.exceptions.WrongArgumentException;
 import common.models.MovieGenre;
 import common.models.MpaaRating;
-import server.Executor;
 
 import java.time.LocalDateTime;
 
@@ -20,10 +19,10 @@ public class RemoveGreater extends AbstractCommand {
     private final Integer weight;
     private final String passportID;
 
-    public RemoveGreater(Client client, Executor executor, String movieName, Integer x, Integer y,
+    public RemoveGreater(Client client, String movieName, Integer x, Integer y,
                          long oscarsCount, MovieGenre movieGenre, MpaaRating mpaaRating, String directorName,
                          LocalDateTime birthday, Integer weight, String passportID) {
-        super("remove_greater", client, executor);
+        super("remove_greater", client);
         this.movieName = movieName;
         this.x = x;
         this.y = y;
@@ -38,8 +37,8 @@ public class RemoveGreater extends AbstractCommand {
 
     @Override
     public void execute() throws WrongArgumentException {
-        executor.removeGreater(movieName, x, y, oscarsCount, movieGenre,
-                mpaaRating, directorName, birthday, weight, passportID);
+//        executor.removeGreater(movieName, x, y, oscarsCount, movieGenre,
+//                mpaaRating, directorName, birthday, weight, passportID);
     }
 
     @Override

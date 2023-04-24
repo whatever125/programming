@@ -7,7 +7,7 @@ import server.IOHandlers.MovieCollectionXMLFileWriter;
 import server.exceptions.CustomIOException;
 import server.exceptions.FilePermissionException;
 import server.exceptions.InvalidFileDataException;
-import server.exceptions.WrongArgumentException;
+import common.exceptions.WrongArgumentException;
 import server.exceptions.CollectionKeyException;
 import common.models.*;
 
@@ -36,7 +36,7 @@ public class Executor {
      * @throws FilePermissionException  if the program does not have permission to access the file
      */
     public Executor() throws InvalidFileDataException, FileNotFoundException, FilePermissionException {
-        String path = System.getenv("LAB5");
+        String path = System.getenv("PROGRAMMING_LAB");
         checkFile(path);
 
         this.xmlFileReader = new MovieCollectionXMLFileReader(path);

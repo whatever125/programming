@@ -1,11 +1,10 @@
 package client.commands;
 
 import client.Client;
-import client.exceptions.WrongArgumentException;
+import common.exceptions.WrongArgumentException;
 import server.exceptions.CollectionKeyException;
 import common.models.MovieGenre;
 import common.models.MpaaRating;
-import server.Executor;
 
 import java.time.LocalDateTime;
 
@@ -22,10 +21,10 @@ public class Update extends AbstractCommand {
     private final Integer weight;
     private final String passportID;
 
-    public Update(Client client, Executor executor, Integer id, String movieName, Integer x, Integer y,
+    public Update(Client client, Integer id, String movieName, Integer x, Integer y,
                   long oscarsCount, MovieGenre movieGenre, MpaaRating mpaaRating, String directorName,
                   LocalDateTime birthday, Integer weight, String passportID) {
-        super("update", client, executor);
+        super("update", client);
         this.id = id;
         this.movieName = movieName;
         this.x = x;
@@ -41,8 +40,8 @@ public class Update extends AbstractCommand {
 
     @Override
     public void execute() throws CollectionKeyException, WrongArgumentException {
-        executor.update(id, movieName, x, y, oscarsCount, movieGenre,
-                mpaaRating, directorName, birthday, weight, passportID);
+//        executor.update(id, movieName, x, y, oscarsCount, movieGenre,
+//                mpaaRating, directorName, birthday, weight, passportID);
     }
 
     @Override

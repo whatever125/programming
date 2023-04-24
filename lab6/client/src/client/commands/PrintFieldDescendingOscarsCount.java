@@ -7,15 +7,15 @@ import server.Executor;
 import java.util.List;
 
 public class PrintFieldDescendingOscarsCount extends AbstractCommandWithResult<List<Movie>> {
-    private List<Movie> result = null;
+    private final List<Movie> result = null;
 
-    public PrintFieldDescendingOscarsCount(Client client, Executor executor) {
-        super("print_field_descending_oscars_count", client, executor);
+    public PrintFieldDescendingOscarsCount(Client client) {
+        super("print_field_descending_oscars_count", client);
     }
 
     @Override
     public void execute() {
-        result = executor.printFieldDescendingOscarsCount();
+//        result = executor.printFieldDescendingOscarsCount();
     }
 
     @Override

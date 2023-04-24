@@ -4,8 +4,8 @@ import client.Client;
 import server.Executor;
 
 public class Exit extends AbstractCommand {
-    public Exit(Client client, Executor executor) {
-        super("exit", client, executor);
+    public Exit(Client client) {
+        super("exit", client);
     }
 
     @Override

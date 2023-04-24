@@ -1,6 +1,6 @@
 package client.commands;
 
-import client.exceptions.WrongArgumentException;
+import common.exceptions.WrongArgumentException;
 import client.exceptions.CustomIOException;
 import server.exceptions.CollectionKeyException;
 

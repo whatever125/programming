@@ -3,12 +3,13 @@ package client.commands;
 import client.Client;
 import common.requests.InsertRequest;
 import common.requests.Request;
-import client.exceptions.WrongArgumentException;
+import common.exceptions.WrongArgumentException;
 import common.models.MovieGenre;
 import common.models.MpaaRating;
 import server.QueryHandler;
-import server.Executor;
 import server.exceptions.CollectionKeyException;
+import server.exceptions.FilePermissionException;
+import server.exceptions.InvalidFileDataException;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -28,10 +29,10 @@ public class Insert extends AbstractCommand {
     private final Integer weight;
     private final String passportID;
 
-    public Insert(Client client, Executor executor, Integer key, String movieName, Integer x,
+    public Insert(Client client, Integer key, String movieName, Integer x,
                   Integer y, long oscarsCount, MovieGenre movieGenre, MpaaRating mpaaRating, String directorName,
                   LocalDateTime birthday, Integer weight, String passportID) {
-        super("insert", client, executor);
+        super("insert", client);
         this.key = key;
         this.movieName = movieName;
         this.x = x;
@@ -56,8 +57,12 @@ public class Insert extends AbstractCommand {
             oos.writeObject(request);
             oos.close();
 
-            new QueryHandler(executor).handle(baos.toByteArray());
+            new QueryHandler().handle(baos.toByteArray());
         } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InvalidFileDataException e) {
+            throw new RuntimeException(e);
+        } catch (FilePermissionException e) {
             throw new RuntimeException(e);
         }
     }

@@ -7,15 +7,15 @@ import server.Executor;
 import java.util.HashMap;
 
 public class Show extends AbstractCommandWithResult<HashMap<Integer, Movie>> {
-    private HashMap<Integer, Movie> result = null;
+    private final HashMap<Integer, Movie> result = null;
 
-    public Show(Client client, Executor executor) {
-        super("show", client, executor);
+    public Show(Client client) {
+        super("show", client);
     }
 
     @Override
     public void execute() {
-        result = executor.show();
+//        result = executor.show();
     }
 
     @Override

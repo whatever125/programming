@@ -2,7 +2,7 @@ package server.commands;
 
 import common.requests.ReplaceIfLoweRequest;
 import common.requests.Request;
-import server.exceptions.WrongArgumentException;
+import common.exceptions.WrongArgumentException;
 import server.exceptions.CollectionKeyException;
 import server.Executor;
 

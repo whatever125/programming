@@ -7,8 +7,8 @@ import server.Executor;
 public class ExecuteScript extends AbstractCommand {
     private final String path;
 
-    public ExecuteScript(Client client, Executor executor, String path) {
-        super("execute_script", client, executor);
+    public ExecuteScript(Client client, String path) {
+        super("execute_script", client);
         this.path = path;
     }
 

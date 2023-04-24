@@ -4,8 +4,8 @@ import client.Client;
 import server.Executor;
 
 public class History extends AbstractCommand {
-    public History(Client client, Executor executor) {
-        super("history", client, executor);
+    public History(Client client) {
+        super("history", client);
     }
 
     @Override

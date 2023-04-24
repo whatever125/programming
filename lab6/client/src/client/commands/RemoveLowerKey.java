@@ -6,14 +6,14 @@ import server.Executor;
 public class RemoveLowerKey extends AbstractCommand {
     private final Integer key;
 
-    public RemoveLowerKey(Client client, Executor executor, Integer key) {
-        super("remove_lower_key", client, executor);
+    public RemoveLowerKey(Client client, Integer key) {
+        super("remove_lower_key", client);
         this.key = key;
     }
 
     @Override
     public void execute() {
-        executor.removeLowerKey(key);
+//        executor.removeLowerKey(key);
     }
 
     @Override
