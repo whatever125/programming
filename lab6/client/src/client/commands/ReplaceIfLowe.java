@@ -1,6 +1,7 @@
 package client.commands;
 
-import client.Client;
+import client.consoleClient.Client;
+import client.network.NetworkClient;
 import common.exceptions.WrongArgumentException;
 import server.exceptions.CollectionKeyException;
 import common.models.MovieGenre;
@@ -21,10 +22,10 @@ public class ReplaceIfLowe extends AbstractCommand {
     private final Integer weight;
     private final String passportID;
 
-    public ReplaceIfLowe(Client client, Integer key, String movieName, Integer x,
+    public ReplaceIfLowe(Client client, NetworkClient networkClient, Integer key, String movieName, Integer x,
                          Integer y, long oscarsCount, MovieGenre movieGenre, MpaaRating mpaaRating, String directorName,
                          LocalDateTime birthday, Integer weight, String passportID) {
-        super("replace_if_lowe", client);
+        super("replace_if_lowe", client, networkClient);
         this.key = key;
         this.movieName = movieName;
         this.x = x;

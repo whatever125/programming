@@ -1,14 +1,14 @@
 package client.commands;
 
-import client.Client;
+import client.consoleClient.Client;
 import client.exceptions.CustomIOException;
-import server.Executor;
+import client.network.NetworkClient;
 
 public class ExecuteScript extends AbstractCommand {
     private final String path;
 
-    public ExecuteScript(Client client, String path) {
-        super("execute_script", client);
+    public ExecuteScript(Client client, NetworkClient networkClient, String path) {
+        super("execute_script", client, networkClient);
         this.path = path;
     }
 

@@ -1,16 +1,16 @@
 package client.commands;
 
-import client.Client;
+import client.consoleClient.Client;
+import client.network.NetworkClient;
 import common.models.Movie;
-import server.Executor;
 
 import java.util.List;
 
 public class PrintFieldDescendingOscarsCount extends AbstractCommandWithResult<List<Movie>> {
     private final List<Movie> result = null;
 
-    public PrintFieldDescendingOscarsCount(Client client) {
-        super("print_field_descending_oscars_count", client);
+    public PrintFieldDescendingOscarsCount(Client client, NetworkClient networkClient) {
+        super("print_field_descending_oscars_count", client, networkClient);
     }
 
     @Override

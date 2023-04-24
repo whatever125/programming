@@ -1,16 +1,16 @@
 package client.commands;
 
-import client.Client;
+import client.consoleClient.Client;
+import client.network.NetworkClient;
 import common.models.Movie;
-import server.Executor;
 
 import java.util.HashMap;
 
 public class Show extends AbstractCommandWithResult<HashMap<Integer, Movie>> {
     private final HashMap<Integer, Movie> result = null;
 
-    public Show(Client client) {
-        super("show", client);
+    public Show(Client client, NetworkClient networkClient) {
+        super("show", client, networkClient);
     }
 
     @Override

@@ -1,13 +1,13 @@
 package client.commands;
 
-import client.Client;
-import server.Executor;
+import client.consoleClient.Client;
+import client.network.NetworkClient;
 
 public class RemoveLowerKey extends AbstractCommand {
     private final Integer key;
 
-    public RemoveLowerKey(Client client, Integer key) {
-        super("remove_lower_key", client);
+    public RemoveLowerKey(Client client, NetworkClient networkClient, Integer key) {
+        super("remove_lower_key", client, networkClient);
         this.key = key;
     }
 

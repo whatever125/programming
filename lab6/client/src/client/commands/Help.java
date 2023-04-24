@@ -1,11 +1,11 @@
 package client.commands;
 
-import client.Client;
-import server.Executor;
+import client.consoleClient.Client;
+import client.network.NetworkClient;
 
 public class Help extends AbstractCommand {
-    public Help(Client client) {
-        super("help", client);
+    public Help(Client client, NetworkClient networkClient) {
+        super("help", client, networkClient);
     }
 
     @Override

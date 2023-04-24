@@ -1,16 +1,16 @@
 package client.commands;
 
-import client.Client;
+import client.consoleClient.Client;
+import client.network.NetworkClient;
 import common.models.Movie;
-import server.Executor;
 
 import java.util.List;
 
 public class PrintDescending extends AbstractCommandWithResult<List<Movie>> {
     private final List<Movie> result = null;
 
-    public PrintDescending(Client client) {
-        super("print_descending", client);
+    public PrintDescending(Client client, NetworkClient networkClient) {
+        super("print_descending", client, networkClient);
     }
 
     @Override

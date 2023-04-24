@@ -1,14 +1,14 @@
 package client.commands;
 
-import client.Client;
+import client.consoleClient.Client;
+import client.network.NetworkClient;
 import server.exceptions.CollectionKeyException;
-import server.Executor;
 
 public class RemoveKey extends AbstractCommand {
     private final Integer key;
 
-    public RemoveKey(Client client, Integer key) {
-        super("remove_key", client);
+    public RemoveKey(Client client, NetworkClient networkClient, Integer key) {
+        super("remove_key", client, networkClient);
         this.key = key;
     }
 

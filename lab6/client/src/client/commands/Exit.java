@@ -1,11 +1,11 @@
 package client.commands;
 
-import client.Client;
-import server.Executor;
+import client.consoleClient.Client;
+import client.network.NetworkClient;
 
 public class Exit extends AbstractCommand {
-    public Exit(Client client) {
-        super("exit", client);
+    public Exit(Client client, NetworkClient networkClient) {
+        super("exit", client, networkClient);
     }
 
     @Override

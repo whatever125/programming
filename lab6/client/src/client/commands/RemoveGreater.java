@@ -1,6 +1,7 @@
 package client.commands;
 
-import client.Client;
+import client.consoleClient.Client;
+import client.network.NetworkClient;
 import common.exceptions.WrongArgumentException;
 import common.models.MovieGenre;
 import common.models.MpaaRating;
@@ -19,10 +20,10 @@ public class RemoveGreater extends AbstractCommand {
     private final Integer weight;
     private final String passportID;
 
-    public RemoveGreater(Client client, String movieName, Integer x, Integer y,
+    public RemoveGreater(Client client, NetworkClient networkClient, String movieName, Integer x, Integer y,
                          long oscarsCount, MovieGenre movieGenre, MpaaRating mpaaRating, String directorName,
                          LocalDateTime birthday, Integer weight, String passportID) {
-        super("remove_greater", client);
+        super("remove_greater", client, networkClient);
         this.movieName = movieName;
         this.x = x;
         this.y = y;

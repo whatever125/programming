@@ -1,6 +1,7 @@
 package client.commands;
 
-import client.Client;
+import client.consoleClient.Client;
+import client.network.NetworkClient;
 import common.requests.InsertRequest;
 import common.requests.Request;
 import common.exceptions.WrongArgumentException;
@@ -29,10 +30,10 @@ public class Insert extends AbstractCommand {
     private final Integer weight;
     private final String passportID;
 
-    public Insert(Client client, Integer key, String movieName, Integer x,
+    public Insert(Client client, NetworkClient networkClient, Integer key, String movieName, Integer x,
                   Integer y, long oscarsCount, MovieGenre movieGenre, MpaaRating mpaaRating, String directorName,
                   LocalDateTime birthday, Integer weight, String passportID) {
-        super("insert", client);
+        super("insert", client, networkClient);
         this.key = key;
         this.movieName = movieName;
         this.x = x;
@@ -57,12 +58,8 @@ public class Insert extends AbstractCommand {
             oos.writeObject(request);
             oos.close();
 
-            new QueryHandler().handle(baos.toByteArray());
+            networkClient.sendData(baos.toByteArray());
         } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (InvalidFileDataException e) {
-            throw new RuntimeException(e);
-        } catch (FilePermissionException e) {
             throw new RuntimeException(e);
         }
     }

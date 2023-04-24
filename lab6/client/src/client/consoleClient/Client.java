@@ -1,4 +1,4 @@
-package client;
+package client.consoleClient;
 
 import client.exceptions.CustomIOException;
 
