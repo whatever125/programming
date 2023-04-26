@@ -2,6 +2,8 @@ package server.commands;
 
 import common.models.Movie;
 import common.requests.Request;
+import common.responses.PrintFieldDescendingOscarsCountResponse;
+import common.responses.Response;
 import server.Executor;
 
 import java.util.List;
@@ -14,8 +16,9 @@ public class PrintFieldDescendingOscarsCount extends AbstractCommandWithResult<L
     }
 
     @Override
-    public void execute(Request request) {
+    public PrintFieldDescendingOscarsCountResponse execute(Request request) {
         result = executor.printFieldDescendingOscarsCount();
+        return new PrintFieldDescendingOscarsCountResponse(null, result);
     }
 
     @Override

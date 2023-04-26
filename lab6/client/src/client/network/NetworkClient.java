@@ -1,10 +1,12 @@
 package client.network;
 
-import java.nio.ByteBuffer;
+import common.requests.Request;
+import common.responses.Response;
 
 public interface NetworkClient {
     void openConnection();
     void closeConnection();
-    ByteBuffer receiveData();
-    int sendData(byte[] bytesToSend);
+    byte[] receiveData();
+    void sendData(byte[] bytesToSend);
+    Response sendRequest(Request request);
 }

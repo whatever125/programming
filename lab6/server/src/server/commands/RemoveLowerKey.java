@@ -2,6 +2,9 @@ package server.commands;
 
 import common.requests.RemoveLowerKeyRequest;
 import common.requests.Request;
+import common.responses.RemoveKeyResponse;
+import common.responses.RemoveLowerKeyResponse;
+import common.responses.Response;
 import server.Executor;
 
 public class RemoveLowerKey extends AbstractCommand {
@@ -10,8 +13,9 @@ public class RemoveLowerKey extends AbstractCommand {
     }
 
     @Override
-    public void execute(Request request) {
+    public RemoveLowerKeyResponse execute(Request request) {
         RemoveLowerKeyRequest rlkRequest = (RemoveLowerKeyRequest) request;
-        executor.removeLowerKey(rlkRequest.key);
+        int count = executor.removeLowerKey(rlkRequest.key);
+        return new RemoveLowerKeyResponse(null, count);
     }
 }

@@ -2,6 +2,7 @@ package client.commands;
 
 import client.consoleClient.Client;
 import client.network.NetworkClient;
+import common.responses.Response;
 
 public class History extends AbstractCommand {
     public History(Client client, NetworkClient networkClient) {
@@ -9,7 +10,8 @@ public class History extends AbstractCommand {
     }
 
     @Override
-    public void execute() {
-        client.history();
+    public Response execute() {
+        Response response = client.history();
+        return response;
     }
 }

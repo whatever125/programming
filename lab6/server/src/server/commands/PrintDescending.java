@@ -2,6 +2,8 @@ package server.commands;
 
 import common.models.Movie;
 import common.requests.Request;
+import common.responses.PrintDescendingResponse;
+import common.responses.Response;
 import server.Executor;
 
 import java.util.List;
@@ -14,8 +16,9 @@ public class PrintDescending extends AbstractCommandWithResult<List<Movie>> {
     }
 
     @Override
-    public void execute(Request request) {
+    public PrintDescendingResponse execute(Request request) {
         result = executor.printDescending();
+        return new PrintDescendingResponse(null, result);
     }
 
     @Override

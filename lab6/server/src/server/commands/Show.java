@@ -2,6 +2,7 @@ package server.commands;
 
 import common.models.Movie;
 import common.requests.Request;
+import common.responses.ShowResponse;
 import server.Executor;
 
 import java.util.HashMap;
@@ -14,8 +15,10 @@ public class Show extends AbstractCommandWithResult<HashMap<Integer, Movie>> {
     }
 
     @Override
-    public void execute(Request request) {
+    public ShowResponse execute(Request request) {
         result = executor.show();
+        ShowResponse showResponse = new ShowResponse(null, result);
+        return showResponse;
     }
 
     @Override

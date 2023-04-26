@@ -5,6 +5,12 @@ import client.network.NetworkClient;
 import common.exceptions.WrongArgumentException;
 import common.models.MovieGenre;
 import common.models.MpaaRating;
+import common.requests.InsertRequest;
+import common.requests.RemoveGreaterRequest;
+import common.requests.Request;
+import common.responses.InsertResponse;
+import common.responses.RemoveGreaterResponse;
+import common.responses.Response;
 
 import java.time.LocalDateTime;
 
@@ -37,9 +43,11 @@ public class RemoveGreater extends AbstractCommand {
     }
 
     @Override
-    public void execute() throws WrongArgumentException {
-//        executor.removeGreater(movieName, x, y, oscarsCount, movieGenre,
-//                mpaaRating, directorName, birthday, weight, passportID);
+    public RemoveGreaterResponse execute() {
+        RemoveGreaterRequest request = new RemoveGreaterRequest(movieName, x, y, oscarsCount,
+                movieGenre, mpaaRating, directorName, birthday, weight, passportID);
+        RemoveGreaterResponse response = (RemoveGreaterResponse) networkClient.sendRequest(request);
+        return response;
     }
 
     @Override

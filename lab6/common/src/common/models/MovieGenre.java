@@ -1,6 +1,8 @@
 package common.models;
 
-public enum MovieGenre {
+import java.io.Serializable;
+
+public enum MovieGenre implements Serializable {
     WESTERN,
     MUSICAL,
     THRILLER,

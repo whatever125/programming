@@ -1,6 +1,9 @@
 package server.commands;
 
 import common.requests.Request;
+import common.responses.InfoResponse;
+import common.responses.InsertResponse;
+import common.responses.Response;
 import server.Executor;
 
 public class Info extends AbstractCommandWithResult<String> {
@@ -11,8 +14,9 @@ public class Info extends AbstractCommandWithResult<String> {
     }
 
     @Override
-    public void execute(Request request) {
+    public InfoResponse execute(Request request) {
         result = executor.info();
+        return new InfoResponse(null, result);
     }
 
     @Override

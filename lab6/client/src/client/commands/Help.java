@@ -2,6 +2,8 @@ package client.commands;
 
 import client.consoleClient.Client;
 import client.network.NetworkClient;
+import common.responses.EmptyResponse;
+import common.responses.Response;
 
 public class Help extends AbstractCommand {
     public Help(Client client, NetworkClient networkClient) {
@@ -9,7 +11,8 @@ public class Help extends AbstractCommand {
     }
 
     @Override
-    public void execute() {
-        client.help();
+    public Response execute() {
+        Response response = client.help();
+        return response;
     }
 }

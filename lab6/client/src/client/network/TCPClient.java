@@ -1,39 +1,36 @@
 package client.network;
 
-import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.nio.ByteBuffer;
-import java.nio.channels.SelectionKey;
-import java.nio.channels.Selector;
-import java.nio.channels.SocketChannel;
+import common.requests.Request;
+import common.responses.Response;
+
+import java.io.*;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
 public class TCPClient implements NetworkClient{
-    private final InetSocketAddress address;
-    private SocketChannel socketChannel;
-    private Selector selector;
+    private final String host;
+    private final int port;
+    private Socket socket;
+
+    private InputStream inputStream;
+    private OutputStream outputStream;
 
     private static final int BUFFER_SIZE = 4096;
 
-    public TCPClient(InetSocketAddress address) {
-        this.address = address;
+    public TCPClient(String host, int port) {
+        this.host = host;
+        this.port = port;
     }
 
     @Override
     public void openConnection() {
         try {
-            socketChannel = SocketChannel.open();
-            socketChannel.configureBlocking(false);
-
-//            selector = Selector.open();
-//            socketChannel.register(selector, SelectionKey.OP_CONNECT);
-
-            socketChannel.connect(address);
-
-            while (socketChannel.isConnectionPending()) {
-                socketChannel.finishConnect();
-            }
+            socket = new Socket(host, port);
+            inputStream = socket.getInputStream();
+            outputStream = socket.getOutputStream();
+        } catch (UnknownHostException e) {
+            throw new RuntimeException(e);
         } catch (IOException e) {
-            // todo
             throw new RuntimeException(e);
         }
     }
@@ -41,43 +38,54 @@ public class TCPClient implements NetworkClient{
     @Override
     public void closeConnection() {
         try {
-            socketChannel.close();
+            if (socket != null) {
+                socket.close();
+            }
         } catch (IOException e) {
-            // todo
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public ByteBuffer receiveData() {
+    public byte[] receiveData() {
         try {
-            // todo
-            assert socketChannel.isConnected();
-
-            ByteBuffer byteBuffer = ByteBuffer.allocate(BUFFER_SIZE);
-            socketChannel.read(byteBuffer);
-            return byteBuffer;
+            byte[] responseBytes = new byte[BUFFER_SIZE];
+            inputStream.read(responseBytes);
+            return responseBytes;
         } catch (IOException e) {
-            // todo
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public int sendData(byte[] bytesToSend) {
+    public void sendData(byte[] bytesToSend) {
         try {
-            // todo
-            assert socketChannel.isConnected();
-
-            ByteBuffer byteBuffer = ByteBuffer.wrap(bytesToSend);
-
-            socketChannel.write(byteBuffer);
-            int numberOfWrittenBytes = socketChannel.write(byteBuffer);
-//            int numberOfWrittenBytes = 1;
-            assert numberOfWrittenBytes != -1; // todo
-            return numberOfWrittenBytes;
+            outputStream.write(bytesToSend);
         } catch (IOException e) {
-            // todo
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public Response sendRequest(Request request) {
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(baos);
+            oos.writeObject(request);
+            oos.close();
+
+            sendData(baos.toByteArray());
+
+            byte[] receivedBytes = receiveData();
+
+            ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(receivedBytes));
+            Response response = (Response) ois.readObject();
+            ois.close();
+
+            return response;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }

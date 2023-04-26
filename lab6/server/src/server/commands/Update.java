@@ -3,6 +3,8 @@ package server.commands;
 import common.requests.Request;
 import common.requests.UpdateRequest;
 import common.exceptions.WrongArgumentException;
+import common.responses.Response;
+import common.responses.UpdateResponse;
 import server.exceptions.CollectionKeyException;
 import server.Executor;
 
@@ -12,9 +14,16 @@ public class Update extends AbstractCommand {
     }
 
     @Override
-    public void execute(Request request) throws CollectionKeyException, WrongArgumentException {
+    public UpdateResponse execute(Request request) {
         UpdateRequest uRequest = (UpdateRequest) request;
-        executor.update(uRequest.id, uRequest.movieName, uRequest.x, uRequest.y, uRequest.oscarsCount, uRequest.movieGenre,
-                uRequest.mpaaRating, uRequest.directorName, uRequest.birthday, uRequest.weight, uRequest.passportID);
+        UpdateResponse response;
+        try {
+            executor.update(uRequest.id, uRequest.movieName, uRequest.x, uRequest.y, uRequest.oscarsCount, uRequest.movieGenre,
+                    uRequest.mpaaRating, uRequest.directorName, uRequest.birthday, uRequest.weight, uRequest.passportID);
+            response = new UpdateResponse(null);
+        } catch (WrongArgumentException | CollectionKeyException e) {
+            response = new UpdateResponse(e.getMessage());
+        }
+        return response;
     }
 }

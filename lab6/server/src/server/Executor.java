@@ -92,7 +92,6 @@ public class Executor {
                 mpaaRating, new Person(directorName, birthday, weight, passportID));
         movie.setID();
         movieCollection.put(key, movie);
-        System.out.println("*element added successfully*");
     }
 
     /**
@@ -124,7 +123,6 @@ public class Executor {
         movie.setGenre(movieGenre);
         movie.setMpaaRating(mpaaRating);
         movie.setDirector(new Person(directorName, birthday, weight, passportID));
-        System.out.println("*element updated successfully*");
     }
 
     /**
@@ -137,7 +135,6 @@ public class Executor {
         if (movieCollection.getElementByKey(key) == null)
             throw new CollectionKeyException("key does not exist");
         movieCollection.remove(key);
-        System.out.println("*element removed successfully*");
     }
 
     /**
@@ -145,7 +142,6 @@ public class Executor {
      */
     public void clear() {
         movieCollection.clear();
-        System.out.println("*collection cleared successfully*");
     }
 
     /**
@@ -175,17 +171,13 @@ public class Executor {
      @param passportID the passport ID of the movie director to compare
      @throws WrongArgumentException if any of the specified arguments are invalid
      */
-    public void removeGreater(String movieName, Integer x, Integer y, long oscarsCount, MovieGenre movieGenre,
+    public int removeGreater(String movieName, Integer x, Integer y, long oscarsCount, MovieGenre movieGenre,
                               MpaaRating mpaaRating, String directorName, LocalDateTime birthday, Integer weight,
                               String passportID) throws WrongArgumentException {
         Movie movie = new Movie(movieName, new Coordinates(x, y), oscarsCount, movieGenre,
                 mpaaRating, new Person(directorName, birthday, weight, passportID));
         int count = movieCollection.removeGreater(movie);
-        if (count == 0) {
-            System.out.println("*no elements removed*");
-        } else {
-            System.out.println("* " + count + " elements removed successfully*");
-        }
+        return count;
     }
 
     /**
@@ -205,7 +197,7 @@ public class Executor {
      @throws CollectionKeyException if the specified key does not exist in the collection
      @throws WrongArgumentException if any of the specified arguments are invalid
      */
-    public void replaceIfLowe(Integer key, String movieName, Integer x, Integer y, long oscarsCount,
+    public boolean replaceIfLowe(Integer key, String movieName, Integer x, Integer y, long oscarsCount,
                               MovieGenre movieGenre, MpaaRating mpaaRating, String directorName, LocalDateTime birthday,
                               Integer weight, String passportID) throws CollectionKeyException, WrongArgumentException {
         if (movieCollection.getElementByKey(key) == null)
@@ -215,10 +207,8 @@ public class Executor {
         boolean replaced = movieCollection.replaceIfLowe(key, movie);
         if (replaced) {
             movie.setID();
-            System.out.println("*element replaced successfully*");
-        } else {
-            System.out.println("*element was not replaced*");
         }
+        return replaced;
     }
 
     /**
@@ -227,13 +217,9 @@ public class Executor {
      @param key the key to compare with
      */
 
-    public void removeLowerKey(Integer key) {
+    public int removeLowerKey(Integer key) {
         int count = movieCollection.removeLowerKey(key);
-        if (count == 0) {
-            System.out.println("*no elements removed*");
-        } else {
-            System.out.println("* " + count + " elements removed successfully*");
-        }
+        return count;
     }
 
     /**

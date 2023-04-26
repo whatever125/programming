@@ -6,8 +6,9 @@ import server.MovieCollection;
 
 import java.time.ZonedDateTime;
 import java.util.Objects;
+import java.io.Serializable;
 
-public class Movie implements Comparable<Movie> {
+public class Movie implements Comparable<Movie>, Serializable {
     private static Integer nextID = 1;
     private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой

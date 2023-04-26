@@ -6,7 +6,6 @@ import common.models.MpaaRating;
 import java.time.LocalDateTime;
 
 public class RemoveGreaterRequest extends Request {
-    public final Integer key;
     public final String movieName;
     public final Integer x;
     public final Integer y;
@@ -18,11 +17,10 @@ public class RemoveGreaterRequest extends Request {
     public final Integer weight;
     public final String passportID;
 
-    public RemoveGreaterRequest(Integer key, String movieName, Integer x, Integer y, long oscarsCount, MovieGenre movieGenre,
+    public RemoveGreaterRequest(String movieName, Integer x, Integer y, long oscarsCount, MovieGenre movieGenre,
                          MpaaRating mpaaRating, String directorName, LocalDateTime birthday, Integer weight,
                          String passportID) {
         super("remove_greater");
-        this.key = key;
         this.movieName = movieName;
         this.x = x;
         this.y = y;

@@ -3,23 +3,24 @@ package client.commands;
 import client.consoleClient.Client;
 import client.network.NetworkClient;
 import common.models.Movie;
+import common.requests.ClearRequest;
+import common.requests.PrintAscendingRequest;
+import common.requests.Request;
+import common.responses.ClearResponse;
+import common.responses.PrintAscendingResponse;
+import common.responses.Response;
 
 import java.util.List;
 
-public class PrintAscending extends AbstractCommandWithResult<List<Movie>> {
-    private final List<Movie> result = null;
-
+public class PrintAscending extends AbstractCommand {
     public PrintAscending(Client client, NetworkClient networkClient) {
         super("print_ascending", client, networkClient);
     }
 
     @Override
-    public void execute() {
-//        result = executor.printAscending();
-    }
-
-    @Override
-    public List<Movie> getResult() {
-        return result;
+    public PrintAscendingResponse execute() {
+        PrintAscendingRequest request = new PrintAscendingRequest();
+        PrintAscendingResponse response = (PrintAscendingResponse) networkClient.sendRequest(request);
+        return response;
     }
 }

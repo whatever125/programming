@@ -3,6 +3,8 @@ package client.commands;
 import client.consoleClient.Client;
 import client.exceptions.CustomIOException;
 import client.network.NetworkClient;
+import common.responses.EmptyResponse;
+import common.responses.Response;
 
 public class ExecuteScript extends AbstractCommand {
     private final String path;
@@ -13,8 +15,9 @@ public class ExecuteScript extends AbstractCommand {
     }
 
     @Override
-    public void execute() throws CustomIOException {
-        client.executeScript(path);
+    public Response execute() throws CustomIOException {
+        Response response = client.executeScript(path);
+        return response;
     }
 
     @Override

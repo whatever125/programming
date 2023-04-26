@@ -3,6 +3,12 @@ package client.commands;
 import client.consoleClient.Client;
 import client.network.NetworkClient;
 import common.exceptions.WrongArgumentException;
+import common.requests.InsertRequest;
+import common.requests.Request;
+import common.requests.UpdateRequest;
+import common.responses.InsertResponse;
+import common.responses.Response;
+import common.responses.UpdateResponse;
 import server.exceptions.CollectionKeyException;
 import common.models.MovieGenre;
 import common.models.MpaaRating;
@@ -40,9 +46,11 @@ public class Update extends AbstractCommand {
     }
 
     @Override
-    public void execute() throws CollectionKeyException, WrongArgumentException {
-//        executor.update(id, movieName, x, y, oscarsCount, movieGenre,
-//                mpaaRating, directorName, birthday, weight, passportID);
+    public UpdateResponse execute() {
+        UpdateRequest request = new UpdateRequest(id, movieName, x, y, oscarsCount,
+                movieGenre, mpaaRating, directorName, birthday, weight, passportID);
+        UpdateResponse response = (UpdateResponse) networkClient.sendRequest(request);
+        return response;
     }
 
     @Override

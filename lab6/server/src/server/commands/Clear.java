@@ -1,6 +1,8 @@
 package server.commands;
 
 import common.requests.Request;
+import common.responses.ClearResponse;
+import common.responses.Response;
 import server.Executor;
 
 public class Clear extends AbstractCommand {
@@ -9,7 +11,8 @@ public class Clear extends AbstractCommand {
     }
 
     @Override
-    public void execute(Request request) {
+    public ClearResponse execute(Request request) {
         executor.clear();
+        return new ClearResponse(null);
     }
 }

@@ -1,6 +1,8 @@
 package common.models;
 
-public class Coordinates {
+import java.io.Serializable;
+
+public class Coordinates implements Serializable {
     private int x;
     private int y;
 

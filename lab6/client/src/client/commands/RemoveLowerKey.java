@@ -2,6 +2,11 @@ package client.commands;
 
 import client.consoleClient.Client;
 import client.network.NetworkClient;
+import common.requests.RemoveKeyRequest;
+import common.requests.RemoveLowerKeyRequest;
+import common.responses.RemoveKeyResponse;
+import common.responses.RemoveLowerKeyResponse;
+import common.responses.Response;
 
 public class RemoveLowerKey extends AbstractCommand {
     private final Integer key;
@@ -12,8 +17,10 @@ public class RemoveLowerKey extends AbstractCommand {
     }
 
     @Override
-    public void execute() {
-//        executor.removeLowerKey(key);
+    public RemoveLowerKeyResponse execute() {
+        RemoveLowerKeyRequest request = new RemoveLowerKeyRequest(key);
+        RemoveLowerKeyResponse response = (RemoveLowerKeyResponse) networkClient.sendRequest(request);
+        return response;
     }
 
     @Override

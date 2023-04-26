@@ -2,29 +2,25 @@ package server;
 
 import common.exceptions.WrongArgumentException;
 import common.requests.Request;
+import common.responses.Response;
 import server.commands.*;
 import server.exceptions.*;
 
-import java.io.ByteArrayInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
-public class QueryHandler {
+public class CommandHandler {
     final private HashMap<String, Command> commands = new HashMap<>();
     private final Executor executor;
 
-    public QueryHandler() throws FileNotFoundException, InvalidFileDataException, FilePermissionException {
-        this.executor = new Executor();
+    public CommandHandler(Executor executor) throws FileNotFoundException, InvalidFileDataException, FilePermissionException {
+        this.executor = executor;
         registerCommand("info", new Info(executor));
         registerCommand("show", new Show(executor));
         registerCommand("insert", new Insert(executor));
         registerCommand("update", new Update(executor));
         registerCommand("remove_key", new RemoveKey(executor));
         registerCommand("clear", new Clear(executor));
-        registerCommand("save", new Save(executor));
         registerCommand("remove_greater", new RemoveGreater(executor));
         registerCommand("replace_if_lowe", new ReplaceIfLowe(executor));
         registerCommand("remove_lower_key", new RemoveLowerKey(executor));
@@ -37,24 +33,20 @@ public class QueryHandler {
         commands.put(name, command);
     }
 
-    public void handle(byte[] query) {
+    public Response handle(Request request) {
+        Response response = null;
         try {
-            String str = new String(query, StandardCharsets.UTF_8);
-
-            ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(query));
-            var request = (Request) ois.readObject();
-
-            System.out.println(request.getName());
-            Command command = commands.get(request.getName());
+            System.out.println(request.name);
+            Command command = commands.get(request.name);
             if (command == null) {
                 // todo throw exception
             } else {
-                command.execute(request);
+                response = command.execute(request);
             }
-        } catch (IOException | ClassNotFoundException | WrongArgumentException | CollectionKeyException |
-                 CustomIOException e) {
+        } catch (WrongArgumentException | CollectionKeyException | CustomIOException e) {
             // todo exception handling
             throw new RuntimeException(e);
         }
+        return response;
     }
 }

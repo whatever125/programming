@@ -1,9 +1,9 @@
 package client.consoleClient;
 
 import client.commands.AbstractCommand;
-import client.commands.AbstractCommandWithResult;
 import client.exceptions.*;
 import common.exceptions.WrongArgumentException;
+import common.responses.Response;
 import server.exceptions.CollectionKeyException;
 
 import java.util.Stack;
@@ -18,29 +18,12 @@ public class Invoker {
      * Executes the specified command and adds it to the command history.
      *
      * @param command the command to execute
-     * @throws CollectionKeyException if there is an error with the collection key
-     * @throws WrongArgumentException if there is an error with the command arguments
      * @throws CustomIOException if there is an input/output error while executing the command
      */
-    public void execute(AbstractCommand command) throws CollectionKeyException, WrongArgumentException, CustomIOException {
+    public Response execute(AbstractCommand command) throws CustomIOException {
         commandHistory.push(command);
-        command.execute();
-    }
-
-    /**
-     * Executes the specified command with a result and adds it to the command history.
-     *
-     * @param command the command to execute
-     * @param <T> the type of the command result
-     * @return the result of the executed command
-     * @throws WrongArgumentException if there is an error with the command arguments
-     * @throws CollectionKeyException if there is an error with the collection key
-     * @throws CustomIOException if there is an input/output error while executing the command
-     */
-    public <T> T executeAndReturn(AbstractCommandWithResult<T> command) throws WrongArgumentException, CollectionKeyException, CustomIOException {
-        commandHistory.push(command);
-        command.execute();
-        return command.getResult();
+        Response response = command.execute();
+        return response;
     }
 
     /**

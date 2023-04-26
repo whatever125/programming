@@ -1,6 +1,7 @@
 package server.commands;
 
 import common.requests.Request;
+import common.responses.Response;
 import server.Executor;
 
 public class Save extends AbstractCommand {
@@ -10,7 +11,8 @@ public class Save extends AbstractCommand {
     }
 
     @Override
-    public void execute(Request request) {
+    public Response execute(Request request) {
         executor.save();
+        return null;
     }
 }

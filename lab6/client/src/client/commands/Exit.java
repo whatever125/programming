@@ -2,6 +2,8 @@ package client.commands;
 
 import client.consoleClient.Client;
 import client.network.NetworkClient;
+import common.responses.EmptyResponse;
+import common.responses.Response;
 
 public class Exit extends AbstractCommand {
     public Exit(Client client, NetworkClient networkClient) {
@@ -9,7 +11,8 @@ public class Exit extends AbstractCommand {
     }
 
     @Override
-    public void execute() {
-        client.exit();
+    public Response execute() {
+        Response response = client.exit();
+        return response;
     }
 }

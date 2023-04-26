@@ -4,17 +4,10 @@ import client.consoleClient.Client;
 import client.network.NetworkClient;
 import common.requests.InsertRequest;
 import common.requests.Request;
-import common.exceptions.WrongArgumentException;
 import common.models.MovieGenre;
 import common.models.MpaaRating;
-import server.QueryHandler;
-import server.exceptions.CollectionKeyException;
-import server.exceptions.FilePermissionException;
-import server.exceptions.InvalidFileDataException;
+import common.responses.InsertResponse;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.time.LocalDateTime;
 
 public class Insert extends AbstractCommand {
@@ -48,20 +41,11 @@ public class Insert extends AbstractCommand {
     }
 
     @Override
-    public void execute() throws CollectionKeyException, WrongArgumentException {
-        try {
-            Request request = new InsertRequest(key, movieName, x, y, oscarsCount,
-                    movieGenre, mpaaRating, directorName, birthday, weight, passportID);
-
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ObjectOutputStream oos = new ObjectOutputStream(baos);
-            oos.writeObject(request);
-            oos.close();
-
-            networkClient.sendData(baos.toByteArray());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public InsertResponse execute() {
+        Request request = new InsertRequest(key, movieName, x, y, oscarsCount,
+                movieGenre, mpaaRating, directorName, birthday, weight, passportID);
+        InsertResponse response = (InsertResponse) networkClient.sendRequest(request);
+        return response;
     }
 
     @Override
