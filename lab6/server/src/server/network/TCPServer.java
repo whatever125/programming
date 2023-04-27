@@ -1,30 +1,34 @@
 package server.network;
 
 import common.requests.Request;
+import common.responses.ServerErrorResponse;
 import common.responses.Response;
+import jdk.net.ExtendedSocketOptions;
 import server.CommandHandler;
+import server.exceptions.InvalidRequestException;
 
 import java.io.*;
+import java.net.BindException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.*;
 import java.nio.channels.spi.SelectorProvider;
 import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
+import java.util.concurrent.TimeUnit;
 
 public class TCPServer {
     private static final int BUFFER_SIZE = 4096;
     private final ByteBuffer readBuffer = ByteBuffer.allocate(BUFFER_SIZE);
-    private final ByteBuffer writeBuffer = ByteBuffer.allocate(BUFFER_SIZE);
 
     private static final String HOST = "localhost";
-    private static final int PORT = 9090;
+    private static final int PORT = 8080;
 
     private ServerSocketChannel serverSocketChannel;
     private final Selector selector;
     private final CommandHandler commandHandler;
 
-    public TCPServer(CommandHandler commandHandler) {
+    public TCPServer(CommandHandler commandHandler) throws IOException {
         this.commandHandler = commandHandler;
 
         this.openConnection();
@@ -32,30 +36,26 @@ public class TCPServer {
         this.run();
     }
 
-    private void openConnection() {
+    private void openConnection() throws IOException {
+        serverSocketChannel = ServerSocketChannel.open();
+        serverSocketChannel.configureBlocking(false);
+        serverSocketChannel.setOption(ExtendedSocketOptions.TCP_KEEPIDLE, 10);
+        InetSocketAddress address = new InetSocketAddress(HOST, PORT);
         try {
-            serverSocketChannel = ServerSocketChannel.open();
-            serverSocketChannel.configureBlocking(false);
-            InetSocketAddress address = new InetSocketAddress(HOST, PORT);
             serverSocketChannel.bind(address);
-        } catch (IOException e) {
-            // todo
-            throw new RuntimeException(e);
+        } catch (BindException e) {
+            throw new BindException("Unable to use address " + address.getHostName() + ":" + address.getPort() + " - " + e.getMessage());
         }
     }
 
-    private Selector initSelector() {
+    private Selector initSelector() throws IOException {
+        Selector socketSelector = SelectorProvider.provider().openSelector();
+        serverSocketChannel.register(socketSelector, SelectionKey.OP_ACCEPT);
+        return socketSelector;
+    }
+
+    private void run() throws IOException {
         try {
-            Selector socketSelector = SelectorProvider.provider().openSelector();
-            serverSocketChannel.register(socketSelector, SelectionKey.OP_ACCEPT);
-            return socketSelector;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private void run() {
-        try{
             while (true) {
                 selector.select();
                 Iterator<SelectionKey> selectedKeys = selector.selectedKeys().iterator();
@@ -63,23 +63,19 @@ public class TCPServer {
                     SelectionKey key = selectedKeys.next();
                     selectedKeys.remove();
 
-                    if (!key.isValid()) {
-                        continue;
-                    }
-
-                    if (key.isAcceptable()) {
-                        accept(key);
-                    } else if (key.isReadable()) {
-                        read(key);
-                    } else if (key.isWritable()) {
-                        write(key);
+                    if (key.isValid()) {
+                        if (key.isAcceptable()) {
+                            accept(key);
+                        } else if (key.isReadable()) {
+                            read(key);
+                        } else if (key.isWritable()) {
+                            write(key);
+                        }
                     }
                 }
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         } finally {
-            closeConnection();
+            silentCloseConnection();
         }
     }
 
@@ -89,7 +85,7 @@ public class TCPServer {
         socketChannel.configureBlocking(false);
         socketChannel.register(selector, SelectionKey.OP_READ);
 
-        System.out.println("accept: Client is connected");
+        System.out.println("accept: Client " + socketChannel.getRemoteAddress() + " is connected");
         System.out.println();
     }
 
@@ -103,37 +99,49 @@ public class TCPServer {
             key.cancel();
             sc.close();
             System.out.println("read: Forceful shutdown");
-            System.out.println();
             return;
         }
         if (bytesRead == -1) {
             System.out.println("read: Graceful shutdown");
             System.out.println();
-            key.channel().close();
             key.cancel();
             return;
         }
         String input = new String(readBuffer.array(), 0, bytesRead, StandardCharsets.UTF_8);
         System.out.println("read: " + input);
-        System.out.println("\\read");
-        System.out.println();
 
-        Response response = handleInput(readBuffer.array());
-
-        sc.register(selector, SelectionKey.OP_WRITE, response);
-    }
-
-    private Response handleInput(byte[] input) throws IOException {
+        Response response;
         try {
-            ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(input));
-            Request request = (Request) ois.readObject();
-            ois.close();
-
-            Response response = commandHandler.handle(request);
-            return response;
+            response = handleRequest(readBuffer);
         } catch (ClassNotFoundException e) {
+            response = new ServerErrorResponse(e.getMessage());
+            System.out.println("unknown command");
+        }
+        sc.register(selector, SelectionKey.OP_WRITE, response);
+
+        try {
+            TimeUnit.SECONDS.sleep(10);
+        } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private Response handleRequest(ByteBuffer buffer) throws IOException, ClassNotFoundException {
+        Request request;
+        Response response;
+        try {
+            request = (Request) deserializeObject(buffer);
+            if (request == null) {
+                throw new InvalidRequestException("Request is null");
+            }
+            response = commandHandler.handle(request);
+        } catch (ClassNotFoundException e) {
+            throw new ClassNotFoundException("Unknown request type");
+        } catch (InvalidRequestException e) {
+            response = new ServerErrorResponse(e.getMessage());
+        }
+
+        return response;
     }
 
     private void write(SelectionKey key) throws IOException {
@@ -142,31 +150,51 @@ public class TCPServer {
         Response response = (Response) key.attachment();
 
         System.out.println("write: " + response.name + "\n" + "write: " + response.error);
-        System.out.println();
 
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ObjectOutputStream oos = new ObjectOutputStream(baos);
-        oos.writeObject(response);
-
-        writeBuffer.clear();
-        writeBuffer.put(baos.toByteArray());
+        ByteBuffer writeBuffer = serializeObject(response);
         writeBuffer.flip();
-
         while (writeBuffer.hasRemaining()) {
             sc.write(writeBuffer);
         }
-
         System.out.println("Response sent");
 
         sc.register(selector, SelectionKey.OP_READ);
     }
 
-    private void closeConnection() {
-        try {
+    private ByteBuffer serializeObject(Object object) throws IOException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(baos);
+        oos.writeObject(object);
+
+        ByteBuffer buffer = ByteBuffer.allocate(baos.size());
+        buffer.put(baos.toByteArray());
+        return buffer;
+    }
+
+    private Object deserializeObject(ByteBuffer buffer) throws IOException, ClassNotFoundException, InvalidRequestException {
+        try (ByteArrayInputStream bais = new ByteArrayInputStream(buffer.array());
+             ObjectInputStream ois = new ObjectInputStream(bais)) {
+            return ois.readObject();
+        }  catch (StreamCorruptedException e) {
+            throw new InvalidRequestException("Unknown request");
+        } catch (EOFException e) {
+            throw new InvalidRequestException("Request is too big");
+        }
+    }
+
+    private void closeConnection() throws IOException {
+        if (serverSocketChannel != null) {
             serverSocketChannel.close();
+        }
+    }
+
+    private void silentCloseConnection() {
+        try {
+            if (serverSocketChannel != null) {
+                serverSocketChannel.close();
+            }
         } catch (IOException e) {
-            // todo
-            throw new RuntimeException(e);
+            System.out.println("Unable to close server socket channel: " + e.getMessage());
         }
     }
 }

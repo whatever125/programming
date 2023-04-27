@@ -1,16 +1,10 @@
 package client.commands;
 
 import client.consoleClient.Client;
+import client.exceptions.NetworkClientException;
 import client.network.NetworkClient;
-import common.models.Movie;
-import common.requests.ClearRequest;
 import common.requests.PrintAscendingRequest;
-import common.requests.Request;
-import common.responses.ClearResponse;
-import common.responses.PrintAscendingResponse;
 import common.responses.Response;
-
-import java.util.List;
 
 public class PrintAscending extends AbstractCommand {
     public PrintAscending(Client client, NetworkClient networkClient) {
@@ -18,9 +12,9 @@ public class PrintAscending extends AbstractCommand {
     }
 
     @Override
-    public PrintAscendingResponse execute() {
+    public Response execute() throws NetworkClientException {
         PrintAscendingRequest request = new PrintAscendingRequest();
-        PrintAscendingResponse response = (PrintAscendingResponse) networkClient.sendRequest(request);
+        Response response = networkClient.sendRequest(request);
         return response;
     }
 }

@@ -2,10 +2,13 @@ package server.commands;
 
 import common.requests.Request;
 import common.responses.ClearResponse;
-import common.responses.Response;
 import server.Executor;
 
+import java.io.Serial;
+
 public class Clear extends AbstractCommand {
+    @Serial
+    private static final long serialVersionUID = 1L;
     public Clear(Executor executor) {
         super("clear", executor);
     }

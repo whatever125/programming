@@ -7,7 +7,11 @@ import common.exceptions.WrongArgumentException;
 import server.exceptions.CollectionKeyException;
 import server.Executor;
 
+import java.io.Serial;
+
 public class Insert extends AbstractCommand {
+    @Serial
+    private static final long serialVersionUID = 1L;
     public Insert(Executor executor) {
         super("insert", executor);
     }

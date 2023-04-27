@@ -3,11 +3,14 @@ package server.commands;
 import common.requests.RemoveKeyRequest;
 import common.requests.Request;
 import common.responses.RemoveKeyResponse;
-import common.responses.Response;
 import server.exceptions.CollectionKeyException;
 import server.Executor;
 
+import java.io.Serial;
+
 public class RemoveKey extends AbstractCommand {
+    @Serial
+    private static final long serialVersionUID = 1L;
     public RemoveKey(Executor executor) {
         super("remove_key", executor);
     }

@@ -2,12 +2,14 @@ package server.commands;
 
 import common.requests.RemoveLowerKeyRequest;
 import common.requests.Request;
-import common.responses.RemoveKeyResponse;
 import common.responses.RemoveLowerKeyResponse;
-import common.responses.Response;
 import server.Executor;
 
+import java.io.Serial;
+
 public class RemoveLowerKey extends AbstractCommand {
+    @Serial
+    private static final long serialVersionUID = 1L;
     public RemoveLowerKey(Executor executor) {
         super("remove_lower_key", executor);
     }

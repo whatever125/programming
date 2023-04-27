@@ -1,6 +1,5 @@
 package server;
 
-import common.exceptions.WrongArgumentException;
 import common.requests.Request;
 import common.responses.Response;
 import server.commands.*;
@@ -34,19 +33,9 @@ public class CommandHandler {
     }
 
     public Response handle(Request request) {
-        Response response = null;
-        try {
-            System.out.println(request.name);
-            Command command = commands.get(request.name);
-            if (command == null) {
-                // todo throw exception
-            } else {
-                response = command.execute(request);
-            }
-        } catch (WrongArgumentException | CollectionKeyException | CustomIOException e) {
-            // todo exception handling
-            throw new RuntimeException(e);
-        }
+        System.out.println(request.name);
+        Command command = commands.get(request.name);
+        Response response = command.execute(request);
         return response;
     }
 }

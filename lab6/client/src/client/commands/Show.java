@@ -1,16 +1,10 @@
 package client.commands;
 
 import client.consoleClient.Client;
+import client.exceptions.NetworkClientException;
 import client.network.NetworkClient;
-import common.models.Movie;
-import common.requests.InsertRequest;
-import common.requests.Request;
 import common.requests.ShowRequest;
-import common.responses.InsertResponse;
 import common.responses.Response;
-import common.responses.ShowResponse;
-
-import java.util.HashMap;
 
 public class Show extends AbstractCommand {
     public Show(Client client, NetworkClient networkClient) {
@@ -18,9 +12,9 @@ public class Show extends AbstractCommand {
     }
 
     @Override
-    public ShowResponse execute() {
+    public Response execute() throws NetworkClientException {
         ShowRequest request = new ShowRequest();
-        ShowResponse response = (ShowResponse) networkClient.sendRequest(request);
+        Response response = networkClient.sendRequest(request);
         return response;
     }
 }

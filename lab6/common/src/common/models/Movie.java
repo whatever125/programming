@@ -4,11 +4,14 @@ import common.models.helpers.MovieArgumentChecker;
 import common.exceptions.WrongArgumentException;
 import server.MovieCollection;
 
+import java.io.Serial;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.io.Serializable;
 
 public class Movie implements Comparable<Movie>, Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     private static Integer nextID = 1;
     private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой

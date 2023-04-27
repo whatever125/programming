@@ -1,11 +1,12 @@
 package client.network;
 
+import client.exceptions.NetworkClientException;
 import common.requests.Request;
 import common.responses.Response;
 
 import java.io.*;
-import java.net.Socket;
-import java.net.UnknownHostException;
+import java.net.*;
+import java.util.concurrent.TimeUnit;
 
 public class TCPClient implements NetworkClient{
     private final String host;
@@ -15,78 +16,141 @@ public class TCPClient implements NetworkClient{
     private InputStream inputStream;
     private OutputStream outputStream;
 
-    private static final int BUFFER_SIZE = 4096;
+    private static final int CONNECTION_TIMEOUT = 5 * 1000;
+    private static final int READ_TIMEOUT = 5 * 1000;
+    private static final int MAX_TRIES = 3;
 
     public TCPClient(String host, int port) {
         this.host = host;
         this.port = port;
     }
 
-    @Override
-    public void openConnection() {
-        try {
-            socket = new Socket(host, port);
-            inputStream = socket.getInputStream();
-            outputStream = socket.getOutputStream();
-        } catch (UnknownHostException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+    public void openConnection() throws NetworkClientException {
+        int count = 1;
+        boolean connected = false;
+        while (!connected && count <= MAX_TRIES) {
+            try {
+                connect();
+                connected = true;
+            } catch (IOException e) {
+                System.out.println("Attempt №" + count + " failed");
+                count += 1;
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch(InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        }
+        if (!connected) {
+            try {
+                connect();
+            } catch (ConnectException e) {
+                throw new NetworkClientException("Connection refused");
+            } catch (SocketTimeoutException e) {
+                throw new NetworkClientException("Socket timeout");
+            } catch (UnknownHostException e) {
+                throw new NetworkClientException("Unknown host exception");
+            } catch (IOException e) {
+                throw new NetworkClientException(e.getMessage());
+            }
         }
     }
 
-    @Override
-    public void closeConnection() {
+    private void connect() throws IOException {
+        socket = new Socket();
+        socket.setSoTimeout(READ_TIMEOUT);
+        socket.connect(new InetSocketAddress(host, port), CONNECTION_TIMEOUT);
+        inputStream = socket.getInputStream();
+        outputStream = socket.getOutputStream();
+    }
+
+    public void closeConnection() throws NetworkClientException {
         try {
             if (socket != null) {
                 socket.close();
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new NetworkClientException("Unable to close connection: " + e.getMessage());
         }
     }
 
-    @Override
-    public byte[] receiveData() {
+    public void silentCloseConnection() {
         try {
-            byte[] responseBytes = new byte[BUFFER_SIZE];
-            inputStream.read(responseBytes);
-            return responseBytes;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            closeConnection();
+        } catch (NetworkClientException e) {
+            System.out.println("Unable to close connection: " + e.getMessage());
         }
     }
 
-    @Override
-    public void sendData(byte[] bytesToSend) {
+    public Response sendRequest(Request request) throws NetworkClientException {
+        try {
+            openConnection();
+//            inputStream.skip(inputStream.available());
+            sendObject(request);
+
+//            try {
+//                TimeUnit.SECONDS.sleep(10);
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
+
+            Response response = (Response) receiveObject();
+
+            return response;
+        } catch (ClassNotFoundException e) {
+            throw new NetworkClientException("Unknown response from server");
+        } catch (EOFException e) {
+            throw new NetworkClientException("No response");
+        } catch (IOException e) {
+//            throw new RuntimeException(e);
+            throw new NetworkClientException("check null: " + e.getMessage());
+        } finally {
+            silentCloseConnection();
+        }
+    }
+
+    public void sendObject(Object object) throws NetworkClientException, IOException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(baos);
+        oos.writeObject(object);
+        oos.close();
+
+        sendData(baos.toByteArray());
+    }
+
+    public void sendData(byte[] bytesToSend) throws NetworkClientException {
         try {
             outputStream.write(bytesToSend);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new NetworkClientException(e.getMessage());
         }
     }
 
-    @Override
-    public Response sendRequest(Request request) {
+    public Object receiveObject() throws IOException, ClassNotFoundException, NetworkClientException {
         try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ObjectOutputStream oos = new ObjectOutputStream(baos);
-            oos.writeObject(request);
-            oos.close();
+            checkIfHostIsAvailable();
+        } catch (NetworkClientException e) {
+            throw new NetworkClientException(e.getMessage());
+        }
 
-            sendData(baos.toByteArray());
+        ObjectInputStream ois = new ObjectInputStream(inputStream);
+        Object object = ois.readObject();
 
-            byte[] receivedBytes = receiveData();
+        return object;
+    }
 
-            ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(receivedBytes));
-            Response response = (Response) ois.readObject();
-            ois.close();
-
-            return response;
+    private void checkIfHostIsAvailable() throws NetworkClientException {
+        try {
+            Socket s = new Socket();
+            s.connect(new InetSocketAddress(host, port), CONNECTION_TIMEOUT);
+            s.close();
+        } catch (ConnectException e) {
+            throw new NetworkClientException("Server unavailable");
+        } catch (SocketTimeoutException e) {
+            throw new NetworkClientException("Socket timeout");
         } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            throw new NetworkClientException("Server unavailable: " + e.getMessage());
         }
     }
 }

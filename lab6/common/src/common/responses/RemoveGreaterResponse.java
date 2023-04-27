@@ -1,9 +1,13 @@
 package common.responses;
 
-public class RemoveGreaterResponse extends Response {
-    public final int count;
+import java.io.Serial;
 
-    public RemoveGreaterResponse(String error, int count) {
+public class RemoveGreaterResponse extends Response {
+    @Serial
+    private static final long serialVersionUID = 1L;
+    public final Integer count;
+
+    public RemoveGreaterResponse(String error, Integer count) {
         super("remove_greater", error);
         this.count = count;
     }

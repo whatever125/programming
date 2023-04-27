@@ -1,15 +1,11 @@
 package client.commands;
 
 import client.consoleClient.Client;
+import client.exceptions.NetworkClientException;
 import client.network.NetworkClient;
-import common.exceptions.WrongArgumentException;
 import common.models.MovieGenre;
 import common.models.MpaaRating;
-import common.requests.InsertRequest;
 import common.requests.RemoveGreaterRequest;
-import common.requests.Request;
-import common.responses.InsertResponse;
-import common.responses.RemoveGreaterResponse;
 import common.responses.Response;
 
 import java.time.LocalDateTime;
@@ -43,10 +39,10 @@ public class RemoveGreater extends AbstractCommand {
     }
 
     @Override
-    public RemoveGreaterResponse execute() {
+    public Response execute() throws NetworkClientException {
         RemoveGreaterRequest request = new RemoveGreaterRequest(movieName, x, y, oscarsCount,
                 movieGenre, mpaaRating, directorName, birthday, weight, passportID);
-        RemoveGreaterResponse response = (RemoveGreaterResponse) networkClient.sendRequest(request);
+        Response response = networkClient.sendRequest(request);
         return response;
     }
 

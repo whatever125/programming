@@ -1,12 +1,13 @@
 package client.commands;
 
 import client.consoleClient.Client;
+import client.exceptions.NetworkClientException;
 import client.network.NetworkClient;
 import common.requests.InsertRequest;
 import common.requests.Request;
 import common.models.MovieGenre;
 import common.models.MpaaRating;
-import common.responses.InsertResponse;
+import common.responses.Response;
 
 import java.time.LocalDateTime;
 
@@ -41,10 +42,10 @@ public class Insert extends AbstractCommand {
     }
 
     @Override
-    public InsertResponse execute() {
+    public Response execute() throws NetworkClientException {
         Request request = new InsertRequest(key, movieName, x, y, oscarsCount,
                 movieGenre, mpaaRating, directorName, birthday, weight, passportID);
-        InsertResponse response = (InsertResponse) networkClient.sendRequest(request);
+        Response response = networkClient.sendRequest(request);
         return response;
     }
 

@@ -1,16 +1,10 @@
 package client.commands;
 
 import client.consoleClient.Client;
+import client.exceptions.NetworkClientException;
 import client.network.NetworkClient;
-import common.models.Movie;
-import common.requests.InsertRequest;
 import common.requests.PrintFieldDescendingOscarsCountRequest;
-import common.requests.Request;
-import common.responses.InsertResponse;
-import common.responses.PrintFieldDescendingOscarsCountResponse;
 import common.responses.Response;
-
-import java.util.List;
 
 public class PrintFieldDescendingOscarsCount extends AbstractCommand {
     public PrintFieldDescendingOscarsCount(Client client, NetworkClient networkClient) {
@@ -18,9 +12,9 @@ public class PrintFieldDescendingOscarsCount extends AbstractCommand {
     }
 
     @Override
-    public PrintFieldDescendingOscarsCountResponse execute() {
+    public Response execute() throws NetworkClientException {
         PrintFieldDescendingOscarsCountRequest request = new PrintFieldDescendingOscarsCountRequest();
-        PrintFieldDescendingOscarsCountResponse response = (PrintFieldDescendingOscarsCountResponse) networkClient.sendRequest(request);
+        Response response = networkClient.sendRequest(request);
         return response;
     }
 }

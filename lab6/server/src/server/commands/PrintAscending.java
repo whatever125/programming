@@ -1,15 +1,16 @@
 package server.commands;
 
 import common.models.Movie;
-import common.requests.PrintAscendingRequest;
 import common.requests.Request;
 import common.responses.PrintAscendingResponse;
-import common.responses.Response;
 import server.Executor;
 
+import java.io.Serial;
 import java.util.List;
 
 public class PrintAscending extends AbstractCommandWithResult<List<Movie>> {
+    @Serial
+    private static final long serialVersionUID = 1L;
     private List<Movie> result = null;
 
     public PrintAscending(Executor executor) {

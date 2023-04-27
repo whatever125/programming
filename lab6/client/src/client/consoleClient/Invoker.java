@@ -2,9 +2,7 @@ package client.consoleClient;
 
 import client.commands.AbstractCommand;
 import client.exceptions.*;
-import common.exceptions.WrongArgumentException;
 import common.responses.Response;
-import server.exceptions.CollectionKeyException;
 
 import java.util.Stack;
 
@@ -20,7 +18,7 @@ public class Invoker {
      * @param command the command to execute
      * @throws CustomIOException if there is an input/output error while executing the command
      */
-    public Response execute(AbstractCommand command) throws CustomIOException {
+    public Response execute(AbstractCommand command) throws CustomIOException, NetworkClientException {
         commandHistory.push(command);
         Response response = command.execute();
         return response;

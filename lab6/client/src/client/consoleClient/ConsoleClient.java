@@ -18,6 +18,7 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.Stack;
 
 import static client.consoleClient.MovieDataConsoleReader.*;
@@ -34,7 +35,7 @@ public class ConsoleClient implements Client {
     private boolean canExit = false;
 
     private static String HOST = "localhost";
-    private static int PORT = 9090;
+    private static int PORT = 8080;
 
     /**
      * Main method of the ConsoleClient class. Initializes the Invoker, Receiver and Reader and
@@ -46,7 +47,7 @@ public class ConsoleClient implements Client {
             invoker = new Invoker();
             networkClient = new TCPClient(HOST, PORT);
             networkClient.openConnection();
-            System.out.println("Successfully connected to server " + HOST + ":" + PORT);
+            System.out.println("Successfully connected to server");
             BasicReader consoleReader = new CustomConsoleReader();
 
             System.out.println("Data loaded successfully. You are now in interactive mode\nType 'help' to see the list of commands\n");
@@ -54,8 +55,8 @@ public class ConsoleClient implements Client {
             while (!canExit) {
                 try {
                     readAndExecuteCommand(consoleReader);
-                } catch (InvalidCommandException | WrongNumberOfArgumentsException |
-                         common.exceptions.WrongArgumentException | InvalidScriptException | CustomIOException e) {
+                } catch (InvalidCommandException | WrongNumberOfArgumentsException | WrongArgumentException |
+                         InvalidScriptException | CustomIOException | ErrorResponseException | NetworkClientException e) {
                     System.out.println(e.getMessage());
                 }
             }
@@ -64,13 +65,17 @@ public class ConsoleClient implements Client {
             // Handle NullPointerException thrown when LAB5 environment variable is not set
             System.out.println("! path variable is null !");
             System.out.println(e.getMessage());
-            System.exit(0);
+            networkClient.silentCloseConnection();
+            System.exit(-1);
         } catch (EndOfInputException e) {
             // Handle exceptions thrown when there is a problem with the data file or the user input
             System.out.println(e.getMessage());
-            System.exit(0);
-        } finally {
-            networkClient.closeConnection();
+            networkClient.silentCloseConnection();
+            System.exit(-1);
+        } catch (NetworkClientException e) {
+            System.out.println(e.getMessage());
+            networkClient.silentCloseConnection();
+            System.exit(-1);
         }
     }
 
@@ -85,7 +90,8 @@ public class ConsoleClient implements Client {
      * @throws CustomIOException if there is an IO error when reading the user input.
      */
     private void readAndExecuteCommand(BasicReader basicReader) throws InvalidCommandException,
-            WrongNumberOfArgumentsException, WrongArgumentException, InvalidScriptException, CustomIOException {
+            WrongNumberOfArgumentsException, WrongArgumentException, InvalidScriptException, CustomIOException,
+            ErrorResponseException, NetworkClientException {
         String input = basicReader.readLine().trim();
         if (input.startsWith("//") || input.equals("")) {
             return;
@@ -102,21 +108,25 @@ public class ConsoleClient implements Client {
                     throw new WrongNumberOfArgumentsException();
 
                 AbstractCommand command = new Help(this, networkClient);
-                invoker.execute(command);
+                Response abstractResponse = invoker.execute(command);
+                handleErrorResponse(abstractResponse);
             }
             case "history" -> {
                 if (args.length != 0)
                     throw new WrongNumberOfArgumentsException();
 
                 AbstractCommand command = new History(this, networkClient);
-                invoker.execute(command);
+                Response abstractResponse = invoker.execute(command);
+                handleErrorResponse(abstractResponse);
             }
             case "info" -> {
                 if (args.length != 0)
                     throw new WrongNumberOfArgumentsException();
 
                 AbstractCommand command = new Info(this, networkClient);
-                InfoResponse response = (InfoResponse) invoker.execute(command);
+                Response abstractResponse = invoker.execute(command);
+                handleErrorResponse(abstractResponse);
+                InfoResponse response = (InfoResponse) abstractResponse;
                 if (response.error == null) {
                     System.out.println(response.info);
                 } else {
@@ -128,13 +138,14 @@ public class ConsoleClient implements Client {
                     throw new WrongNumberOfArgumentsException();
 
                 AbstractCommand command = new Show(this, networkClient);
-                ShowResponse response = (ShowResponse) invoker.execute(command);
-                String error = response.error;
-                if (error == null) {
+                Response abstractResponse = invoker.execute(command);
+                handleErrorResponse(abstractResponse);
+                ShowResponse response = (ShowResponse) abstractResponse;
+                if (response.error == null) {
                     HashMap<Integer, Movie> movieHashMap = response.getMovieHashMap();
                     PrettyPrinter.printMovieHashMap(movieHashMap);
                 } else {
-                    System.out.println(error);
+                    System.out.println(response.error);
                 }
             }
             case "insert" -> {
@@ -157,12 +168,13 @@ public class ConsoleClient implements Client {
 
                     AbstractCommand command = new Insert(this, networkClient, key, movieName, x, y, oscarsCount,
                             movieGenre, mpaaRating, directorName, birthday, weight, passportID);
-                    InsertResponse response = (InsertResponse) invoker.execute(command);
-                    String error = response.error;
-                    if (error == null) {
+                    Response abstractResponse = invoker.execute(command);
+                    handleErrorResponse(abstractResponse);
+                    InsertResponse response = (InsertResponse) abstractResponse;
+                    if (response.error == null) {
                         System.out.println("*element added successfully*");
                     } else {
-                        System.out.println(error);
+                        System.out.println(response.error);
                     }
                 } catch (NumberFormatException e) {
                     String errorMessage = "! not an integer !";
@@ -192,12 +204,13 @@ public class ConsoleClient implements Client {
 
                     AbstractCommand command = new Update(this, networkClient, id, movieName, x, y, oscarsCount,
                             movieGenre, mpaaRating, directorName, birthday, weight, passportID);
-                    UpdateResponse response = (UpdateResponse) invoker.execute(command);
-                    String error = response.error;
-                    if (error == null) {
+                    Response abstractResponse = invoker.execute(command);
+                    handleErrorResponse(abstractResponse);
+                    UpdateResponse response = (UpdateResponse) abstractResponse;
+                    if (response.error == null) {
                         System.out.println("*element updated successfully*");
                     } else {
-                        System.out.println(error);
+                        System.out.println(response.error);
                     }
                 } catch (NumberFormatException e) {
                     String errorMessage = "! not an integer !";
@@ -216,12 +229,13 @@ public class ConsoleClient implements Client {
                     MovieArgumentChecker.checkKey(key);
 
                     AbstractCommand command = new RemoveKey(this, networkClient, key);
-                    RemoveKeyResponse response = (RemoveKeyResponse) invoker.execute(command);
-                    String error = response.error;
-                    if (error == null) {
+                    Response abstractResponse = invoker.execute(command);
+                    handleErrorResponse(abstractResponse);
+                    RemoveKeyResponse response = (RemoveKeyResponse) abstractResponse;
+                    if (response.error == null) {
                         System.out.println("*element removed successfully*");
                     } else {
-                        System.out.println(error);
+                        System.out.println(response.error);
                     }
                 } catch (NumberFormatException e) {
                     String errorMessage = "! not an integer !";
@@ -237,7 +251,8 @@ public class ConsoleClient implements Client {
                     throw new WrongNumberOfArgumentsException();
 
                 AbstractCommand command = new Clear(this, networkClient);
-                invoker.execute(command);
+                Response abstractResponse = invoker.execute(command);
+                handleErrorResponse(abstractResponse);
                 System.out.println("*collection cleared successfully*");
             }
             case "execute_script" -> {
@@ -246,14 +261,16 @@ public class ConsoleClient implements Client {
                 String path = args[0];
 
                 AbstractCommand command = new ExecuteScript(this, networkClient, path);
-                invoker.execute(command);
+                Response abstractResponse = invoker.execute(command);
+                handleErrorResponse(abstractResponse);
             }
             case "exit" -> {
                 if (args.length != 0)
                     throw new WrongNumberOfArgumentsException();
 
                 AbstractCommand command = new Exit(this, networkClient);
-                invoker.execute(command);
+                Response abstractResponse = invoker.execute(command);
+                handleErrorResponse(abstractResponse);
             }
             case "remove_greater" -> {
                 if (args.length != 0)
@@ -272,16 +289,17 @@ public class ConsoleClient implements Client {
 
                 AbstractCommand command = new RemoveGreater(this, networkClient, movieName, x, y, oscarsCount,
                         movieGenre, mpaaRating, directorName, birthday, weight, passportID);
-                RemoveGreaterResponse response = (RemoveGreaterResponse) invoker.execute(command);
-                String error = response.error;
-                if (error == null) {
+                Response abstractResponse = invoker.execute(command);
+                handleErrorResponse(abstractResponse);
+                RemoveGreaterResponse response = (RemoveGreaterResponse) abstractResponse;
+                if (response.error == null) {
                     if (response.count == 0) {
                         System.out.println("*no elements removed*");
                     } else {
                         System.out.println("* " + response.count + " elements removed successfully*");
                     }
                 } else {
-                    System.out.println(error);
+                    System.out.println(response.error);
                 }
             }
             case "replace_if_lowe" -> {
@@ -304,16 +322,17 @@ public class ConsoleClient implements Client {
 
                     AbstractCommand command = new ReplaceIfLowe(this, networkClient, key, movieName, x, y,
                             oscarsCount, movieGenre, mpaaRating, directorName, birthday, weight, passportID);
-                    ReplaceIfLoweResponse response = (ReplaceIfLoweResponse) invoker.execute(command);
-                    String error = response.error;
-                    if (error == null) {
+                    Response abstractResponse = invoker.execute(command);
+                    handleErrorResponse(abstractResponse);
+                    ReplaceIfLoweResponse response = (ReplaceIfLoweResponse) abstractResponse;
+                    if (response.error == null) {
                         if (response.replaced) {
                             System.out.println("*element replaced successfully*");
                         } else {
                             System.out.println("*element was not replaced*");
                         }
                     } else {
-                        System.out.println(error);
+                        System.out.println(response.error);
                     }
                 } catch (NumberFormatException e) {
                     String errorMessage = "! not an integer !";
@@ -332,16 +351,17 @@ public class ConsoleClient implements Client {
                     MovieArgumentChecker.checkKey(key);
 
                     AbstractCommand command = new RemoveLowerKey(this, networkClient, key);
-                    RemoveLowerKeyResponse response = (RemoveLowerKeyResponse) invoker.execute(command);
-                    String error = response.error;
-                    if (error == null) {
+                    Response abstractResponse = invoker.execute(command);
+                    handleErrorResponse(abstractResponse);
+                    RemoveLowerKeyResponse response = (RemoveLowerKeyResponse) abstractResponse;
+                    if (response.error == null) {
                         if (response.count == 0) {
                             System.out.println("*no elements removed*");
                         } else {
                             System.out.println("* " + response.count + " elements removed successfully*");
                         }
                     } else {
-                        System.out.println(error);
+                        System.out.println(response.error);
                     }
                 } catch (NumberFormatException e) {
                     String errorMessage = "! not an integer !";
@@ -357,7 +377,9 @@ public class ConsoleClient implements Client {
                     throw new WrongNumberOfArgumentsException();
 
                 AbstractCommand command = new PrintAscending(this, networkClient);
-                PrintAscendingResponse response = (PrintAscendingResponse) invoker.execute(command);
+                Response abstractResponse = invoker.execute(command);
+                handleErrorResponse(abstractResponse);
+                PrintAscendingResponse response = (PrintAscendingResponse) abstractResponse;
                 if (response.error == null) {
                     System.out.println("*elements of collection ascended*");
                     List<Movie> movieList = response.movieList;
@@ -371,7 +393,9 @@ public class ConsoleClient implements Client {
                     throw new WrongNumberOfArgumentsException();
 
                 AbstractCommand command = new PrintDescending(this, networkClient);
-                PrintDescendingResponse response = (PrintDescendingResponse) invoker.execute(command);
+                Response abstractResponse = invoker.execute(command);
+                handleErrorResponse(abstractResponse);
+                PrintDescendingResponse response = (PrintDescendingResponse) abstractResponse;
                 if (response.error == null) {
                     System.out.println("*elements of collection descended*");
                     List<Movie> movieList = response.movieList;
@@ -385,7 +409,9 @@ public class ConsoleClient implements Client {
                     throw new WrongNumberOfArgumentsException();
 
                 AbstractCommand command = new PrintFieldDescendingOscarsCount(this, networkClient);
-                PrintFieldDescendingOscarsCountResponse response = (PrintFieldDescendingOscarsCountResponse) invoker.execute(command);
+                Response abstractResponse = invoker.execute(command);
+                handleErrorResponse(abstractResponse);
+                PrintFieldDescendingOscarsCountResponse response = (PrintFieldDescendingOscarsCountResponse) abstractResponse;
                 if (response.error == null) {
                     System.out.println("*oscars count descended*");
                     List<Movie> movieList = response.movieList;
@@ -396,6 +422,12 @@ public class ConsoleClient implements Client {
             }
 
             default -> throw new InvalidCommandException(commandName);
+        }
+    }
+
+    public void handleErrorResponse(Response response) throws ErrorResponseException {
+        if (Objects.equals(response.name, "error")) {
+            throw new ErrorResponseException(response.error);
         }
     }
 
@@ -479,8 +511,8 @@ public class ConsoleClient implements Client {
                 try {
                     lineCounter += 1;
                     readAndExecuteCommand(basicReader);
-                } catch (InvalidCommandException | WrongNumberOfArgumentsException |
-                         WrongArgumentException | InvalidScriptException e) {
+                } catch (InvalidCommandException | WrongNumberOfArgumentsException | WrongArgumentException |
+                         InvalidScriptException | ErrorResponseException | NetworkClientException e) {
                     System.out.println(printPathStack() + ":" + lineCounter + ": " + e.getMessage());
                 }
             }

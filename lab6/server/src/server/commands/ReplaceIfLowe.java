@@ -4,11 +4,14 @@ import common.requests.ReplaceIfLoweRequest;
 import common.requests.Request;
 import common.exceptions.WrongArgumentException;
 import common.responses.ReplaceIfLoweResponse;
-import common.responses.Response;
 import server.exceptions.CollectionKeyException;
 import server.Executor;
 
+import java.io.Serial;
+
 public class ReplaceIfLowe extends AbstractCommand {
+    @Serial
+    private static final long serialVersionUID = 1L;
     public ReplaceIfLowe(Executor executor) {
         super("replace_if_lowe", executor);
     }

@@ -1,14 +1,10 @@
 package client.commands;
 
 import client.consoleClient.Client;
+import client.exceptions.NetworkClientException;
 import client.network.NetworkClient;
-import common.requests.RemoveGreaterRequest;
 import common.requests.RemoveKeyRequest;
-import common.requests.Request;
-import common.responses.RemoveGreaterResponse;
-import common.responses.RemoveKeyResponse;
 import common.responses.Response;
-import server.exceptions.CollectionKeyException;
 
 public class RemoveKey extends AbstractCommand {
     private final Integer key;
@@ -19,9 +15,9 @@ public class RemoveKey extends AbstractCommand {
     }
 
     @Override
-    public RemoveKeyResponse execute() {
+    public Response execute() throws NetworkClientException {
         RemoveKeyRequest request = new RemoveKeyRequest(key);
-        RemoveKeyResponse response = (RemoveKeyResponse) networkClient.sendRequest(request);
+        Response response = networkClient.sendRequest(request);
         return response;
     }
 

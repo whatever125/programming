@@ -3,12 +3,14 @@ package server.commands;
 import common.models.Movie;
 import common.requests.Request;
 import common.responses.PrintFieldDescendingOscarsCountResponse;
-import common.responses.Response;
 import server.Executor;
 
+import java.io.Serial;
 import java.util.List;
 
 public class PrintFieldDescendingOscarsCount extends AbstractCommandWithResult<List<Movie>> {
+    @Serial
+    private static final long serialVersionUID = 1L;
     private List<Movie> result = null;
 
     public PrintFieldDescendingOscarsCount(Executor executor) {

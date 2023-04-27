@@ -1,11 +1,6 @@
 package client;
 
 import client.consoleClient.ConsoleClient;
-import client.network.NetworkClient;
-import client.network.TCPClient;
-
-import java.net.InetSocketAddress;
-import java.nio.charset.StandardCharsets;
 
 /**
  * The Main class is responsible for running the application by creating a ConsoleClient object

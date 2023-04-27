@@ -1,8 +1,11 @@
 package common.models;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class Coordinates implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     private int x;
     private int y;
 

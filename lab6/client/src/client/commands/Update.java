@@ -1,15 +1,10 @@
 package client.commands;
 
 import client.consoleClient.Client;
+import client.exceptions.NetworkClientException;
 import client.network.NetworkClient;
-import common.exceptions.WrongArgumentException;
-import common.requests.InsertRequest;
-import common.requests.Request;
 import common.requests.UpdateRequest;
-import common.responses.InsertResponse;
 import common.responses.Response;
-import common.responses.UpdateResponse;
-import server.exceptions.CollectionKeyException;
 import common.models.MovieGenre;
 import common.models.MpaaRating;
 
@@ -46,10 +41,10 @@ public class Update extends AbstractCommand {
     }
 
     @Override
-    public UpdateResponse execute() {
+    public Response execute() throws NetworkClientException {
         UpdateRequest request = new UpdateRequest(id, movieName, x, y, oscarsCount,
                 movieGenre, mpaaRating, directorName, birthday, weight, passportID);
-        UpdateResponse response = (UpdateResponse) networkClient.sendRequest(request);
+        Response response = networkClient.sendRequest(request);
         return response;
     }
 

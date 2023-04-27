@@ -2,11 +2,13 @@ package server.commands;
 
 import common.requests.Request;
 import common.responses.InfoResponse;
-import common.responses.InsertResponse;
-import common.responses.Response;
 import server.Executor;
 
+import java.io.Serial;
+
 public class Info extends AbstractCommandWithResult<String> {
+    @Serial
+    private static final long serialVersionUID = 1L;
     private String result = null;
 
     public Info(Executor executor) {

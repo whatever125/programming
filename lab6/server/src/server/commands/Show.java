@@ -5,9 +5,12 @@ import common.requests.Request;
 import common.responses.ShowResponse;
 import server.Executor;
 
+import java.io.Serial;
 import java.util.HashMap;
 
 public class Show extends AbstractCommandWithResult<HashMap<Integer, Movie>> {
+    @Serial
+    private static final long serialVersionUID = 1L;
     private HashMap<Integer, Movie> result = null;
 
     public Show(Executor executor) {

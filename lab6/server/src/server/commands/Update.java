@@ -3,12 +3,15 @@ package server.commands;
 import common.requests.Request;
 import common.requests.UpdateRequest;
 import common.exceptions.WrongArgumentException;
-import common.responses.Response;
 import common.responses.UpdateResponse;
 import server.exceptions.CollectionKeyException;
 import server.Executor;
 
+import java.io.Serial;
+
 public class Update extends AbstractCommand {
+    @Serial
+    private static final long serialVersionUID = 1L;
     public Update(Executor executor) {
         super("update", executor);
     }

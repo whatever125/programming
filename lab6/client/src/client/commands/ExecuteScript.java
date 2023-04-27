@@ -3,7 +3,6 @@ package client.commands;
 import client.consoleClient.Client;
 import client.exceptions.CustomIOException;
 import client.network.NetworkClient;
-import common.responses.EmptyResponse;
 import common.responses.Response;
 
 public class ExecuteScript extends AbstractCommand {

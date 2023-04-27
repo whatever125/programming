@@ -3,9 +3,12 @@ package common.requests;
 import common.models.MovieGenre;
 import common.models.MpaaRating;
 
+import java.io.Serial;
 import java.time.LocalDateTime;
 
 public class UpdateRequest extends Request {
+    @Serial
+    private static final long serialVersionUID = 1L;
     public final Integer id;
     public final String movieName;
     public final Integer x;

@@ -2,9 +2,14 @@ package server.commands;
 
 import common.requests.Request;
 import common.responses.Response;
+import common.responses.SaveResponse;
 import server.Executor;
 
+import java.io.Serial;
+
 public class Save extends AbstractCommand {
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     public Save(Executor executor) {
         super("save", executor);
@@ -13,6 +18,6 @@ public class Save extends AbstractCommand {
     @Override
     public Response execute(Request request) {
         executor.save();
-        return null;
+        return new SaveResponse(null);
     }
 }

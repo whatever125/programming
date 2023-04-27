@@ -1,15 +1,10 @@
 package client.commands;
 
 import client.consoleClient.Client;
+import client.exceptions.NetworkClientException;
 import client.network.NetworkClient;
-import common.exceptions.WrongArgumentException;
-import common.requests.InsertRequest;
 import common.requests.ReplaceIfLoweRequest;
-import common.requests.Request;
-import common.responses.InsertResponse;
-import common.responses.ReplaceIfLoweResponse;
 import common.responses.Response;
-import server.exceptions.CollectionKeyException;
 import common.models.MovieGenre;
 import common.models.MpaaRating;
 
@@ -46,10 +41,10 @@ public class ReplaceIfLowe extends AbstractCommand {
     }
 
     @Override
-    public ReplaceIfLoweResponse execute() {
+    public Response execute() throws NetworkClientException {
         ReplaceIfLoweRequest request = new ReplaceIfLoweRequest(key, movieName, x, y, oscarsCount,
                 movieGenre, mpaaRating, directorName, birthday, weight, passportID);
-        ReplaceIfLoweResponse response = (ReplaceIfLoweResponse) networkClient.sendRequest(request);
+        Response response = networkClient.sendRequest(request);
         return response;
     }
 

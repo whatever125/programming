@@ -1,12 +1,9 @@
 package client.commands;
 
 import client.consoleClient.Client;
+import client.exceptions.NetworkClientException;
 import client.network.NetworkClient;
 import common.requests.ClearRequest;
-import common.requests.InsertRequest;
-import common.requests.Request;
-import common.responses.ClearResponse;
-import common.responses.InsertResponse;
 import common.responses.Response;
 
 public class Clear extends AbstractCommand {
@@ -15,9 +12,9 @@ public class Clear extends AbstractCommand {
     }
 
     @Override
-    public ClearResponse execute() {
+    public Response execute() throws NetworkClientException {
         ClearRequest request = new ClearRequest();
-        ClearResponse response = (ClearResponse) networkClient.sendRequest(request);
+        Response response = networkClient.sendRequest(request);
         return response;
     }
 }

@@ -3,10 +3,13 @@ package common.models;
 import common.models.helpers.PersonArgumentChecker;
 import common.exceptions.WrongArgumentException;
 
+import java.io.Serial;
 import java.time.LocalDateTime;
 import java.io.Serializable;
 
 public class Person implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     private String name; //Поле не может быть null, Строка не может быть пустой
     private java.time.LocalDateTime birthday; //Поле не может быть null
     private Integer weight; //Поле может быть null, Значение поля должно быть больше 0

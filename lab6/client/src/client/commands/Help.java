@@ -2,7 +2,6 @@ package client.commands;
 
 import client.consoleClient.Client;
 import client.network.NetworkClient;
-import common.responses.EmptyResponse;
 import common.responses.Response;
 
 public class Help extends AbstractCommand {
