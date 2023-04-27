@@ -55,3 +55,4 @@
 - ~~try to restore connection if reset~~
 - 
 - save command on server using busy cycle
+- Runtime exception when bindException

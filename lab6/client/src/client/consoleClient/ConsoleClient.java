@@ -35,7 +35,7 @@ public class ConsoleClient implements Client {
     private boolean canExit = false;
 
     private static String HOST = "localhost";
-    private static int PORT = 8080;
+    private static int PORT = 9090;
 
     /**
      * Main method of the ConsoleClient class. Initializes the Invoker, Receiver and Reader and

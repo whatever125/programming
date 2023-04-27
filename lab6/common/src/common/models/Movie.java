@@ -2,7 +2,6 @@ package common.models;
 
 import common.models.helpers.MovieArgumentChecker;
 import common.exceptions.WrongArgumentException;
-import server.MovieCollection;
 
 import java.io.Serial;
 import java.time.ZonedDateTime;
