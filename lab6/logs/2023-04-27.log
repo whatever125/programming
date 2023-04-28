@@ -1,0 +1,75 @@
+27.04.2023 19:46:58.072 [main] INFO   server.Main - Server app launched
+27.04.2023 19:46:58.112 [main] DEBUG  s.network.TCPServer - Logger initialized
+27.04.2023 19:46:58.133 [main] WARN   s.network.TCPServer - Unable to use address localhost:8080 - Address already in use
+27.04.2023 19:46:58.137 [main] ERROR  server.Main - Fatal error: Unable to use address localhost:8080 - Address already in use
+java.net.BindException: Unable to use address localhost:8080 - Address already in use
+	at server.network.TCPServer.openConnection(TCPServer.java:55)
+	at server.network.TCPServer.<init>(TCPServer.java:40)
+	at server.Main.main(Main.java:26)
+27.04.2023 19:47:47.005 [main] INFO   server.Main - Server app launched
+27.04.2023 19:47:47.054 [main] DEBUG  s.network.TCPServer - Logger initialized
+27.04.2023 19:47:47.080 [main] WARN   s.network.TCPServer - Unable to use address localhost:8080 - Address already in use
+27.04.2023 19:47:47.084 [main] ERROR  server.Main - Fatal error: Unable to use address localhost:8080 - Address already in use
+java.net.BindException: Unable to use address localhost:8080 - Address already in use
+	at server.network.TCPServer.openConnection(TCPServer.java:55)
+	at server.network.TCPServer.<init>(TCPServer.java:40)
+	at server.Main.main(Main.java:26)
+27.04.2023 19:48:45.053 [main] INFO   server - Server app launched
+27.04.2023 19:48:45.091 [main] DEBUG  server.network - Logger initialized
+27.04.2023 19:48:45.108 [main] WARN   server.network - Unable to use address localhost:8080 - Address already in use
+27.04.2023 19:48:45.110 [main] ERROR  server - Fatal error: Unable to use address localhost:8080 - Address already in use
+java.net.BindException: Unable to use address localhost:8080 - Address already in use
+	at server.network.TCPServer.openConnection(TCPServer.java:55)
+	at server.network.TCPServer.<init>(TCPServer.java:40)
+	at server.Main.main(Main.java:26)
+27.04.2023 19:57:31.593 [main] INFO   server - Server app launched
+27.04.2023 19:57:31.630 [main] DEBUG  server.network - Logger initialized
+27.04.2023 19:57:31.651 [main] WARN   server.network - Unable to use address localhost:8080 - Address already in use
+27.04.2023 19:57:31.654 [main] ERROR  server - Fatal error: Unable to use address localhost:8080 - Address already in use
+java.net.BindException: Unable to use address localhost:8080 - Address already in use
+	at server.network.TCPServer.openConnection(TCPServer.java:55)
+	at server.network.TCPServer.<init>(TCPServer.java:40)
+	at server.Main.main(Main.java:26)
+27.04.2023 19:59:05.132 [main] INFO   server - Server app launched
+27.04.2023 19:59:05.205 [main] WARN   server.network - Unable to use address localhost:8080 - Address already in use
+27.04.2023 19:59:05.208 [main] ERROR  server - Fatal error: Unable to use address localhost:8080 - Address already in use
+java.net.BindException: Unable to use address localhost:8080 - Address already in use
+	at server.network.TCPServer.openConnection(TCPServer.java:55)
+	at server.network.TCPServer.<init>(TCPServer.java:40)
+	at server.Main.main(Main.java:26)
+27.04.2023 19:59:52.071 [main] INFO   server - Server app launched
+27.04.2023 19:59:52.137 [main] WARN   server.network - Unable to use address localhost:8080 - Address already in use
+27.04.2023 19:59:52.140 [main] ERROR  server - Fatal error: Unable to use address localhost:8080 - Address already in use
+java.net.BindException: Unable to use address localhost:8080 - Address already in use
+	at server.network.TCPServer.openConnection(TCPServer.java:55)
+	at server.network.TCPServer.<init>(TCPServer.java:40)
+	at server.Main.main(Main.java:26)
+27.04.2023 19:59:56.086 [main] INFO   server - Server app launched
+27.04.2023 19:59:56.158 [main] WARN   server.network - Unable to use address localhost:8080 - Address already in use
+27.04.2023 19:59:56.160 [main] ERROR  server - Fatal error: Unable to use address localhost:8080 - Address already in use
+java.net.BindException: Unable to use address localhost:8080 - Address already in use
+	at server.network.TCPServer.openConnection(TCPServer.java:55)
+	at server.network.TCPServer.<init>(TCPServer.java:40)
+	at server.Main.main(Main.java:26)
+27.04.2023 20:00:03.922 [main] INFO   server - Server app launched
+27.04.2023 20:00:03.987 [main] INFO   server.network - TCP Server initialized
+27.04.2023 20:00:36.562 [main] INFO   server - Server app launched
+27.04.2023 20:00:36.608 [main] INFO   server.network - TCP Server initialized
+27.04.2023 20:06:21.209 [main] INFO   server - Server app launched
+27.04.2023 20:06:21.291 [main] INFO   server.network - TCP Server initialized
+27.04.2023 20:07:04.701 [main] INFO   server - Server app launched
+27.04.2023 20:07:04.711 [main] ERROR  server - Fatal error: ! no read and/or write permission for file /Users/whatever125/Desktop/programming/lab6/collection.xml  !
+server.exceptions.FilePermissionException: ! no read and/or write permission for file /Users/whatever125/Desktop/programming/lab6/collection.xml  !
+	at server.Executor.checkFile(Executor.java:264)
+	at server.Executor.<init>(Executor.java:40)
+	at server.Main.main(Main.java:23)
+27.04.2023 23:14:11.521 [main] INFO   server - Server app launched
+27.04.2023 23:15:18.759 [main] INFO   server - Server app launched
+27.04.2023 23:22:40.617 [main] INFO   server - Server app launched
+27.04.2023 23:22:40.620 [main] ERROR  server - Fatal error: Path variable PROGRAMMING_LAB is null
+server.exceptions.PathVariableException: Path variable PROGRAMMING_LAB is null
+	at server.Executor.checkFile(Executor.java:254)
+	at server.Executor.<init>(Executor.java:37)
+	at server.Main.main(Main.java:24)
+27.04.2023 23:26:04.767 [main] INFO   server - Server app launched
+27.04.2023 23:26:04.812 [main] INFO   server.network - TCP Server initialized

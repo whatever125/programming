@@ -1,14 +1,24 @@
 package server.network;
 
-import ch.qos.logback.classic.Level;
-import ch.qos.logback.classic.Logger;
-import common.requests.Request;
-import common.responses.ServerErrorResponse;
-import common.responses.Response;
+import common.IOHandlers.BufferedConsoleReader;
 import jdk.net.ExtendedSocketOptions;
 import org.slf4j.LoggerFactory;
-import server.CommandHandler;
+import ch.qos.logback.classic.Logger;
+
+import common.IOHandlers.BasicReader;
+import common.IOHandlers.ScannerConsoleReader;
+import common.exceptions.InvalidCommandException;
+import common.exceptions.WrongNumberOfArgumentsException;
+import common.requests.ExitRequest;
+import common.requests.Request;
+import common.requests.SaveRequest;
+import common.responses.EmptyResponse;
+import common.responses.ServerErrorResponse;
+import common.responses.Response;
+import server.handlers.ClientCommandHandler;
 import server.exceptions.InvalidRequestException;
+import server.handlers.Executor;
+import server.handlers.ServerCommandHandler;
 
 import java.io.*;
 import java.net.BindException;
@@ -19,7 +29,7 @@ import java.nio.channels.spi.SelectorProvider;
 import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 
-public class TCPServer {
+public class TCPServer implements NetworkServer {
     private static final int BUFFER_SIZE = 4096;
     private final ByteBuffer readBuffer = ByteBuffer.allocate(BUFFER_SIZE);
 
@@ -28,17 +38,25 @@ public class TCPServer {
 
     private ServerSocketChannel serverSocketChannel;
     private final Selector selector;
-    private final CommandHandler commandHandler;
+    private final ClientCommandHandler clientCommandHandler;
+    private final ServerCommandHandler serverCommandHandler;
 
+    private boolean canExit = false;
+    private final BasicReader reader = new ScannerConsoleReader();
     private static final Logger logger = (Logger) LoggerFactory.getLogger("server.network");
 
-    public TCPServer(CommandHandler commandHandler) throws IOException {
-        this.commandHandler = commandHandler;
-        logger.setLevel(Level.INFO);
+    public TCPServer(Executor executor) throws IOException {
+        this.clientCommandHandler = new ClientCommandHandler(executor);
+        this.serverCommandHandler = new ServerCommandHandler(executor, this);
         logger.debug("Logger initialized");
 
         this.openConnection();
         this.selector = initSelector();
+
+        System.out.println(
+                "Server app launched.\n" +
+                "You can use save and exit commands in interactive mode.");
+
         this.run();
     }
 
@@ -65,8 +83,8 @@ public class TCPServer {
 
     private void run() throws IOException {
         try {
-            while (true) {
-                selector.select();
+            while (!canExit) {
+                selector.selectNow();
                 Iterator<SelectionKey> selectedKeys = selector.selectedKeys().iterator();
                 while (selectedKeys.hasNext()) {
                     SelectionKey key = selectedKeys.next();
@@ -81,6 +99,44 @@ public class TCPServer {
                             write(key);
                         }
                     }
+                }
+
+                try {
+                    BufferedConsoleReader reader = new BufferedConsoleReader();
+
+                    if (reader.ready()) {
+                        String input = reader.readLine().trim();
+                        if (input.startsWith("//") || input.equals("")) {
+                            continue;
+                        }
+                        String[] inputArray = input.split(" +");
+                        String commandName = inputArray[0].toLowerCase();
+
+                        String[] args = new String[inputArray.length - 1];
+                        System.arraycopy(inputArray, 1, args, 0, inputArray.length - 1);
+
+                        switch (commandName) {
+                            case "save" -> {
+                                if (args.length != 0)
+                                    throw new WrongNumberOfArgumentsException();
+
+                                Request request = new SaveRequest();
+                                serverCommandHandler.handle(request);
+                                logger.info("Collection saved successfully");
+                                System.out.println("*collection saved successfully*");
+                            }
+                            case "exit" -> {
+                                if (args.length != 0)
+                                    throw new WrongNumberOfArgumentsException();
+
+                                Request request = new ExitRequest();
+                                serverCommandHandler.handle(request);
+                            }
+                            default -> throw new InvalidCommandException(commandName);
+                        }
+                    }
+                } catch (WrongNumberOfArgumentsException | InvalidCommandException e) {
+                    System.out.println(e.getMessage());
                 }
             }
         } finally {
@@ -141,7 +197,7 @@ public class TCPServer {
             if (request == null) {
                 throw new InvalidRequestException("Request is null");
             }
-            response = commandHandler.handle(request);
+            response = clientCommandHandler.handle(request);
         } catch (ClassNotFoundException e) {
             String message = "Unknown request type";
             logger.debug(message);
@@ -221,5 +277,11 @@ public class TCPServer {
 
     private void warnClient(SocketChannel sc, String message) throws IOException {
         logger.debug("Client {} - {}", sc.getRemoteAddress(), message);
+    }
+
+    @Override
+    public Response exit() {
+        canExit = true;
+        return new EmptyResponse();
     }
 }

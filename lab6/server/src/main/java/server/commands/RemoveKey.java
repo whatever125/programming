@@ -4,7 +4,7 @@ import common.requests.RemoveKeyRequest;
 import common.requests.Request;
 import common.responses.RemoveKeyResponse;
 import server.exceptions.CollectionKeyException;
-import server.Executor;
+import server.handlers.Executor;
 
 import java.io.Serial;
 

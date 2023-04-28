@@ -1,6 +1,6 @@
 package client.consoleClient;
 
-import client.IOHandlers.BasicReader;
+import common.IOHandlers.BasicReader;
 import client.exceptions.InvalidScriptException;
 import common.exceptions.WrongArgumentException;
 import common.models.MovieGenre;

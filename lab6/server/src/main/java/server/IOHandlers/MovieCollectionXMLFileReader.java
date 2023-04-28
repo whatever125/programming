@@ -13,7 +13,6 @@ import server.exceptions.FilePermissionException;
 import server.exceptions.InvalidFileDataException;
 import common.exceptions.WrongArgumentException;
 import common.models.*;
-import common.models.MovieCollection;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -25,7 +24,6 @@ import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeParseException;
-import java.util.Arrays;
 
 public class MovieCollectionXMLFileReader implements MovieCollectionFileReader {
     private final String path;

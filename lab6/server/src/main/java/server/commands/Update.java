@@ -5,7 +5,7 @@ import common.requests.UpdateRequest;
 import common.exceptions.WrongArgumentException;
 import common.responses.UpdateResponse;
 import server.exceptions.CollectionKeyException;
-import server.Executor;
+import server.handlers.Executor;
 
 import java.io.Serial;
 

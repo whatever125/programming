@@ -1,6 +1,6 @@
 package server.commands;
 
-import server.Executor;
+import server.handlers.Executor;
 
 import java.io.Serializable;
 

@@ -1,14 +1,16 @@
 package client.consoleClient;
 
-import client.IOHandlers.*;
 import client.exceptions.*;
 import client.commands.*;
 import client.network.NetworkClient;
 import client.network.TCPClient;
+import common.IOHandlers.BasicReader;
+import common.IOHandlers.ScannerConsoleReader;
+import common.IOHandlers.CustomFileReader;
+import common.exceptions.*;
 import common.models.*;
 import common.models.helpers.MovieArgumentChecker;
 import common.responses.*;
-import common.exceptions.WrongArgumentException;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -34,8 +36,8 @@ public class ConsoleClient implements Client {
     private final Stack<String> pathStack = new Stack<>();
     private boolean canExit = false;
 
-    private static String HOST = "localhost";
-    private static int PORT = 9090;
+    private static final String HOST = "localhost";
+    private static final int PORT = 9090;
 
     /**
      * Main method of the ConsoleClient class. Initializes the Invoker, Receiver and Reader and
@@ -48,7 +50,7 @@ public class ConsoleClient implements Client {
             networkClient = new TCPClient(HOST, PORT);
             networkClient.openConnection();
             System.out.println("Successfully connected to server");
-            BasicReader consoleReader = new CustomConsoleReader();
+            BasicReader consoleReader = new ScannerConsoleReader();
 
             System.out.println("Data loaded successfully. You are now in interactive mode\nType 'help' to see the list of commands\n");
 
@@ -60,13 +62,6 @@ public class ConsoleClient implements Client {
                     System.out.println(e.getMessage());
                 }
             }
-
-        } catch (NullPointerException e) {
-            // Handle NullPointerException thrown when LAB5 environment variable is not set
-            System.out.println("! path variable is null !");
-            System.out.println(e.getMessage());
-            networkClient.silentCloseConnection();
-            System.exit(-1);
         } catch (EndOfInputException e) {
             // Handle exceptions thrown when there is a problem with the data file or the user input
             System.out.println(e.getMessage());
@@ -96,7 +91,7 @@ public class ConsoleClient implements Client {
         if (input.startsWith("//") || input.equals("")) {
             return;
         }
-        String[] inputArray = input.split("\s+");
+        String[] inputArray = input.split(" +");
         String commandName = inputArray[0].toLowerCase();
 
         String[] args = new String[inputArray.length - 1];

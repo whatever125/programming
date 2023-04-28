@@ -2,7 +2,7 @@ package server.commands;
 
 import common.requests.Request;
 import common.responses.ClearResponse;
-import server.Executor;
+import server.handlers.Executor;
 
 import java.io.Serial;
 

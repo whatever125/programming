@@ -103,8 +103,7 @@ public class TCPClient implements NetworkClient{
         } catch (EOFException e) {
             throw new NetworkClientException("No response");
         } catch (IOException e) {
-//            throw new RuntimeException(e);
-            throw new NetworkClientException("check null: " + e.getMessage());
+            throw new NetworkClientException(e.getMessage());
         } finally {
             silentCloseConnection();
         }

@@ -3,7 +3,7 @@ package server.commands;
 import common.requests.RemoveLowerKeyRequest;
 import common.requests.Request;
 import common.responses.RemoveLowerKeyResponse;
-import server.Executor;
+import server.handlers.Executor;
 
 import java.io.Serial;
 

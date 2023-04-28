@@ -4,7 +4,7 @@ import common.requests.RemoveGreaterRequest;
 import common.requests.Request;
 import common.exceptions.WrongArgumentException;
 import common.responses.RemoveGreaterResponse;
-import server.Executor;
+import server.handlers.Executor;
 
 import java.io.Serial;
 

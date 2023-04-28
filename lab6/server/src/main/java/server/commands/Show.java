@@ -3,7 +3,7 @@ package server.commands;
 import common.models.Movie;
 import common.requests.Request;
 import common.responses.ShowResponse;
-import server.Executor;
+import server.handlers.Executor;
 
 import java.io.Serial;
 import java.util.HashMap;
