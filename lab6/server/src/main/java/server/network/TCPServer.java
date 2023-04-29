@@ -34,7 +34,7 @@ public class TCPServer implements NetworkServer {
     private final ByteBuffer readBuffer = ByteBuffer.allocate(BUFFER_SIZE);
 
     private static final String HOST = "localhost";
-    private static final int PORT = 9090;
+    private static final int PORT = 3683;
 
     private ServerSocketChannel serverSocketChannel;
     private final Selector selector;
@@ -141,6 +141,8 @@ public class TCPServer implements NetworkServer {
             }
         } finally {
             silentCloseConnection();
+            Request request = new SaveRequest();
+            serverCommandHandler.handle(request);
         }
     }
 

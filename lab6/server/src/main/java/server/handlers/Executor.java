@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -40,6 +41,14 @@ public class Executor {
         this.xmlFileWriter = new MovieCollectionXMLFileWriter(path);
 
         this.movieCollection = xmlFileReader.read();
+        List<List<Movie>> movieList = new ArrayList<>();
+        for (var i = 0; i < 2; i ++) {
+            ArrayList<Movie> list = new ArrayList<>();
+            list.add(movieCollection.getElementByKey(1));
+            list.add(movieCollection.getElementByKey(2));
+            movieList.add(list);
+        }
+        movieCollection.test(movieList);
     }
 
     /**

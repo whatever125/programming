@@ -49,3 +49,19 @@ server.exceptions.EnvironmentVariableException: Environment variable PROGRAMMING
 28.04.2023 04:11:43.804 [main] INFO   server.network - TCP Server initialized
 28.04.2023 04:11:45.541 [main] INFO   server.network - Collection saved successfully
 28.04.2023 04:11:48.355 [main] INFO   server - Server app stopped
+28.04.2023 10:27:15.075 [main] INFO   server - Server app launched
+28.04.2023 10:27:15.133 [main] WARN   server.network - Unable to use address localhost:9090 - Address already in use
+28.04.2023 10:27:15.135 [main] ERROR  server - Fatal error: Unable to use address localhost:9090 - Address already in use
+java.net.BindException: Unable to use address localhost:9090 - Address already in use
+	at server.network.TCPServer.openConnection(TCPServer.java:73)
+	at server.network.TCPServer.<init>(TCPServer.java:53)
+	at server.Main.main(Main.java:23)
+28.04.2023 10:28:11.633 [main] INFO   server - Server app launched
+28.04.2023 10:28:11.720 [main] INFO   server.network - TCP Server initialized
+28.04.2023 10:28:24.396 [main] INFO   server - Server app stopped
+28.04.2023 10:28:29.873 [main] INFO   server - Server app launched
+28.04.2023 10:28:29.927 [main] INFO   server.network - TCP Server initialized
+28.04.2023 12:36:07.255 [main] INFO   server - Server app launched
+28.04.2023 12:36:07.346 [main] INFO   server.network - TCP Server initialized
+28.04.2023 12:41:49.709 [main] INFO   server - Server app launched
+28.04.2023 12:41:49.779 [main] INFO   server.network - TCP Server initialized

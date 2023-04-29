@@ -187,4 +187,11 @@ public class MovieCollection {
         movieList.sort((movie1, movie2) -> (int) (movie2.getOscarsCount() - movie1.getOscarsCount()));
         return movieList;
     }
+
+    public void test(List<List<Movie>> movieList) {
+        List<String> newList= movieList.stream().flatMap(Collection::stream).map(Movie::getName).collect(Collectors.toList());
+        for (var i: newList) {
+            System.out.println(i);
+        }
+    }
 }
