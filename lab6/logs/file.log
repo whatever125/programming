@@ -1,0 +1,67 @@
+28.04.2023 02:59:58.295 [main] INFO   server - Server app launched
+28.04.2023 02:59:58.306 [main] ERROR  server - Fatal error: Environment variable PROGRAMMING_LAB is null
+server.exceptions.EnvironmentVariableException: Environment variable PROGRAMMING_LAB is null
+	at server.Executor.checkFile(Executor.java:254)
+	at server.Executor.<init>(Executor.java:37)
+	at server.Main.main(Main.java:24)
+28.04.2023 03:01:06.551 [main] INFO   server - Server app launched
+28.04.2023 03:01:06.632 [main] INFO   server.network - TCP Server initialized
+28.04.2023 03:02:29.203 [main] INFO   server - Server app launched
+28.04.2023 03:02:29.274 [main] INFO   server.network - TCP Server initialized
+28.04.2023 03:06:18.782 [main] INFO   server - Server app launched
+28.04.2023 03:06:18.865 [main] INFO   server.network - TCP Server initialized
+28.04.2023 03:06:51.744 [main] INFO   server - Server app launched
+28.04.2023 03:06:51.832 [main] INFO   server.network - TCP Server initialized
+28.04.2023 03:09:20.115 [main] INFO   server - Server app launched
+28.04.2023 03:09:20.224 [main] INFO   server.network - TCP Server initialized
+28.04.2023 03:35:11.494 [main] INFO   server - Server app launched
+28.04.2023 03:35:11.611 [main] INFO   server.network - TCP Server initialized
+28.04.2023 03:35:17.201 [main] INFO   server - Server app stopped
+28.04.2023 03:35:23.982 [main] INFO   server - Server app launched
+28.04.2023 03:35:24.109 [main] INFO   server.network - TCP Server initialized
+28.04.2023 03:37:01.405 [main] INFO   server - Server app launched
+28.04.2023 03:37:01.483 [main] INFO   server.network - TCP Server initialized
+28.04.2023 03:37:49.793 [main] INFO   server - Server app stopped
+28.04.2023 03:39:43.244 [main] INFO   server - Server app launched
+28.04.2023 03:39:43.355 [main] INFO   server.network - TCP Server initialized
+28.04.2023 03:42:20.558 [main] INFO   server - Server app launched
+28.04.2023 03:42:20.650 [main] INFO   server.network - TCP Server initialized
+28.04.2023 03:55:35.344 [main] INFO   server - Server app launched
+28.04.2023 03:55:35.439 [main] INFO   server.network - TCP Server initialized
+28.04.2023 03:56:21.367 [main] INFO   server - Server app launched
+28.04.2023 03:56:21.483 [main] INFO   server.network - TCP Server initialized
+28.04.2023 03:56:33.318 [main] INFO   server - Server app launched
+28.04.2023 03:56:33.398 [main] INFO   server.network - TCP Server initialized
+28.04.2023 03:56:39.245 [main] INFO   server - Server app launched
+28.04.2023 03:56:39.345 [main] INFO   server.network - TCP Server initialized
+28.04.2023 04:01:06.445 [main] INFO   server - Server app launched
+28.04.2023 04:01:06.534 [main] INFO   server.network - TCP Server initialized
+28.04.2023 04:01:26.552 [main] INFO   server - Server app stopped
+28.04.2023 04:02:16.797 [main] INFO   server - Server app launched
+28.04.2023 04:02:16.891 [main] INFO   server.network - TCP Server initialized
+28.04.2023 04:04:14.888 [main] INFO   server - Server app launched
+28.04.2023 04:04:14.994 [main] INFO   server.network - TCP Server initialized
+28.04.2023 04:05:31.939 [main] INFO   server - Server app stopped
+28.04.2023 04:10:59.371 [main] INFO   server - Server app launched
+28.04.2023 04:10:59.474 [main] INFO   server.network - TCP Server initialized
+28.04.2023 04:11:02.288 [main] INFO   server - Server app stopped
+28.04.2023 04:11:43.702 [main] INFO   server - Server app launched
+28.04.2023 04:11:43.804 [main] INFO   server.network - TCP Server initialized
+28.04.2023 04:11:45.541 [main] INFO   server.network - Collection saved successfully
+28.04.2023 04:11:48.355 [main] INFO   server - Server app stopped
+28.04.2023 10:27:15.075 [main] INFO   server - Server app launched
+28.04.2023 10:27:15.133 [main] WARN   server.network - Unable to use address localhost:9090 - Address already in use
+28.04.2023 10:27:15.135 [main] ERROR  server - Fatal error: Unable to use address localhost:9090 - Address already in use
+java.net.BindException: Unable to use address localhost:9090 - Address already in use
+	at server.network.TCPServer.openConnection(TCPServer.java:73)
+	at server.network.TCPServer.<init>(TCPServer.java:53)
+	at server.Main.main(Main.java:23)
+28.04.2023 10:28:11.633 [main] INFO   server - Server app launched
+28.04.2023 10:28:11.720 [main] INFO   server.network - TCP Server initialized
+28.04.2023 10:28:24.396 [main] INFO   server - Server app stopped
+28.04.2023 10:28:29.873 [main] INFO   server - Server app launched
+28.04.2023 10:28:29.927 [main] INFO   server.network - TCP Server initialized
+28.04.2023 12:36:07.255 [main] INFO   server - Server app launched
+28.04.2023 12:36:07.346 [main] INFO   server.network - TCP Server initialized
+28.04.2023 12:41:49.709 [main] INFO   server - Server app launched
+28.04.2023 12:41:49.779 [main] INFO   server.network - TCP Server initialized

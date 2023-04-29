@@ -1,3 +1,4 @@
 .idea/
 *.iml
 plan.md
+server/target
