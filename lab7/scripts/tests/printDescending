@@ -1,0 +1,4 @@
+// execute_script scripts/tests/printDescending
+
+show
+print_descending

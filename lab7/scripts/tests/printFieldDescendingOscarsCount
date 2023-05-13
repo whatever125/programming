@@ -1,0 +1,4 @@
+// execute_script scripts/tests/printFieldDescendingOscarsCount
+
+show
+print_field_descending_oscars_count

@@ -1,0 +1,26 @@
+// execute_script scripts/tests/insert
+
+// insert 1
+// Film test
+// 100
+// 200
+// 700
+// FANTASY
+// PG
+// Alfred Hitchcock
+// 13.08.1899
+// 800
+// f890ggs0aaDDHj*
+
+insert 3
+Film test
+100
+200
+700
+FANTASY
+PG
+Alfred Hitchcock
+13.08.1899
+800
+f890ggs0aaDDHj*
+
