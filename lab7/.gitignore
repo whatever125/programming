@@ -27,3 +27,9 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### custom ###
+.idea/
+*.iml
+plan.md
+server/target
