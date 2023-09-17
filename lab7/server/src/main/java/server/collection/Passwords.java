@@ -1,4 +1,4 @@
-package server.database;
+package server.collection;
 
 import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;

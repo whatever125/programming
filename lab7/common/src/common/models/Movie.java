@@ -5,17 +5,20 @@ import common.exceptions.WrongArgumentException;
 
 import java.io.Serial;
 import java.time.ZonedDateTime;
-import java.util.Objects;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
 
 public class Movie implements Comparable<Movie>, Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
     private static Integer nextID = 1;
+
     private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
-    private java.time.ZonedDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+    private ZonedDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     private long oscarsCount; //Значение поля должно быть больше 0
     private MovieGenre genre; //Поле не может быть null
     private MpaaRating mpaaRating; //Поле не может быть null
@@ -33,35 +36,24 @@ public class Movie implements Comparable<Movie>, Serializable {
         this.director = director;
     }
 
-    public Movie(Integer id, String name, Coordinates coordinates, long oscarsCount, MovieGenre genre, MpaaRating mpaaRating,
-                 Person director) throws WrongArgumentException {
-        MovieArgumentChecker.checkArguments(id, name, coordinates, oscarsCount, genre, mpaaRating, director);
-        this.id = id;
-        this.name = name;
-        this.coordinates = coordinates;
-        this.creationDate = ZonedDateTime.now();
-        this.oscarsCount = oscarsCount;
-        this.genre = genre;
-        this.mpaaRating = mpaaRating;
-        this.director = director;
-    }
-
-    public static void updateNextId(MovieCollection movieCollection) {
-        int maxID = movieCollection
-                .getMovieHashMap().values()
-                .stream().filter(Objects::nonNull)
-                .map(Movie::getID)
-                .mapToInt(Integer::intValue).max().orElse(0);
-        nextID = maxID + 1;
-    }
-
     public Integer getID() {
         return id;
     }
 
-    public void setID() {
-        this.id = nextID;
+    public void setID(Integer id) {
+        this.id = id;
+    }
+
+    public static void updateID() {
         nextID += 1;
+    }
+
+    public static void updateMaxId(ArrayList<Movie> movies) {
+        int maxID = movies
+                .stream().filter(Objects::nonNull)
+                .map(Movie::getID)
+                .mapToInt(Integer::intValue).max().orElse(0);
+        nextID = maxID + 1;
     }
 
     public String getName() {

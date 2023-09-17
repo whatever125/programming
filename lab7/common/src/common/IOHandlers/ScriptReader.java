@@ -8,11 +8,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
 
-public class CustomFileReader implements BasicReader {
+public class ScriptReader implements BasicReader {
     String path;
     Scanner scanner;
 
-    public CustomFileReader(String path) throws FileNotFoundException, FilePermissionException {
+    public ScriptReader(String path) throws FileNotFoundException, FilePermissionException {
         File file = new File(path);
         if (!file.exists())
             throw new FileNotFoundException("! file " + path + " not found !");

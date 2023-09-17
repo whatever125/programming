@@ -29,7 +29,6 @@ bin/
 .DS_Store
 
 ### custom ###
-.idea/
-*.iml
 plan.md
 server/target
+.pgpass

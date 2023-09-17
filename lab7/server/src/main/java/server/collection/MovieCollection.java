@@ -1,4 +1,6 @@
-package common.models;
+package server.collection;
+
+import common.models.Movie;
 
 import java.time.ZonedDateTime;
 import java.util.*;
@@ -25,7 +27,7 @@ public class MovieCollection {
      * @param key the key to associate with the movie
      * @param movie the movie to add to the collection
      */
-    public void put(Integer key, Movie movie) {
+    public synchronized void put(Integer key, Movie movie) {
         movieHashMap.put(key, movie);
     }
 
@@ -35,7 +37,7 @@ public class MovieCollection {
      * @param key the key of the movie to retrieve
      * @return the movie associated with the key, or null if the key is not present in the collection
      */
-    public Movie getElementByKey(Integer key) {
+    public synchronized Movie getElementByKey(Integer key) {
         return movieHashMap.get(key);
     }
 
@@ -45,7 +47,7 @@ public class MovieCollection {
      * @param id the ID of the movie to retrieve
      * @return the movie with the specified ID, or null if no movie with the ID is present in the collection
      */
-    public Movie getElementByID(Integer id) {
+    public synchronized Movie getElementByID(Integer id) {
         Optional<Movie> optionalMovie = movieHashMap.values().stream()
                 .filter(movie -> Objects.equals(movie.getID(), id)).findFirst();
         return optionalMovie.orElse(null);
@@ -56,13 +58,14 @@ public class MovieCollection {
      *
      * @param key the key of the movie to remove
      */
-    public void remove(Integer key) {
+    public synchronized void remove(Integer key) {
         movieHashMap.remove(key);
     }
 
     /**
      * Removes all movies from the collection.
      */
+    @Deprecated
     public void clear() {
         movieHashMap.clear();
     }
@@ -72,7 +75,7 @@ public class MovieCollection {
      *
      * @return the HashMap containing the movies in the collection
      */
-    public HashMap<Integer, Movie> getMovieHashMap() {
+    public synchronized HashMap<Integer, Movie> getMovieHashMap() {
         return movieHashMap;
     }
 
@@ -81,7 +84,7 @@ public class MovieCollection {
      *
      * @return the number of movies in the collection
      */
-    public int length() {
+    public synchronized int length() {
         return movieHashMap.size();
     }
 
@@ -109,6 +112,7 @@ public class MovieCollection {
      * @param movie the movie to compare against
      * @return the number of movies removed from the collection
      */
+    @Deprecated
     public int removeGreater(Movie movie) {
         Map<Integer, Movie> filteredMap = movieHashMap.entrySet().stream()
                 .filter(entry -> entry.getValue().compareTo(movie) <= 0)
@@ -126,6 +130,7 @@ public class MovieCollection {
      * @param movie the value to be associated with the specified key
      * @return true if the value was replaced, false otherwise
      */
+    @Deprecated
     public boolean replaceIfLowe(Integer key, Movie movie) {
         return movieHashMap.entrySet()
                 .stream()
@@ -141,6 +146,7 @@ public class MovieCollection {
      * @param key the key that serves as the lower bound for keys to be removed
      * @return the number of entries removed from the map
      */
+    @Deprecated
     public int removeLowerKey(Integer key) {
         Map<Integer, Movie> filteredMap = movieHashMap.entrySet().stream()
                 .filter(entry -> entry.getKey().compareTo(key) >= 0)
@@ -156,7 +162,7 @@ public class MovieCollection {
      *
      * @return a list of the values contained in this map, sorted in ascending order
      */
-    public List<Movie> printAscending() {
+    public synchronized List<Movie> printAscending() {
         List<Movie> movieList = new ArrayList<>(movieHashMap.values());
         Collections.sort(movieList);
         return movieList;
@@ -168,7 +174,7 @@ public class MovieCollection {
      *
      * @return a list of the values contained in this map, sorted in descending order
      */
-    public List<Movie> printDescending() {
+    public synchronized List<Movie> printDescending() {
         List<Movie> movieList = new ArrayList<>(movieHashMap.values());
         Collections.sort(movieList);
         Collections.reverse(movieList);
@@ -182,16 +188,13 @@ public class MovieCollection {
      * @return a list of the values contained in this map, sorted in descending
      * order based on the number of Oscars won
      */
-    public List<Movie> printFieldDescendingOscarsCount() {
+    public synchronized List<Movie> printFieldDescendingOscarsCount() {
         List<Movie> movieList = new ArrayList<>(movieHashMap.values());
         movieList.sort((movie1, movie2) -> (int) (movie2.getOscarsCount() - movie1.getOscarsCount()));
         return movieList;
     }
 
-    public void test(List<List<Movie>> movieList) {
-        List<String> newList= movieList.stream().flatMap(Collection::stream).map(Movie::getName).collect(Collectors.toList());
-        for (var i: newList) {
-            System.out.println(i);
-        }
+    public synchronized void setMovieHashMap(HashMap<Integer, Movie> movieHashMap) {
+        this.movieHashMap = movieHashMap;
     }
 }

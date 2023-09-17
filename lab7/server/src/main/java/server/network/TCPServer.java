@@ -1,12 +1,11 @@
 package server.network;
 
+import ch.qos.logback.classic.Level;
 import common.IOHandlers.BufferedConsoleReader;
 import jdk.net.ExtendedSocketOptions;
 import org.slf4j.LoggerFactory;
 import ch.qos.logback.classic.Logger;
 
-import common.IOHandlers.BasicReader;
-import common.IOHandlers.ScannerConsoleReader;
 import common.exceptions.InvalidCommandException;
 import common.exceptions.WrongNumberOfArgumentsException;
 import common.requests.ExitRequest;
@@ -17,6 +16,7 @@ import common.responses.ServerErrorResponse;
 import common.responses.Response;
 import server.handlers.ClientCommandHandler;
 import server.exceptions.InvalidRequestException;
+import server.handlers.CommandHandler;
 import server.handlers.Executor;
 import server.handlers.ServerCommandHandler;
 
@@ -28,6 +28,8 @@ import java.nio.channels.*;
 import java.nio.channels.spi.SelectorProvider;
 import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.RecursiveAction;
 
 public class TCPServer implements NetworkServer {
     private static final int BUFFER_SIZE = 4096;
@@ -38,16 +40,20 @@ public class TCPServer implements NetworkServer {
 
     private ServerSocketChannel serverSocketChannel;
     private final Selector selector;
-    private final ClientCommandHandler clientCommandHandler;
-    private final ServerCommandHandler serverCommandHandler;
+    private final CommandHandler clientCommandHandler;
+    private final CommandHandler serverCommandHandler;
+
+    private final ForkJoinPool sendPool = new ForkJoinPool();
 
     private boolean canExit = false;
-    private final BasicReader reader = new ScannerConsoleReader();
+    private final BufferedConsoleReader consoleReader = new BufferedConsoleReader();
     private static final Logger logger = (Logger) LoggerFactory.getLogger("server.network");
 
-    public TCPServer(Executor executor) throws IOException {
-        this.clientCommandHandler = new ClientCommandHandler(executor);
+    public TCPServer(Executor executor, CommandHandler clientCommandHandler) throws IOException {
+        this.clientCommandHandler = clientCommandHandler;
         this.serverCommandHandler = new ServerCommandHandler(executor, this);
+
+        logger.setLevel(Level.INFO);
         logger.debug("Logger initialized");
 
         this.openConnection();
@@ -86,6 +92,7 @@ public class TCPServer implements NetworkServer {
             while (!canExit) {
                 selector.selectNow();
                 Iterator<SelectionKey> selectedKeys = selector.selectedKeys().iterator();
+
                 while (selectedKeys.hasNext()) {
                     SelectionKey key = selectedKeys.next();
                     selectedKeys.remove();
@@ -95,17 +102,17 @@ public class TCPServer implements NetworkServer {
                             accept(key);
                         } else if (key.isReadable()) {
                             read(key);
+                            key.cancel();
                         } else if (key.isWritable()) {
                             write(key);
+                            key.cancel();
                         }
                     }
                 }
 
                 try {
-                    BufferedConsoleReader reader = new BufferedConsoleReader();
-
-                    if (reader.ready()) {
-                        String input = reader.readLine().trim();
+                    if (consoleReader.ready()) {
+                        String input = consoleReader.readLine().trim();
                         if (input.startsWith("//") || input.equals("")) {
                             continue;
                         }
@@ -116,15 +123,15 @@ public class TCPServer implements NetworkServer {
                         System.arraycopy(inputArray, 1, args, 0, inputArray.length - 1);
 
                         switch (commandName) {
-                            case "save" -> {
-                                if (args.length != 0)
-                                    throw new WrongNumberOfArgumentsException();
-
-                                Request request = new SaveRequest();
-                                serverCommandHandler.handle(request);
-                                logger.info("Collection saved successfully");
-                                System.out.println("*collection saved successfully*");
-                            }
+//                            case "save" -> {
+//                                if (args.length != 0)
+//                                    throw new WrongNumberOfArgumentsException();
+//
+//                                Request request = new SaveRequest();
+//                                serverCommandHandler.handle(request);
+//                                logger.info("Collection saved successfully");
+//                                System.out.println("*collection saved successfully*");
+//                            }
                             case "exit" -> {
                                 if (args.length != 0)
                                     throw new WrongNumberOfArgumentsException();
@@ -152,43 +159,69 @@ public class TCPServer implements NetworkServer {
         socketChannel.configureBlocking(false);
         socketChannel.register(selector, SelectionKey.OP_READ);
 
-        infoClient(socketChannel, "connected");
+        ClientLogger.info(socketChannel, "connected");
     }
 
-    private void read(SelectionKey key) throws IOException {
-        SocketChannel sc = (SocketChannel) key.channel();
-        readBuffer.clear();
-        int bytesRead;
-        try {
-            bytesRead = sc.read(readBuffer);
-        } catch (IOException e) {
-            infoClient(sc, "forceful shutdown");
-            key.cancel();
-            sc.close();
-            return;
-        }
-        if (bytesRead == -1) {
-            infoClient(sc, "graceful shutdown");
-            key.cancel();
-            return;
-        }
-        String input = new String(readBuffer.array(), 0, bytesRead, StandardCharsets.UTF_8);
-        debugClient(sc, "input:\n" + input);
+    private void read(SelectionKey key) {
+        Runnable readTask = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    SocketChannel sc = (SocketChannel) key.channel();
+                    readBuffer.clear();
+                    int bytesRead;
+                    try {
+                        bytesRead = sc.read(readBuffer);
+                    } catch (IOException e) {
+                        ClientLogger.info(sc, "Forceful shutdown");
+                        key.cancel();
+                        sc.close();
+                        return;
+                    }
+                    if (bytesRead == -1) {
+                        ClientLogger.info(sc, "Graceful shutdown");
+                        key.cancel();
+                        return;
+                    }
+                    String input = new String(readBuffer.array(), 0, bytesRead, StandardCharsets.UTF_8);
+                    ClientLogger.debug(sc, "input:\n" + input);
 
-        Response response;
-        try {
-            response = handleRequest(readBuffer);
-        } catch (ClassNotFoundException e) {
-            response = new ServerErrorResponse(e.getMessage());
-            debugClient(sc, "Unknown command");
-        }
-        sc.register(selector, SelectionKey.OP_WRITE, response);
+                    createResponse(sc);
+                } catch (IOException e) {
+                    logger.error(e.getMessage());
+//                    throw new RuntimeException(e);
+                    // TODO: 16/5/2023 exception handling
+                }
+            }
+        };
 
-//        try {
-//            TimeUnit.SECONDS.sleep(10);
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
+        Thread readThread = new Thread(readTask);
+        readThread.start();
+    }
+
+    private void createResponse(SocketChannel sc) {
+        Runnable createResponseTask = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Response response;
+                    try {
+                        response = handleRequest(readBuffer);
+                    } catch (ClassNotFoundException e) {
+                        response = new ServerErrorResponse(e.getMessage());
+                        ClientLogger.debug(sc, "Unknown command");
+                    }
+                    sc.register(selector, SelectionKey.OP_WRITE, response);
+                } catch (IOException e) {
+                    logger.error(e.getMessage());
+//                    throw new RuntimeException(e);
+                    // TODO: 16/5/2023 exception handling
+                }
+            }
+        };
+
+        Thread createResponseThread = new Thread(createResponseTask);
+        createResponseThread.start();
     }
 
     private Response handleRequest(ByteBuffer buffer) throws IOException, ClassNotFoundException {
@@ -212,20 +245,47 @@ public class TCPServer implements NetworkServer {
         return response;
     }
 
-    private void write(SelectionKey key) throws IOException {
+    private void write(SelectionKey key) {
+        RecursiveAction writeAction = new RecursiveAction() {
+            @Override
+            protected void compute() {
+                try {
+                    SocketChannel sc = (SocketChannel) key.channel();
+                    Response response = (Response) key.attachment();
+
+                    ByteBuffer writeBuffer = serializeObject(response);
+                    writeBuffer.flip();
+                    while (writeBuffer.hasRemaining()) {
+                        sc.write(writeBuffer);
+                    }
+
+                    ClientLogger.debug(sc, "write response " + response.name);
+
+                    sc.register(selector, SelectionKey.OP_READ);
+                } catch (IOException e) {
+                    logger.error(e.getMessage());
+//                    throw new RuntimeException(e);
+                    // TODO: 16/5/2023 exception handling
+                }
+            }
+        };
+
+        sendPool.execute(writeAction);
+
+
         // Get socket channel and response
-        SocketChannel sc = (SocketChannel) key.channel();
-        Response response = (Response) key.attachment();
-
-        ByteBuffer writeBuffer = serializeObject(response);
-        writeBuffer.flip();
-        while (writeBuffer.hasRemaining()) {
-            sc.write(writeBuffer);
-        }
-
-        debugClient(sc, "write response " + response.name);
-
-        sc.register(selector, SelectionKey.OP_READ);
+//        SocketChannel sc = (SocketChannel) key.channel();
+//        Response response = (Response) key.attachment();
+//
+//        ByteBuffer writeBuffer = serializeObject(response);
+//        writeBuffer.flip();
+//        while (writeBuffer.hasRemaining()) {
+//            sc.write(writeBuffer);
+//        }
+//
+//        ClientLogger.debug(sc, "write response " + response.name);
+//
+//        sc.register(selector, SelectionKey.OP_READ);
     }
 
     private ByteBuffer serializeObject(Object object) throws IOException {
@@ -269,21 +329,23 @@ public class TCPServer implements NetworkServer {
         }
     }
 
-    private void debugClient(SocketChannel sc, String message) throws IOException {
-        logger.debug("Client {} - {}", sc.getRemoteAddress(), message);
-    }
-
-    private void infoClient(SocketChannel sc, String message) throws IOException {
-        logger.debug("Client {} - {}", sc.getRemoteAddress(), message);
-    }
-
-    private void warnClient(SocketChannel sc, String message) throws IOException {
-        logger.debug("Client {} - {}", sc.getRemoteAddress(), message);
-    }
-
     @Override
     public Response exit() {
         canExit = true;
         return new EmptyResponse();
+    }
+
+    public static class ClientLogger {
+        private static void debug(SocketChannel sc, String message) throws IOException {
+            logger.debug("Client {} - {}", sc.getRemoteAddress(), message);
+        }
+
+        public static void info(SocketChannel sc, String message) throws IOException {
+            logger.debug("Client {} - {}", sc.getRemoteAddress(), message);
+        }
+
+        private static void warn(SocketChannel sc, String message) throws IOException {
+            logger.debug("Client {} - {}", sc.getRemoteAddress(), message);
+        }
     }
 }

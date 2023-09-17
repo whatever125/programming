@@ -1,4 +1,4 @@
-package server.database;
+package server.collection;
 
 import java.io.*;
 import java.sql.SQLException;

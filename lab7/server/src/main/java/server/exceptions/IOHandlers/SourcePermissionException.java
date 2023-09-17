@@ -1,7 +1,7 @@
-package server.exceptions;
+package server.exceptions.IOHandlers;
 
-public class FilePermissionException extends Exception {
-    public FilePermissionException(String message) {
+public class SourcePermissionException extends IOHandlerException {
+    public SourcePermissionException(String message) {
         super(message);
     }
 }

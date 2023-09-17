@@ -1,7 +1,10 @@
-package server.exceptions;
+package server.exceptions.IOHandlers;
 
-public class InvalidFileDataException extends Exception {
-    public InvalidFileDataException(String path, String message) {
-        super("! invalid file data in " + path + ": " + message + " !");
+public class InvalidDataException extends IOHandlerException {
+    public InvalidDataException(String path, String message) {
+        super("! invalid data in " + path + ": " + message + " !");
+    }
+    public InvalidDataException(String message) {
+        super("! invalid data: " + message + " !");
     }
 }

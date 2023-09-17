@@ -1,14 +1,16 @@
 package server.IOHandlers;
 
 import server.exceptions.CustomIOException;
-import server.exceptions.FilePermissionException;
+import server.exceptions.IOHandlers.IOHandlerException;
+import server.exceptions.IOHandlers.SourceNotFoundException;
+import server.exceptions.IOHandlers.SourcePermissionException;
 import common.models.Movie;
-import common.models.MovieCollection;
+import server.collection.MovieCollection;
 
 import java.io.*;
 import java.util.HashMap;
 
-public class MovieCollectionXMLFileWriter implements MovieCollectionFileWriter {
+public class MovieCollectionXMLFileWriter implements MovieCollectionWriter {
     private final String path;
 
     public MovieCollectionXMLFileWriter(String path) {
@@ -16,7 +18,7 @@ public class MovieCollectionXMLFileWriter implements MovieCollectionFileWriter {
     }
 
     @Override
-    public void write(MovieCollection movieCollection) throws FileNotFoundException, FilePermissionException, CustomIOException {
+    public void write(MovieCollection movieCollection) throws IOHandlerException {
         checkFile();
         HashMap<Integer, Movie> movieHashMap = movieCollection.getMovieHashMap();
         try (BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path)))) {
@@ -50,15 +52,15 @@ public class MovieCollectionXMLFileWriter implements MovieCollectionFileWriter {
             bufferedWriter.write("</movieCollection>");
             bufferedWriter.flush();
         } catch (IOException e) {
-            throw new CustomIOException("! " + this.getClass().getName() + ": IOException when writing to " + path + " !");
+            throw new IOHandlerException("! " + this.getClass().getName() + ": IOException when writing to " + path + " !");
         }
     }
 
-    private void checkFile() throws FileNotFoundException, FilePermissionException {
+    private void checkFile() throws IOHandlerException {
         File file = new File(path);
         if (!file.exists())
-            throw new FileNotFoundException("! file " + path + " not found !");
+            throw new SourceNotFoundException("! file " + path + " not found !");
         if (!file.canWrite())
-            throw new FilePermissionException("! no write permission for file " + path + "  !");
+            throw new SourcePermissionException("! no write permission for file " + path + "  !");
     }
 }

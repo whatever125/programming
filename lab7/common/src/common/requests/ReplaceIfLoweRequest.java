@@ -21,8 +21,8 @@ public class ReplaceIfLoweRequest extends Request{
     public final Integer weight;
     public final String passportID;
 
-    public ReplaceIfLoweRequest(Integer key, String movieName, Integer x, Integer y, long oscarsCount, MovieGenre movieGenre, MpaaRating mpaaRating, String directorName, LocalDateTime birthday, Integer weight, String passportID) {
-        super("replace_if_lowe");
+    public ReplaceIfLoweRequest(String login, String password, Integer key, String movieName, Integer x, Integer y, long oscarsCount, MovieGenre movieGenre, MpaaRating mpaaRating, String directorName, LocalDateTime birthday, Integer weight, String passportID) {
+        super("replace_if_lowe", login, password);
         this.key = key;
         this.movieName = movieName;
         this.x = x;

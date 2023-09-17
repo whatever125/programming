@@ -1,13 +1,35 @@
-insert 3
-name
-1
-2
-3
-western
-g
-Ivan Ivanov
-10.07.1986
-75
-1234567891111
-save
-show
+insert 123
+Film2
+4
+5
+6
+MUSICAL
+pg
+Dmitry Dmitrov
+01.03.1997
+80
+2n390dn@9)9FN#@
+
+insert 124
+Film2
+4
+5
+6
+MUSICAL
+pg
+Dmitry Dmitrov
+01.03.1997
+80
+2n390dn@9)9FN#@
+
+insert 125
+Film2
+4
+5
+6
+MUSICAL
+pg
+Dmitry Dmitrov
+01.03.1997
+80
+2n390dn@9)9FN#@

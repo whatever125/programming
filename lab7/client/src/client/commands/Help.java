@@ -5,8 +5,8 @@ import client.network.NetworkClient;
 import common.responses.Response;
 
 public class Help extends AbstractCommand {
-    public Help(Client client, NetworkClient networkClient) {
-        super("help", client, networkClient);
+    public Help(Client client, NetworkClient networkClient, String login, String password) {
+        super("help", client, networkClient, login, password);
     }
 
     @Override

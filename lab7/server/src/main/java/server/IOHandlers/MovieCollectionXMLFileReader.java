@@ -9,8 +9,11 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
-import server.exceptions.FilePermissionException;
-import server.exceptions.InvalidFileDataException;
+import server.collection.MovieCollection;
+import server.exceptions.IOHandlers.SourceNotFoundException;
+import server.exceptions.IOHandlers.SourcePermissionException;
+import server.exceptions.IOHandlers.IOHandlerException;
+import server.exceptions.IOHandlers.InvalidDataException;
 import common.exceptions.WrongArgumentException;
 import common.models.*;
 
@@ -25,7 +28,7 @@ import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeParseException;
 
-public class MovieCollectionXMLFileReader implements MovieCollectionFileReader {
+public class MovieCollectionXMLFileReader implements MovieCollectionReader {
     private final String path;
     private static final Logger logger = (Logger) LoggerFactory.getLogger("server.IOHandlers");
 
@@ -35,7 +38,7 @@ public class MovieCollectionXMLFileReader implements MovieCollectionFileReader {
     }
 
     @Override
-    public MovieCollection read() throws FileNotFoundException, FilePermissionException, InvalidFileDataException {
+    public MovieCollection read() throws IOHandlerException {
         checkFile();
         String attributeName = null;
         int i = -1;
@@ -138,48 +141,48 @@ public class MovieCollectionXMLFileReader implements MovieCollectionFileReader {
                 if (movieCollection.getElementByID(id) != null)
                     throw new WrongArgumentException("movie id must be unique");
 
-                Movie movie = new Movie(id, movieName, coordinates, oscarsCount, movieGenre, mpaaRating, director);
+                Movie movie = new Movie(movieName, coordinates, oscarsCount, movieGenre, mpaaRating, director);
+                Movie.updateID();
                 movie.setCreationDate(creationDate);
                 movieCollection.put(id, movie);
             }
             movieCollection.setCreationDate(collectionCreationDate);
-            Movie.updateNextId(movieCollection);
             return movieCollection;
         } catch (NullPointerException e) {
-            throw new InvalidFileDataException(path, "movie №" + (i + 1) + ": " + attributeName + " is null");
+            throw new InvalidDataException(path, "movie №" + (i + 1) + ": " + attributeName + " is null");
         } catch (DateTimeParseException e) {
             if (i < 0) {
-                throw new InvalidFileDataException(path, attributeName + " is invalid or null");
+                throw new InvalidDataException(path, attributeName + " is invalid or null");
             } else {
-                throw new InvalidFileDataException(path, "movie №" + (i + 1) + ": " + attributeName + " is invalid or null");
+                throw new InvalidDataException(path, "movie №" + (i + 1) + ": " + attributeName + " is invalid or null");
             }
         } catch (UnsupportedEncodingException e) {
-            throw new InvalidFileDataException(path, "unsupported encoding: " + e.getMessage());
+            throw new InvalidDataException(path, "unsupported encoding: " + e.getMessage());
         } catch (SAXParseException e) {
-            throw new InvalidFileDataException(path, "XML parse error: " + e.getMessage());
+            throw new InvalidDataException(path, "XML parse error: " + e.getMessage());
         } catch (NumberFormatException e) {
-            throw new InvalidFileDataException(path, "movie №" + (i + 1) + ": " + attributeName + " must be an integer");
+            throw new InvalidDataException(path, "movie №" + (i + 1) + ": " + attributeName + " must be an integer");
         } catch (WrongArgumentException e) {
             StringBuilder errorMessage = new StringBuilder(e.getMessage());
             errorMessage.delete(0, 2);
             errorMessage.delete(errorMessage.length() - 2, errorMessage.length());
-            throw new InvalidFileDataException(path, "movie №" + (i + 1) + ": " + errorMessage);
+            throw new InvalidDataException(path, "movie №" + (i + 1) + ": " + errorMessage);
         } catch (ParserConfigurationException | IOException | SAXException e) {
-            throw new InvalidFileDataException(path, e.getMessage());
+            throw new InvalidDataException(path, e.getMessage());
         }
     }
 
-    private void checkFile() throws FileNotFoundException, FilePermissionException {
+    private void checkFile() throws SourceNotFoundException, SourcePermissionException {
         File file = new File(path);
         if (!file.exists()) {
             String message = "! file " + path + " not found !";
             logger.warn(message);
-            throw new FileNotFoundException(message);
+            throw new SourceNotFoundException(message);
         }
         if (!file.canRead()) {
             String message = "! no read permission for file " + path + "  !";
             logger.warn(message);
-            throw new FilePermissionException(message);
+            throw new SourcePermissionException(message);
         }
     }
 }

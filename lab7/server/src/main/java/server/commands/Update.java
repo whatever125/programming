@@ -8,6 +8,7 @@ import server.exceptions.CollectionKeyException;
 import server.handlers.Executor;
 
 import java.io.Serial;
+import java.sql.SQLException;
 
 public class Update extends AbstractCommand {
     @Serial
@@ -21,10 +22,10 @@ public class Update extends AbstractCommand {
         UpdateRequest uRequest = (UpdateRequest) request;
         UpdateResponse response;
         try {
-            executor.update(uRequest.id, uRequest.movieName, uRequest.x, uRequest.y, uRequest.oscarsCount, uRequest.movieGenre,
+            executor.update(uRequest.login, uRequest.id, uRequest.movieName, uRequest.x, uRequest.y, uRequest.oscarsCount, uRequest.movieGenre,
                     uRequest.mpaaRating, uRequest.directorName, uRequest.birthday, uRequest.weight, uRequest.passportID);
             response = new UpdateResponse(null);
-        } catch (WrongArgumentException | CollectionKeyException e) {
+        } catch (WrongArgumentException | CollectionKeyException | SQLException e) {
             response = new UpdateResponse(e.getMessage());
         }
         return response;

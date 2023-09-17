@@ -20,10 +20,10 @@ public class RemoveGreaterRequest extends Request {
     public final Integer weight;
     public final String passportID;
 
-    public RemoveGreaterRequest(String movieName, Integer x, Integer y, long oscarsCount, MovieGenre movieGenre,
+    public RemoveGreaterRequest(String login, String password, String movieName, Integer x, Integer y, long oscarsCount, MovieGenre movieGenre,
                          MpaaRating mpaaRating, String directorName, LocalDateTime birthday, Integer weight,
                          String passportID) {
-        super("remove_greater");
+        super("remove_greater", login, password);
         this.movieName = movieName;
         this.x = x;
         this.y = y;

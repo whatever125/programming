@@ -1,4 +1,4 @@
-package server.database;
+package server.collection;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -12,7 +12,7 @@ public class PostgresDatabase extends Database {
     }
 
     @Override
-    public PostgresConnection createConnection() throws SQLException, IOException {
+    public PostgresConnection createConnection() throws SQLException {
         return new PostgresConnection(URL, login, password);
     }
 }

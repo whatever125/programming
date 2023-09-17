@@ -1,11 +1,12 @@
 package server.IOHandlers;
 
-import server.exceptions.FilePermissionException;
-import server.exceptions.InvalidFileDataException;
+import server.exceptions.IOHandlers.IOHandlerException;
+import server.exceptions.IOHandlers.SourcePermissionException;
+import server.exceptions.IOHandlers.InvalidDataException;
 import server.collection.MovieCollection;
 
 import java.io.FileNotFoundException;
 
-public interface MovieCollectionFileReader {
-    MovieCollection read() throws FileNotFoundException, FilePermissionException, InvalidFileDataException;
+public interface MovieCollectionReader {
+    MovieCollection read() throws IOHandlerException;
 }

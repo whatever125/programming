@@ -1,20 +1,22 @@
 package server.handlers;
 
-import server.IOHandlers.MovieCollectionFileReader;
-import server.IOHandlers.MovieCollectionFileWriter;
-import server.IOHandlers.MovieCollectionXMLFileReader;
-import server.IOHandlers.MovieCollectionXMLFileWriter;
+import server.IOHandlers.*;
+import server.collection.DatabaseConnection;
+import server.collection.MovieCollection;
 import server.exceptions.*;
 import common.exceptions.WrongArgumentException;
 import common.models.*;
+import server.exceptions.IOHandlers.IOHandlerException;
+import server.exceptions.IOHandlers.SourcePermissionException;
+import server.exceptions.IOHandlers.InvalidDataException;
+import server.exceptions.db.AuthorizationException;
 
-import java.io.File;
 import java.io.FileNotFoundException;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * The Receiver class is responsible for managing the movie collection. It uses MovieCollection
@@ -22,25 +24,26 @@ import java.util.List;
  * movies from/to the XML file.
  */
 public class Executor {
-    private final MovieCollection movieCollection;
-    MovieCollectionFileReader xmlFileReader;
-    MovieCollectionFileWriter xmlFileWriter;
+    protected final MovieCollection movieCollection;
+    protected MovieCollectionReader movieCollectionReader;
+    protected MovieCollectionWriter movieCollectionWriter;
+
+    protected final DatabaseConnection dbConnection;
 
     /**
      * Creates a new Receiver instance and initializes the collection of movies from a file.
      *
-     * @throws InvalidFileDataException if the data in the file is invalid
+     * @throws InvalidDataException if the data in the file is invalid
      * @throws FileNotFoundException    if the file cannot be found
-     * @throws FilePermissionException  if the program does not have permission to access the file
+     * @throws SourcePermissionException  if the program does not have permission to access the file
      */
-    public Executor() throws InvalidFileDataException, FileNotFoundException, FilePermissionException, EnvironmentVariableException {
-        String path = System.getenv("PROGRAMMING_LAB");
-        checkFile(path);
+    public Executor(MovieCollectionReader movieCollectionReader, MovieCollectionWriter movieCollectionWriter,
+                    DatabaseConnection dbConnection) throws IOHandlerException, EnvironmentVariableException {
+        this.dbConnection = dbConnection;
+        this.movieCollectionReader = movieCollectionReader;
+        this.movieCollectionWriter = movieCollectionWriter;
 
-        this.xmlFileReader = new MovieCollectionXMLFileReader(path);
-        this.xmlFileWriter = new MovieCollectionXMLFileWriter(path);
-
-        this.movieCollection = xmlFileReader.read();
+        this.movieCollection = movieCollectionReader.read();
     }
 
     /**
@@ -49,8 +52,9 @@ public class Executor {
      * @return a String containing information about the collection
      */
     public String info() {
+        // TODO: 17/5/2023 create class MovieCollectionInfo
         return "*Collection info*\n" +
-                "- Type of collection   : Hashmap of Movies\n" +
+                "- Type of collection   : PostgreSQL Database of Movies\n" +
                 "- Date of initializing : " + movieCollection.getCreationDate().format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")) + "\n" +
                 "- Number of elements   : " + movieCollection.length();
     }
@@ -81,14 +85,15 @@ public class Executor {
      * @throws CollectionKeyException if the specified key is already in use
      * @throws WrongArgumentException if any of the arguments are invalid
      */
-    public void insert(Integer key, String movieName, Integer x, Integer y, long oscarsCount, MovieGenre movieGenre,
+    public synchronized void insert(String login, Integer key, String movieName, Integer x, Integer y, long oscarsCount, MovieGenre movieGenre,
                        MpaaRating mpaaRating, String directorName, LocalDateTime birthday, Integer weight,
-                       String passportID) throws CollectionKeyException, WrongArgumentException {
+                       String passportID) throws CollectionKeyException, WrongArgumentException, SQLException {
         if (movieCollection.getElementByKey(key) != null)
             throw new CollectionKeyException("key already exists");
+        int movieID = dbConnection.addObject(login, key, movieName, x, y, oscarsCount, movieGenre, mpaaRating, directorName, birthday, weight, passportID);
         Movie movie = new Movie(movieName, new Coordinates(x, y), oscarsCount, movieGenre,
                 mpaaRating, new Person(directorName, birthday, weight, passportID));
-        movie.setID();
+        movie.setID(movieID);
         movieCollection.put(key, movie);
     }
 
@@ -109,12 +114,16 @@ public class Executor {
      * @throws CollectionKeyException if the specified ID is not found in the collection
      * @throws WrongArgumentException if any of the arguments are invalid
      */
-    public void update(Integer id, String movieName, Integer x, Integer y, long oscarsCount, MovieGenre movieGenre,
+    public synchronized void update(String login, Integer id, String movieName, Integer x, Integer y, long oscarsCount, MovieGenre movieGenre,
                        MpaaRating mpaaRating, String directorName, LocalDateTime birthday, Integer weight,
-                       String passportID) throws CollectionKeyException, WrongArgumentException {
+                       String passportID) throws CollectionKeyException, WrongArgumentException, SQLException {
         Movie movie = movieCollection.getElementByID(id);
         if (movie == null)
             throw new CollectionKeyException("id does not exist");
+
+        authorizeUserForMovieID(login, id);
+        dbConnection.updateObjectByID(id, movieName, x, y, oscarsCount, movieGenre, mpaaRating, directorName, birthday, weight, passportID);
+
         movie.setName(movieName);
         movie.setCoordinates(new Coordinates(x, y));
         movie.setOscarsCount(oscarsCount);
@@ -129,24 +138,31 @@ public class Executor {
      * @param key the key of the element to remove
      * @throws CollectionKeyException if the specified key does not exist in the collection
      */
-    public void removeKey(Integer key) throws CollectionKeyException {
+    public synchronized void removeKey(String login, Integer key) throws CollectionKeyException, SQLException {
         if (movieCollection.getElementByKey(key) == null)
             throw new CollectionKeyException("key does not exist");
+
+        authorizeUserForMovieKey(login, key);
+        dbConnection.removeObjectByKey(key);
         movieCollection.remove(key);
     }
 
     /**
      Clears the movie collection.
      */
-    public void clear() {
-        movieCollection.clear();
+    public synchronized void clear(String login) throws SQLException {
+        ArrayList<Integer> removedMovies = dbConnection.clearCollectionForUser(login);
+        for (Integer key: removedMovies) {
+            movieCollection.remove(key);
+        }
     }
 
     /**
      Saves the movie collection to an XML file.
      */
-    public void save() throws FileNotFoundException, CustomIOException, FilePermissionException {
-        xmlFileWriter.write(movieCollection);
+    @Deprecated
+    public void save() throws IOHandlerException {
+//        xmlFileWriter.write(movieCollection);
     }
 
     /**
@@ -164,12 +180,24 @@ public class Executor {
      @param passportID the passport ID of the movie director to compare
      @throws WrongArgumentException if any of the specified arguments are invalid
      */
-    public int removeGreater(String movieName, Integer x, Integer y, long oscarsCount, MovieGenre movieGenre,
+    public int removeGreater(String login, String movieName, Integer x, Integer y, long oscarsCount, MovieGenre movieGenre,
                               MpaaRating mpaaRating, String directorName, LocalDateTime birthday, Integer weight,
-                              String passportID) throws WrongArgumentException {
+                              String passportID) throws WrongArgumentException, SQLException {
         Movie movie = new Movie(movieName, new Coordinates(x, y), oscarsCount, movieGenre,
                 mpaaRating, new Person(directorName, birthday, weight, passportID));
-        int count = movieCollection.removeGreater(movie);
+
+        int count = 0;
+
+        Integer[] keys = movieCollection.getMovieHashMap().keySet().toArray(new Integer[0]);
+        for (Integer currentKey: keys) {
+            System.out.println(movieCollection.getElementByKey(currentKey).compareTo(movie));
+            if (dbConnection.isMovieKeyOwnedByUser(currentKey, login) && movieCollection.getElementByKey(currentKey).compareTo(movie) >= 0) {
+                if (dbConnection.removeObjectByKey(currentKey)) {
+                    movieCollection.remove(currentKey);
+                    count++;
+                }
+            }
+        }
         return count;
     }
 
@@ -190,18 +218,29 @@ public class Executor {
      @throws CollectionKeyException if the specified key does not exist in the collection
      @throws WrongArgumentException if any of the specified arguments are invalid
      */
-    public boolean replaceIfLowe(Integer key, String movieName, Integer x, Integer y, long oscarsCount,
+    public boolean replaceIfLowe(String login, Integer key, String movieName, Integer x, Integer y, long oscarsCount,
                               MovieGenre movieGenre, MpaaRating mpaaRating, String directorName, LocalDateTime birthday,
-                              Integer weight, String passportID) throws CollectionKeyException, WrongArgumentException {
+                              Integer weight, String passportID) throws CollectionKeyException, WrongArgumentException, SQLException {
         if (movieCollection.getElementByKey(key) == null)
             throw new CollectionKeyException("key does not exist");
+
         Movie movie = new Movie(movieName, new Coordinates(x, y), oscarsCount, movieGenre,
                 mpaaRating, new Person(directorName, birthday, weight, passportID));
-        boolean replaced = movieCollection.replaceIfLowe(key, movie);
-        if (replaced) {
-            movie.setID();
+        System.out.println(login);
+        boolean ableToReplace = movieCollection.getMovieHashMap().entrySet()
+                .stream()
+                .filter(entry -> Objects.equals(entry.getKey(), key) && dbConnection.isMovieKeyOwnedByUser(entry.getKey(), login) && entry.getValue().compareTo(movie) > 0)
+                .findFirst()
+                .orElse(null) != null;
+        System.out.println();
+        System.out.println(ableToReplace);
+        if (ableToReplace) {
+            int movieID = dbConnection.placeObjectAtKey(login, key, movieName, x, y, oscarsCount, movieGenre, mpaaRating, directorName, birthday, weight, passportID);
+            movie.setID(movieID);
+            movieCollection.put(key, movie);
+            return true;
         }
-        return replaced;
+        return false;
     }
 
     /**
@@ -210,8 +249,18 @@ public class Executor {
      @param key the key to compare with
      */
 
-    public int removeLowerKey(Integer key) {
-        int count = movieCollection.removeLowerKey(key);
+    public int removeLowerKey(String login, Integer key) throws SQLException {
+        int count = 0;
+
+        Integer[] keys = movieCollection.getMovieHashMap().keySet().toArray(new Integer[0]);
+        for (Integer currentKey : keys) {
+            if (dbConnection.isMovieKeyOwnedByUser(currentKey, login) && currentKey < key) {
+                if (dbConnection.removeObjectByKey(currentKey)) {
+                    movieCollection.remove(currentKey);
+                    count++;
+                }
+            }
+        }
         return count;
     }
 
@@ -242,21 +291,25 @@ public class Executor {
         return movieCollection.printFieldDescendingOscarsCount();
     }
 
-    /**
-     Checks if the file at the specified path exists and can be read.
+    public void authenticateUser(String login, String password) throws SQLException {
+        dbConnection.authenticateUser(login, password);
+    }
 
-     @param path the path of the file to check
-     @throws FileNotFoundException if the file does not exist
-     @throws FilePermissionException if the file cannot be read
-     */
-    private void checkFile(String path) throws FileNotFoundException, FilePermissionException, EnvironmentVariableException {
-        if (path == null) {
-            throw new EnvironmentVariableException("Environment variable PROGRAMMING_LAB is null");
+    public void addUser(String login, String password) throws SQLException {
+        dbConnection.addUser(login, password);
+    }
+
+    private void authorizeUserForMovieKey(String login, Integer movieKey) throws SQLException {
+        boolean success = dbConnection.isMovieKeyOwnedByUser(movieKey, login);
+        if (!success) {
+            throw new AuthorizationException("Unable to execute command: " + login + " is not the owner");
         }
-        File file = new File(path);
-        if (!file.exists())
-            throw new FileNotFoundException("! file " + path + " not found !");
-        if (!file.canRead())
-            throw new FilePermissionException("! no read and/or write permission for file " + path + "  !");
+    }
+
+    private void authorizeUserForMovieID(String login, Integer movieID) throws SQLException {
+        boolean success = dbConnection.isMovieIDOwnedByUser(movieID, login);
+        if (!success) {
+            throw new AuthorizationException("Unable to execute command: " + login + " is not the owner");
+        }
     }
 }

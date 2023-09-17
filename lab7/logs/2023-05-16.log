@@ -1,0 +1,1155 @@
+16.05.2023 00:01:35.474 [main] INFO   server - Server app launched
+16.05.2023 00:01:35.503 [main] ERROR  server - Fatal error: No suitable driver found for jdbc:postgresql://localhost:5432/studs
+java.sql.SQLException: No suitable driver found for jdbc:postgresql://localhost:5432/studs
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:708)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:230)
+	at server.database.DatabaseConnection.<init>(DatabaseConnection.java:17)
+	at server.database.PostgresConnection.<init>(PostgresConnection.java:11)
+	at server.database.PostgresDatabase.createConnection(PostgresDatabase.java:16)
+	at server.database.PostgresDatabase.createConnection(PostgresDatabase.java:7)
+	at server.Main.main(Main.java:30)
+16.05.2023 00:03:34.461 [main] INFO   server - Server app launched
+16.05.2023 00:03:34.486 [main] ERROR  server - Fatal error: No suitable driver found for jdbc:postgresql://localhost:5432/studs
+java.sql.SQLException: No suitable driver found for jdbc:postgresql://localhost:5432/studs
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:708)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:230)
+	at server.database.DatabaseConnection.<init>(DatabaseConnection.java:17)
+	at server.database.PostgresConnection.<init>(PostgresConnection.java:11)
+	at server.database.PostgresDatabase.createConnection(PostgresDatabase.java:16)
+	at server.database.PostgresDatabase.createConnection(PostgresDatabase.java:7)
+	at server.Main.main(Main.java:30)
+16.05.2023 00:06:44.093 [main] INFO   server - Server app launched
+16.05.2023 00:06:44.378 [main] INFO   server.network - TCP Server initialized
+16.05.2023 00:08:14.379 [main] INFO   server - Server app launched
+16.05.2023 00:10:50.390 [main] INFO   server - Server app launched
+16.05.2023 00:10:50.838 [main] INFO   server.network - TCP Server initialized
+16.05.2023 00:10:56.251 [main] INFO   server - Server app launched
+16.05.2023 00:35:40.108 [main] INFO   server - Server app launched
+16.05.2023 00:35:40.474 [main] INFO   server.network - TCP Server initialized
+16.05.2023 00:42:58.923 [main] INFO   server - Server app launched
+16.05.2023 00:43:29.918 [main] INFO   server - Server app launched
+16.05.2023 00:44:03.986 [main] INFO   server - Server app launched
+16.05.2023 00:44:21.447 [main] INFO   server - Server app launched
+16.05.2023 00:44:51.509 [main] INFO   server - Server app launched
+16.05.2023 00:45:04.589 [main] INFO   server - Server app launched
+16.05.2023 00:49:52.684 [main] INFO   server - Server app launched
+16.05.2023 00:50:58.136 [main] INFO   server - Server app launched
+16.05.2023 00:51:21.673 [main] INFO   server - Server app launched
+16.05.2023 00:55:47.217 [main] INFO   server - Server app launched
+16.05.2023 01:00:05.806 [main] INFO   server - Server app launched
+16.05.2023 01:00:15.231 [main] INFO   server - Server app launched
+16.05.2023 01:00:42.221 [main] INFO   server - Server app launched
+16.05.2023 01:00:42.701 [main] INFO   server.network - TCP Server initialized
+16.05.2023 01:04:20.213 [main] INFO   server - Server app launched
+16.05.2023 01:04:28.694 [main] INFO   server - Server app launched
+16.05.2023 01:04:29.063 [main] INFO   server.network - TCP Server initialized
+16.05.2023 01:04:57.878 [main] INFO   server - Server app launched
+16.05.2023 01:05:49.081 [main] INFO   server - Server app launched
+16.05.2023 01:06:06.502 [main] INFO   server - Server app launched
+16.05.2023 01:06:22.460 [main] INFO   server - Server app launched
+16.05.2023 01:07:45.522 [main] INFO   server - Server app launched
+16.05.2023 01:07:45.988 [main] INFO   server.network - TCP Server initialized
+16.05.2023 01:07:59.227 [main] INFO   server - Server app launched
+16.05.2023 01:07:59.526 [main] INFO   server.network - TCP Server initialized
+16.05.2023 01:08:04.778 [main] INFO   server - Server app launched
+16.05.2023 01:08:05.071 [main] INFO   server.network - TCP Server initialized
+16.05.2023 01:08:11.697 [main] INFO   server - Server app launched
+16.05.2023 01:08:11.993 [main] INFO   server.network - TCP Server initialized
+16.05.2023 01:19:50.925 [main] INFO   server - Server app launched
+16.05.2023 01:19:51.261 [main] INFO   server.network - TCP Server initialized
+16.05.2023 01:20:10.981 [main] INFO   server - Server app launched
+16.05.2023 01:20:17.917 [main] INFO   server - Server app launched
+16.05.2023 01:20:18.218 [main] INFO   server.network - TCP Server initialized
+16.05.2023 10:53:01.274 [main] INFO   server - Server app launched
+16.05.2023 10:53:01.370 [main] ERROR  server - Fatal error: Подсоединение по адресу localhost:5432 отклонено. Проверьте что хост и порт указаны правильно и что postmaster принимает TCP/IP-подсоединения.
+org.postgresql.util.PSQLException: Подсоединение по адресу localhost:5432 отклонено. Проверьте что хост и порт указаны правильно и что postmaster принимает TCP/IP-подсоединения.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:342)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:263)
+	at org.postgresql.Driver.makeConnection(Driver.java:443)
+	at org.postgresql.Driver.connect(Driver.java:297)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:230)
+	at server.database.DatabaseConnection.<init>(DatabaseConnection.java:15)
+	at server.database.PostgresConnection.<init>(PostgresConnection.java:14)
+	at server.database.PostgresDatabase.createConnection(PostgresDatabase.java:16)
+	at server.database.PostgresDatabase.createConnection(PostgresDatabase.java:7)
+	at server.Main.main(Main.java:30)
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:539)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:594)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at org.postgresql.core.PGStream.createSocket(PGStream.java:243)
+	at org.postgresql.core.PGStream.<init>(PGStream.java:98)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:132)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:258)
+	... 11 common frames omitted
+16.05.2023 10:53:31.847 [main] INFO   server - Server app launched
+16.05.2023 10:53:32.225 [main] INFO   server.network - TCP Server initialized
+16.05.2023 10:55:28.484 [main] INFO   server - Server app launched
+16.05.2023 10:55:28.487 [main] ERROR  server - Fatal error: Environment variable PROGRAMMING_LAB is null
+server.exceptions.EnvironmentVariableException: Environment variable PROGRAMMING_LAB is null
+	at server.handlers.Executor.checkFile(Executor.java:254)
+	at server.handlers.Executor.<init>(Executor.java:38)
+	at server.Main.main(Main.java:28)
+16.05.2023 10:55:49.618 [main] INFO   server - Server app launched
+16.05.2023 10:55:49.887 [main] INFO   server.network - TCP Server initialized
+16.05.2023 10:58:04.044 [main] INFO   server - Server app launched
+16.05.2023 10:58:04.375 [main] INFO   server.network - TCP Server initialized
+16.05.2023 10:59:01.077 [main] INFO   server - Server app launched
+16.05.2023 10:59:01.388 [main] INFO   server.network - TCP Server initialized
+16.05.2023 11:00:16.610 [main] INFO   server - Server app launched
+16.05.2023 11:00:16.909 [main] DEBUG  server.network - Logger initialized
+16.05.2023 11:00:16.911 [main] INFO   server.network - TCP Server initialized
+16.05.2023 11:00:25.787 [Thread-36] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-10] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-12] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-11] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.788 [Thread-48] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-15] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-9] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.786 [Thread-7] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.786 [Thread-27] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-29] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.788 [Thread-46] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-38] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-37] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-13] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-24] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.786 [Thread-25] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-31] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.788 [Thread-45] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-22] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-19] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-42] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.788 [Thread-47] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-21] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.788 [Thread-49] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-34] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-33] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-39] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-20] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-16] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-28] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-30] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-8] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-35] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-41] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-18] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.786 [Thread-26] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-40] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-32] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-17] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.788 [Thread-44] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.786 [Thread-23] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-43] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:25.787 [Thread-14] DEBUG  server.network - Client /127.0.0.1:50519 - Graceful shutdown
+16.05.2023 11:00:29.851 [Thread-0] DEBUG  server.network - Client /127.0.0.1:50519 - connected
+16.05.2023 11:00:31.279 [Thread-50] DEBUG  server.network - Client /127.0.0.1:50523 - connected
+16.05.2023 11:02:57.828 [Thread-63] DEBUG  server.network - Client /127.0.0.1:50523 - Graceful shutdown
+16.05.2023 11:02:57.828 [Thread-55] DEBUG  server.network - Client /127.0.0.1:50523 - Graceful shutdown
+16.05.2023 11:02:57.827 [Thread-59] DEBUG  server.network - Client /127.0.0.1:50523 - Graceful shutdown
+16.05.2023 11:02:57.828 [Thread-57] DEBUG  server.network - Client /127.0.0.1:50523 - Graceful shutdown
+16.05.2023 11:02:57.829 [Thread-67] DEBUG  server.network - Client /127.0.0.1:50523 - Graceful shutdown
+16.05.2023 11:02:57.828 [Thread-60] DEBUG  server.network - Client /127.0.0.1:50523 - Graceful shutdown
+16.05.2023 11:02:57.827 [Thread-53] DEBUG  server.network - Client /127.0.0.1:50523 - Graceful shutdown
+16.05.2023 11:02:57.828 [Thread-54] DEBUG  server.network - Client /127.0.0.1:50523 - Graceful shutdown
+16.05.2023 11:02:57.829 [Thread-68] DEBUG  server.network - Client /127.0.0.1:50523 - Graceful shutdown
+16.05.2023 11:02:57.828 [Thread-64] DEBUG  server.network - Client /127.0.0.1:50523 - Graceful shutdown
+16.05.2023 11:02:57.828 [Thread-66] DEBUG  server.network - Client /127.0.0.1:50523 - Graceful shutdown
+16.05.2023 11:02:57.828 [Thread-65] DEBUG  server.network - Client /127.0.0.1:50523 - Graceful shutdown
+16.05.2023 11:02:57.828 [Thread-61] DEBUG  server.network - Client /127.0.0.1:50523 - Graceful shutdown
+16.05.2023 11:02:57.828 [Thread-58] DEBUG  server.network - Client /127.0.0.1:50523 - Graceful shutdown
+16.05.2023 11:02:57.828 [Thread-62] DEBUG  server.network - Client /127.0.0.1:50523 - Graceful shutdown
+16.05.2023 11:02:57.828 [Thread-56] DEBUG  server.network - Client /127.0.0.1:50523 - Graceful shutdown
+16.05.2023 11:03:03.763 [Thread-69] DEBUG  server.network - Client /127.0.0.1:50528 - connected
+16.05.2023 11:03:11.428 [Thread-77] DEBUG  server.network - Client /127.0.0.1:50528 - Graceful shutdown
+16.05.2023 11:03:11.428 [Thread-79] DEBUG  server.network - Client /127.0.0.1:50528 - Graceful shutdown
+16.05.2023 11:03:11.428 [Thread-78] DEBUG  server.network - Client /127.0.0.1:50528 - Graceful shutdown
+16.05.2023 11:03:11.428 [Thread-73] DEBUG  server.network - Client /127.0.0.1:50528 - Graceful shutdown
+16.05.2023 11:03:11.428 [Thread-76] DEBUG  server.network - Client /127.0.0.1:50528 - Graceful shutdown
+16.05.2023 11:03:11.428 [Thread-75] DEBUG  server.network - Client /127.0.0.1:50528 - Graceful shutdown
+16.05.2023 11:03:11.428 [Thread-74] DEBUG  server.network - Client /127.0.0.1:50528 - Graceful shutdown
+16.05.2023 11:03:11.429 [Thread-81] DEBUG  server.network - Client /127.0.0.1:50528 - Graceful shutdown
+16.05.2023 11:03:11.429 [Thread-80] DEBUG  server.network - Client /127.0.0.1:50528 - Graceful shutdown
+16.05.2023 11:03:12.755 [Thread-71] DEBUG  server.network - Client /127.0.0.1:50532 - connected
+16.05.2023 11:03:16.978 [Thread-82] DEBUG  server.network - Client /127.0.0.1:50536 - connected
+16.05.2023 11:03:30.647 [Thread-90] DEBUG  server.network - Client /127.0.0.1:50536 - Graceful shutdown
+16.05.2023 11:03:30.647 [Thread-85] DEBUG  server.network - Client /127.0.0.1:50536 - Graceful shutdown
+16.05.2023 11:03:30.648 [Thread-86] DEBUG  server.network - Client /127.0.0.1:50536 - Graceful shutdown
+16.05.2023 11:03:30.647 [Thread-84] DEBUG  server.network - Client /127.0.0.1:50536 - Graceful shutdown
+16.05.2023 11:03:30.648 [Thread-88] DEBUG  server.network - Client /127.0.0.1:50536 - Graceful shutdown
+16.05.2023 11:03:30.649 [Thread-89] DEBUG  server.network - Client /127.0.0.1:50536 - Graceful shutdown
+16.05.2023 11:03:30.648 [Thread-92] DEBUG  server.network - Client /127.0.0.1:50536 - Graceful shutdown
+16.05.2023 11:03:30.649 [Thread-87] DEBUG  server.network - Client /127.0.0.1:50536 - Graceful shutdown
+16.05.2023 11:03:30.649 [Thread-93] DEBUG  server.network - Client /127.0.0.1:50536 - Graceful shutdown
+16.05.2023 11:03:30.649 [Thread-94] DEBUG  server.network - Client /127.0.0.1:50536 - Graceful shutdown
+16.05.2023 11:03:30.649 [Thread-91] DEBUG  server.network - Client /127.0.0.1:50536 - Graceful shutdown
+16.05.2023 11:03:30.650 [Thread-95] DEBUG  server.network - Client /127.0.0.1:50536 - Graceful shutdown
+16.05.2023 11:03:36.550 [Thread-96] DEBUG  server.network - Client /127.0.0.1:50540 - connected
+16.05.2023 11:03:50.272 [Thread-100] DEBUG  server.network - Client /127.0.0.1:50540 - Graceful shutdown
+16.05.2023 11:03:50.274 [Thread-115] DEBUG  server.network - Client /127.0.0.1:50540 - Graceful shutdown
+16.05.2023 11:03:50.273 [Thread-104] DEBUG  server.network - Client /127.0.0.1:50540 - Graceful shutdown
+16.05.2023 11:03:50.272 [Thread-101] DEBUG  server.network - Client /127.0.0.1:50540 - Graceful shutdown
+16.05.2023 11:03:50.272 [Thread-98] DEBUG  server.network - Client /127.0.0.1:50540 - Graceful shutdown
+16.05.2023 11:03:50.272 [Thread-99] DEBUG  server.network - Client /127.0.0.1:50540 - Graceful shutdown
+16.05.2023 11:03:50.273 [Thread-102] DEBUG  server.network - Client /127.0.0.1:50540 - Graceful shutdown
+16.05.2023 11:03:50.273 [Thread-103] DEBUG  server.network - Client /127.0.0.1:50540 - Graceful shutdown
+16.05.2023 11:03:50.273 [Thread-105] DEBUG  server.network - Client /127.0.0.1:50540 - Graceful shutdown
+16.05.2023 11:03:50.273 [Thread-106] DEBUG  server.network - Client /127.0.0.1:50540 - Graceful shutdown
+16.05.2023 11:03:50.274 [Thread-107] DEBUG  server.network - Client /127.0.0.1:50540 - Graceful shutdown
+16.05.2023 11:03:50.274 [Thread-108] DEBUG  server.network - Client /127.0.0.1:50540 - Graceful shutdown
+16.05.2023 11:03:50.274 [Thread-110] DEBUG  server.network - Client /127.0.0.1:50540 - Graceful shutdown
+16.05.2023 11:03:50.274 [Thread-112] DEBUG  server.network - Client /127.0.0.1:50540 - Graceful shutdown
+16.05.2023 11:03:50.274 [Thread-109] DEBUG  server.network - Client /127.0.0.1:50540 - Graceful shutdown
+16.05.2023 11:03:50.274 [Thread-111] DEBUG  server.network - Client /127.0.0.1:50540 - Graceful shutdown
+16.05.2023 11:03:50.274 [Thread-113] DEBUG  server.network - Client /127.0.0.1:50540 - Graceful shutdown
+16.05.2023 11:03:50.274 [Thread-114] DEBUG  server.network - Client /127.0.0.1:50540 - Graceful shutdown
+16.05.2023 11:03:50.274 [Thread-116] DEBUG  server.network - Client /127.0.0.1:50540 - Graceful shutdown
+16.05.2023 11:03:54.510 [Thread-119] DEBUG  server.network - Client /127.0.0.1:50532 - Graceful shutdown
+16.05.2023 11:03:54.510 [Thread-120] DEBUG  server.network - Client /127.0.0.1:50532 - Graceful shutdown
+16.05.2023 11:03:54.510 [Thread-121] DEBUG  server.network - Client /127.0.0.1:50532 - Graceful shutdown
+16.05.2023 11:03:54.510 [Thread-122] DEBUG  server.network - Client /127.0.0.1:50532 - Graceful shutdown
+16.05.2023 11:03:56.186 [Thread-117] DEBUG  server.network - Client /127.0.0.1:50552 - connected
+16.05.2023 11:03:59.987 [Thread-123] DEBUG  server.network - Client /127.0.0.1:50557 - connected
+16.05.2023 11:05:41.759 [main] INFO   server - Server app launched
+16.05.2023 11:05:42.283 [main] DEBUG  server.network - Logger initialized
+16.05.2023 11:05:42.286 [main] INFO   server.network - TCP Server initialized
+16.05.2023 11:05:50.607 [Thread-13] DEBUG  server.network - Client /127.0.0.1:50565 - input:
+
+16.05.2023 11:05:50.608 [Thread-25] DEBUG  server.network - Client /127.0.0.1:50566 - Graceful shutdown
+16.05.2023 11:05:50.607 [Thread-11] DEBUG  server.network - Client /127.0.0.1:50565 - input:
+
+16.05.2023 11:05:50.607 [Thread-18] DEBUG  server.network - Client /127.0.0.1:50566 - Graceful shutdown
+16.05.2023 11:05:50.608 [Thread-22] DEBUG  server.network - Client /127.0.0.1:50566 - Graceful shutdown
+16.05.2023 11:05:50.608 [Thread-23] DEBUG  server.network - Client /127.0.0.1:50566 - Graceful shutdown
+16.05.2023 11:05:50.607 [Thread-10] DEBUG  server.network - Client /127.0.0.1:50565 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 11:05:50.608 [Thread-28] DEBUG  server.network - Client /127.0.0.1:50566 - Graceful shutdown
+16.05.2023 11:05:50.608 [Thread-27] DEBUG  server.network - Client /127.0.0.1:50566 - Graceful shutdown
+16.05.2023 11:05:50.609 [Thread-29] DEBUG  server.network - Client /127.0.0.1:50566 - Graceful shutdown
+16.05.2023 11:05:50.607 [Thread-19] DEBUG  server.network - Client /127.0.0.1:50566 - Graceful shutdown
+16.05.2023 11:05:50.608 [Thread-24] DEBUG  server.network - Client /127.0.0.1:50566 - Graceful shutdown
+16.05.2023 11:05:50.608 [Thread-21] DEBUG  server.network - Client /127.0.0.1:50566 - Graceful shutdown
+16.05.2023 11:05:50.607 [Thread-17] DEBUG  server.network - Client /127.0.0.1:50566 - Graceful shutdown
+16.05.2023 11:05:50.608 [Thread-20] DEBUG  server.network - Client /127.0.0.1:50566 - Graceful shutdown
+16.05.2023 11:05:50.607 [Thread-15] DEBUG  server.network - Client /127.0.0.1:50566 - Graceful shutdown
+16.05.2023 11:05:50.608 [Thread-26] DEBUG  server.network - Client /127.0.0.1:50566 - Graceful shutdown
+16.05.2023 11:05:50.607 [Thread-16] DEBUG  server.network - Client /127.0.0.1:50566 - Graceful shutdown
+16.05.2023 11:05:55.600 [Thread-0] DEBUG  server.network - Client /127.0.0.1:50565 - connected
+16.05.2023 11:05:55.611 [Thread-12] DEBUG  server.network - Client /127.0.0.1:50566 - connected
+16.05.2023 13:37:25.089 [main] INFO   server - Server app launched
+16.05.2023 13:37:25.159 [main] ERROR  server - Fatal error: Подсоединение по адресу localhost:5432 отклонено. Проверьте что хост и порт указаны правильно и что postmaster принимает TCP/IP-подсоединения.
+org.postgresql.util.PSQLException: Подсоединение по адресу localhost:5432 отклонено. Проверьте что хост и порт указаны правильно и что postmaster принимает TCP/IP-подсоединения.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:342)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:263)
+	at org.postgresql.Driver.makeConnection(Driver.java:443)
+	at org.postgresql.Driver.connect(Driver.java:297)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:230)
+	at server.database.DatabaseConnection.<init>(DatabaseConnection.java:15)
+	at server.database.PostgresConnection.<init>(PostgresConnection.java:14)
+	at server.database.PostgresDatabase.createConnection(PostgresDatabase.java:16)
+	at server.database.PostgresDatabase.createConnection(PostgresDatabase.java:7)
+	at server.Main.main(Main.java:30)
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:539)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:594)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at org.postgresql.core.PGStream.createSocket(PGStream.java:243)
+	at org.postgresql.core.PGStream.<init>(PGStream.java:98)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:132)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:258)
+	... 11 common frames omitted
+16.05.2023 13:37:34.058 [main] INFO   server - Server app launched
+16.05.2023 13:37:34.447 [main] DEBUG  server.network - Logger initialized
+16.05.2023 13:37:34.450 [main] INFO   server.network - TCP Server initialized
+16.05.2023 13:37:44.618 [Thread-13] DEBUG  server.network - Client /127.0.0.1:50658 - Graceful shutdown
+16.05.2023 13:37:44.618 [Thread-17] DEBUG  server.network - Client /127.0.0.1:50658 - Graceful shutdown
+16.05.2023 13:37:44.618 [Thread-15] DEBUG  server.network - Client /127.0.0.1:50658 - Graceful shutdown
+16.05.2023 13:37:44.618 [Thread-14] DEBUG  server.network - Client /127.0.0.1:50658 - Graceful shutdown
+16.05.2023 13:37:44.618 [Thread-24] DEBUG  server.network - Client /127.0.0.1:50658 - Graceful shutdown
+16.05.2023 13:37:44.618 [Thread-16] DEBUG  server.network - Client /127.0.0.1:50658 - Graceful shutdown
+16.05.2023 13:37:44.618 [Thread-18] DEBUG  server.network - Client /127.0.0.1:50658 - Graceful shutdown
+16.05.2023 13:37:44.618 [Thread-21] DEBUG  server.network - Client /127.0.0.1:50658 - Graceful shutdown
+16.05.2023 13:37:44.619 [Thread-29] DEBUG  server.network - Client /127.0.0.1:50658 - Graceful shutdown
+16.05.2023 13:37:44.618 [Thread-20] DEBUG  server.network - Client /127.0.0.1:50658 - Graceful shutdown
+16.05.2023 13:37:44.618 [Thread-12] DEBUG  server.network - Client /127.0.0.1:50658 - Graceful shutdown
+16.05.2023 13:37:44.618 [Thread-8] DEBUG  server.network - Client /127.0.0.1:50658 - Graceful shutdown
+16.05.2023 13:37:44.618 [Thread-27] DEBUG  server.network - Client /127.0.0.1:50658 - Graceful shutdown
+16.05.2023 13:37:44.618 [Thread-11] DEBUG  server.network - Client /127.0.0.1:50658 - Graceful shutdown
+16.05.2023 13:37:44.618 [Thread-19] DEBUG  server.network - Client /127.0.0.1:50658 - Graceful shutdown
+16.05.2023 13:37:44.618 [Thread-26] DEBUG  server.network - Client /127.0.0.1:50658 - Graceful shutdown
+16.05.2023 13:37:44.618 [Thread-10] DEBUG  server.network - Client /127.0.0.1:50658 - Graceful shutdown
+16.05.2023 13:37:44.618 [Thread-23] DEBUG  server.network - Client /127.0.0.1:50658 - Graceful shutdown
+16.05.2023 13:37:44.618 [Thread-25] DEBUG  server.network - Client /127.0.0.1:50658 - Graceful shutdown
+16.05.2023 13:37:44.618 [Thread-28] DEBUG  server.network - Client /127.0.0.1:50658 - Graceful shutdown
+16.05.2023 13:37:44.618 [Thread-7] DEBUG  server.network - Client /127.0.0.1:50657 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 13:37:44.618 [Thread-9] DEBUG  server.network - Client /127.0.0.1:50657 - input:
+
+16.05.2023 13:37:44.618 [Thread-22] DEBUG  server.network - Client /127.0.0.1:50658 - Graceful shutdown
+16.05.2023 13:37:49.618 [Thread-0] DEBUG  server.network - Client /127.0.0.1:50657 - connected
+16.05.2023 13:37:49.621 [Thread-5] DEBUG  server.network - Client /127.0.0.1:50658 - connected
+16.05.2023 13:38:08.154 [main] INFO   server - Server app launched
+16.05.2023 13:38:08.519 [main] DEBUG  server.network - Logger initialized
+16.05.2023 13:38:08.521 [main] INFO   server.network - TCP Server initialized
+16.05.2023 13:38:14.980 [Thread-10] DEBUG  server.network - Client /127.0.0.1:50664 - Graceful shutdown
+16.05.2023 13:38:14.981 [Thread-26] DEBUG  server.network - Client /127.0.0.1:50664 - Graceful shutdown
+16.05.2023 13:38:14.980 [Thread-21] DEBUG  server.network - Client /127.0.0.1:50664 - Graceful shutdown
+16.05.2023 13:38:14.980 [Thread-14] DEBUG  server.network - Client /127.0.0.1:50664 - Graceful shutdown
+16.05.2023 13:38:14.980 [Thread-9] DEBUG  server.network - Client /127.0.0.1:50664 - Graceful shutdown
+16.05.2023 13:38:14.980 [Thread-24] DEBUG  server.network - Client /127.0.0.1:50664 - Graceful shutdown
+16.05.2023 13:38:14.980 [Thread-6] DEBUG  server.network - Client /127.0.0.1:50663 - input:
+
+16.05.2023 13:38:14.981 [Thread-27] DEBUG  server.network - Client /127.0.0.1:50664 - Graceful shutdown
+16.05.2023 13:38:14.980 [Thread-17] DEBUG  server.network - Client /127.0.0.1:50664 - Graceful shutdown
+16.05.2023 13:38:14.980 [Thread-25] DEBUG  server.network - Client /127.0.0.1:50664 - Graceful shutdown
+16.05.2023 13:38:14.980 [Thread-7] DEBUG  server.network - Client /127.0.0.1:50664 - Graceful shutdown
+16.05.2023 13:38:14.980 [Thread-18] DEBUG  server.network - Client /127.0.0.1:50664 - Graceful shutdown
+16.05.2023 13:38:14.981 [Thread-28] DEBUG  server.network - Client /127.0.0.1:50664 - Graceful shutdown
+16.05.2023 13:38:14.980 [Thread-23] DEBUG  server.network - Client /127.0.0.1:50664 - Graceful shutdown
+16.05.2023 13:38:14.980 [Thread-5] DEBUG  server.network - Client /127.0.0.1:50664 - Graceful shutdown
+16.05.2023 13:38:14.980 [Thread-15] DEBUG  server.network - Client /127.0.0.1:50664 - Graceful shutdown
+16.05.2023 13:38:14.980 [Thread-16] DEBUG  server.network - Client /127.0.0.1:50664 - Graceful shutdown
+16.05.2023 13:38:14.980 [Thread-12] DEBUG  server.network - Client /127.0.0.1:50664 - Graceful shutdown
+16.05.2023 13:38:14.980 [Thread-19] DEBUG  server.network - Client /127.0.0.1:50664 - Graceful shutdown
+16.05.2023 13:38:14.980 [Thread-4] DEBUG  server.network - Client /127.0.0.1:50663 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 13:38:14.980 [Thread-13] DEBUG  server.network - Client /127.0.0.1:50664 - Graceful shutdown
+16.05.2023 13:38:14.980 [Thread-20] DEBUG  server.network - Client /127.0.0.1:50664 - Graceful shutdown
+16.05.2023 13:38:14.980 [Thread-11] DEBUG  server.network - Client /127.0.0.1:50664 - Graceful shutdown
+16.05.2023 13:38:14.980 [Thread-8] DEBUG  server.network - Client /127.0.0.1:50664 - Graceful shutdown
+16.05.2023 13:38:14.980 [Thread-22] DEBUG  server.network - Client /127.0.0.1:50664 - Graceful shutdown
+16.05.2023 13:38:19.981 [Thread-0] DEBUG  server.network - Client /127.0.0.1:50663 - connected
+16.05.2023 13:38:19.981 [Thread-1] DEBUG  server.network - Client /127.0.0.1:50664 - connected
+16.05.2023 13:38:29.526 [main] INFO   server - Server app launched
+16.05.2023 13:38:29.920 [main] DEBUG  server.network - Logger initialized
+16.05.2023 13:38:29.922 [main] INFO   server.network - TCP Server initialized
+16.05.2023 13:38:32.774 [Thread-8] DEBUG  server.network - Client /127.0.0.1:50673 - Graceful shutdown
+16.05.2023 13:38:32.774 [Thread-14] DEBUG  server.network - Client /127.0.0.1:50673 - Graceful shutdown
+16.05.2023 13:38:32.774 [Thread-12] DEBUG  server.network - Client /127.0.0.1:50673 - Graceful shutdown
+16.05.2023 13:38:32.774 [Thread-6] DEBUG  server.network - Client /127.0.0.1:50673 - Graceful shutdown
+16.05.2023 13:38:32.774 [Thread-13] DEBUG  server.network - Client /127.0.0.1:50673 - Graceful shutdown
+16.05.2023 13:38:32.774 [Thread-18] DEBUG  server.network - Client /127.0.0.1:50673 - Graceful shutdown
+16.05.2023 13:38:32.774 [Thread-10] DEBUG  server.network - Client /127.0.0.1:50673 - Graceful shutdown
+16.05.2023 13:38:32.774 [Thread-7] DEBUG  server.network - Client /127.0.0.1:50672 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 13:38:32.774 [Thread-9] DEBUG  server.network - Client /127.0.0.1:50672 - input:
+
+16.05.2023 13:38:32.774 [Thread-15] DEBUG  server.network - Client /127.0.0.1:50673 - Graceful shutdown
+16.05.2023 13:38:32.774 [Thread-17] DEBUG  server.network - Client /127.0.0.1:50673 - Graceful shutdown
+16.05.2023 13:38:32.774 [Thread-16] DEBUG  server.network - Client /127.0.0.1:50673 - Graceful shutdown
+16.05.2023 13:38:32.775 [Thread-19] DEBUG  server.network - Client /127.0.0.1:50673 - Graceful shutdown
+16.05.2023 13:38:32.774 [Thread-11] DEBUG  server.network - Client /127.0.0.1:50673 - Graceful shutdown
+16.05.2023 13:38:32.775 [Thread-20] DEBUG  server.network - Client /127.0.0.1:50673 - Graceful shutdown
+16.05.2023 13:38:37.778 [Thread-0] DEBUG  server.network - Client /127.0.0.1:50672 - connected
+16.05.2023 13:38:37.778 [Thread-4] DEBUG  server.network - Client /127.0.0.1:50673 - connected
+16.05.2023 13:48:18.458 [main] INFO   server - Server app launched
+16.05.2023 13:48:18.804 [main] DEBUG  server.network - Logger initialized
+16.05.2023 13:48:18.806 [main] INFO   server.network - TCP Server initialized
+16.05.2023 13:48:21.786 [Thread-15] DEBUG  server.network - Client /127.0.0.1:50804 - Graceful shutdown
+16.05.2023 13:48:21.787 [Thread-18] DEBUG  server.network - Client /127.0.0.1:50804 - Graceful shutdown
+16.05.2023 13:48:21.786 [Thread-12] DEBUG  server.network - Client /127.0.0.1:50804 - Graceful shutdown
+16.05.2023 13:48:21.787 [Thread-22] DEBUG  server.network - Client /127.0.0.1:50804 - Graceful shutdown
+16.05.2023 13:48:21.787 [Thread-20] DEBUG  server.network - Client /127.0.0.1:50804 - Graceful shutdown
+16.05.2023 13:48:21.787 [Thread-23] DEBUG  server.network - Client /127.0.0.1:50804 - Graceful shutdown
+16.05.2023 13:48:21.786 [Thread-13] DEBUG  server.network - Client /127.0.0.1:50804 - Graceful shutdown
+16.05.2023 13:48:21.787 [Thread-21] DEBUG  server.network - Client /127.0.0.1:50804 - Graceful shutdown
+16.05.2023 13:48:21.787 [Thread-19] DEBUG  server.network - Client /127.0.0.1:50804 - Graceful shutdown
+16.05.2023 13:48:21.786 [Thread-17] DEBUG  server.network - Client /127.0.0.1:50804 - Graceful shutdown
+16.05.2023 13:48:21.786 [Thread-14] DEBUG  server.network - Client /127.0.0.1:50803 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 13:48:21.787 [Thread-24] DEBUG  server.network - Client /127.0.0.1:50804 - Graceful shutdown
+16.05.2023 13:48:21.786 [Thread-16] DEBUG  server.network - Client /127.0.0.1:50803 - input:
+
+16.05.2023 13:48:26.790 [Thread-3] DEBUG  server.network - Client /127.0.0.1:50804 - connected
+16.05.2023 13:48:26.790 [Thread-1] DEBUG  server.network - Client /127.0.0.1:50803 - connected
+16.05.2023 13:49:17.943 [main] INFO   server - Server app launched
+16.05.2023 13:49:18.387 [main] DEBUG  server.network - Logger initialized
+16.05.2023 13:49:18.389 [main] INFO   server.network - TCP Server initialized
+16.05.2023 13:49:19.814 [Thread-13] DEBUG  server.network - Client /127.0.0.1:50813 - Graceful shutdown
+16.05.2023 13:49:19.814 [Thread-18] DEBUG  server.network - Client /127.0.0.1:50813 - Graceful shutdown
+16.05.2023 13:49:19.814 [Thread-17] DEBUG  server.network - Client /127.0.0.1:50813 - Graceful shutdown
+16.05.2023 13:49:19.814 [Thread-11] DEBUG  server.network - Client /127.0.0.1:50813 - Graceful shutdown
+16.05.2023 13:49:19.814 [Thread-20] DEBUG  server.network - Client /127.0.0.1:50813 - Graceful shutdown
+16.05.2023 13:49:19.814 [Thread-16] DEBUG  server.network - Client /127.0.0.1:50813 - Graceful shutdown
+16.05.2023 13:49:19.815 [Thread-23] DEBUG  server.network - Client /127.0.0.1:50813 - Graceful shutdown
+16.05.2023 13:49:19.815 [Thread-22] DEBUG  server.network - Client /127.0.0.1:50813 - Graceful shutdown
+16.05.2023 13:49:19.815 [Thread-26] DEBUG  server.network - Client /127.0.0.1:50813 - Graceful shutdown
+16.05.2023 13:49:19.814 [Thread-14] DEBUG  server.network - Client /127.0.0.1:50812 - input:
+
+16.05.2023 13:49:19.814 [Thread-15] DEBUG  server.network - Client /127.0.0.1:50813 - Graceful shutdown
+16.05.2023 13:49:19.814 [Thread-12] DEBUG  server.network - Client /127.0.0.1:50812 - input:
+
+16.05.2023 13:49:19.815 [Thread-27] DEBUG  server.network - Client /127.0.0.1:50813 - Graceful shutdown
+16.05.2023 13:49:19.814 [Thread-21] DEBUG  server.network - Client /127.0.0.1:50813 - Graceful shutdown
+16.05.2023 13:49:19.815 [Thread-24] DEBUG  server.network - Client /127.0.0.1:50813 - Graceful shutdown
+16.05.2023 13:49:19.814 [Thread-19] DEBUG  server.network - Client /127.0.0.1:50813 - Graceful shutdown
+16.05.2023 13:49:19.815 [Thread-25] DEBUG  server.network - Client /127.0.0.1:50813 - Graceful shutdown
+16.05.2023 13:49:19.814 [Thread-10] DEBUG  server.network - Client /127.0.0.1:50812 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 13:49:24.817 [Thread-2] DEBUG  server.network - Client /127.0.0.1:50813 - connected
+16.05.2023 13:49:24.818 [Thread-3] DEBUG  server.network - Client /127.0.0.1:50812 - connected
+16.05.2023 14:49:01.832 [main] INFO   server - Server app launched
+16.05.2023 14:49:02.233 [main] DEBUG  server.network - Logger initialized
+16.05.2023 14:49:02.236 [main] INFO   server.network - TCP Server initialized
+16.05.2023 14:49:07.186 [main] DEBUG  server.network - Client /127.0.0.1:51224 - connected
+16.05.2023 14:49:07.186 [main] DEBUG  server.network - Client /127.0.0.1:51225 - connected
+16.05.2023 14:49:07.187 [Thread-1] DEBUG  server.network - Client /127.0.0.1:51224 - input:
+
+16.05.2023 14:49:07.187 [Thread-2] DEBUG  server.network - Client /127.0.0.1:51225 - Graceful shutdown
+16.05.2023 14:49:07.187 [Thread-5] DEBUG  server.network - Client /127.0.0.1:51224 - input:
+
+16.05.2023 14:49:07.187 [Thread-3] DEBUG  server.network - Client /127.0.0.1:51224 - input:
+
+16.05.2023 14:49:07.187 [Thread-7] DEBUG  server.network - Client /127.0.0.1:51225 - Graceful shutdown
+16.05.2023 14:49:07.187 [Thread-6] DEBUG  server.network - Client /127.0.0.1:51225 - Graceful shutdown
+16.05.2023 14:49:07.187 [Thread-0] DEBUG  server.network - Client /127.0.0.1:51224 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 14:49:07.187 [Thread-4] DEBUG  server.network - Client /127.0.0.1:51225 - Graceful shutdown
+16.05.2023 14:49:07.187 [Thread-8] DEBUG  server.network - Client /127.0.0.1:51225 - Graceful shutdown
+16.05.2023 14:49:07.188 [Thread-9] DEBUG  server.network - Client /127.0.0.1:51225 - Graceful shutdown
+16.05.2023 14:49:39.080 [main] INFO   server - Server app launched
+16.05.2023 14:49:39.439 [main] DEBUG  server.network - Logger initialized
+16.05.2023 14:49:39.442 [main] INFO   server.network - TCP Server initialized
+16.05.2023 14:49:41.091 [main] DEBUG  server.network - Client /127.0.0.1:51230 - connected
+16.05.2023 14:49:41.092 [main] DEBUG  server.network - Client /127.0.0.1:51231 - connected
+16.05.2023 14:49:41.093 [Thread-2] DEBUG  server.network - Client /127.0.0.1:51231 - Graceful shutdown
+16.05.2023 14:49:41.093 [Thread-6] DEBUG  server.network - Client /127.0.0.1:51231 - Graceful shutdown
+16.05.2023 14:49:41.093 [Thread-1] DEBUG  server.network - Client /127.0.0.1:51230 - input:
+
+16.05.2023 14:49:41.093 [Thread-5] DEBUG  server.network - Client /127.0.0.1:51230 - input:
+
+16.05.2023 14:49:41.093 [Thread-4] DEBUG  server.network - Client /127.0.0.1:51231 - Graceful shutdown
+16.05.2023 14:49:41.093 [Thread-7] DEBUG  server.network - Client /127.0.0.1:51231 - Graceful shutdown
+16.05.2023 14:49:41.093 [Thread-0] DEBUG  server.network - Client /127.0.0.1:51230 - input:
+
+16.05.2023 14:49:41.093 [Thread-3] DEBUG  server.network - Client /127.0.0.1:51230 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 14:49:41.093 [Thread-8] DEBUG  server.network - Client /127.0.0.1:51231 - Graceful shutdown
+16.05.2023 14:50:14.359 [main] INFO   server - Server app launched
+16.05.2023 14:50:14.695 [main] DEBUG  server.network - Logger initialized
+16.05.2023 14:50:14.698 [main] INFO   server.network - TCP Server initialized
+16.05.2023 14:50:18.129 [main] DEBUG  server.network - Client /127.0.0.1:51237 - connected
+16.05.2023 14:50:18.130 [main] DEBUG  server.network - Client /127.0.0.1:51238 - connected
+16.05.2023 14:50:29.189 [main] DEBUG  server.network - Client /127.0.0.1:51239 - connected
+16.05.2023 14:50:29.190 [main] DEBUG  server.network - Client /127.0.0.1:51240 - connected
+16.05.2023 15:01:37.543 [main] INFO   server - Server app launched
+16.05.2023 15:01:37.958 [main] DEBUG  server.network - Logger initialized
+16.05.2023 15:01:37.961 [main] INFO   server.network - TCP Server initialized
+16.05.2023 15:01:41.062 [main] DEBUG  server.network - Client /127.0.0.1:51300 - connected
+16.05.2023 15:01:41.063 [main] DEBUG  server.network - Client /127.0.0.1:51301 - connected
+16.05.2023 15:01:41.063 [Thread-2] DEBUG  server.network - Client /127.0.0.1:51301 - Graceful shutdown
+16.05.2023 15:01:41.063 [Thread-4] DEBUG  server.network - Client /127.0.0.1:51301 - Graceful shutdown
+16.05.2023 15:01:41.063 [Thread-1] DEBUG  server.network - Client /127.0.0.1:51300 - input:
+
+16.05.2023 15:01:41.063 [Thread-0] DEBUG  server.network - Client /127.0.0.1:51300 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 15:01:41.064 [Thread-6] DEBUG  server.network - Client /127.0.0.1:51301 - Graceful shutdown
+16.05.2023 15:01:41.063 [Thread-3] DEBUG  server.network - Client /127.0.0.1:51301 - Graceful shutdown
+16.05.2023 15:01:41.064 [Thread-5] DEBUG  server.network - Client /127.0.0.1:51301 - Graceful shutdown
+16.05.2023 15:01:41.064 [Thread-7] DEBUG  server.network - Client /127.0.0.1:51301 - Graceful shutdown
+16.05.2023 15:01:41.074 [Thread-14] DEBUG  server.network - Client /127.0.0.1:51300 - write response info
+16.05.2023 15:01:41.075 [Thread-13] DEBUG  server.network - Client /127.0.0.1:51300 - write response info
+16.05.2023 15:01:41.075 [Thread-8] DEBUG  server.network - Client /127.0.0.1:51300 - write response info
+16.05.2023 15:01:41.075 [Thread-12] DEBUG  server.network - Client /127.0.0.1:51300 - write response info
+16.05.2023 15:01:41.075 [Thread-9] DEBUG  server.network - Client /127.0.0.1:51300 - write response info
+16.05.2023 15:01:41.075 [Thread-11] DEBUG  server.network - Client /127.0.0.1:51300 - write response info
+16.05.2023 15:01:41.075 [Thread-15] DEBUG  server.network - Client /127.0.0.1:51300 - write response info
+16.05.2023 15:01:41.076 [Thread-10] DEBUG  server.network - Client /127.0.0.1:51300 - write response info
+16.05.2023 15:01:41.086 [Thread-21] DEBUG  server.network - Client /127.0.0.1:51300 - Forceful shutdown
+16.05.2023 15:01:41.086 [Thread-17] DEBUG  server.network - Client /127.0.0.1:51300 - Forceful shutdown
+16.05.2023 15:01:41.086 [Thread-18] DEBUG  server.network - Client /127.0.0.1:51300 - Forceful shutdown
+16.05.2023 15:01:41.086 [Thread-19] DEBUG  server.network - Client /127.0.0.1:51300 - Forceful shutdown
+16.05.2023 15:01:41.086 [Thread-20] DEBUG  server.network - Client /127.0.0.1:51300 - Forceful shutdown
+16.05.2023 15:03:40.923 [main] INFO   server - Server app launched
+16.05.2023 15:03:41.273 [main] DEBUG  server.network - Logger initialized
+16.05.2023 15:03:41.280 [main] INFO   server.network - TCP Server initialized
+16.05.2023 15:03:44.369 [main] DEBUG  server.network - Client /127.0.0.1:51312 - connected
+16.05.2023 15:03:44.370 [main] DEBUG  server.network - Client /127.0.0.1:51313 - connected
+16.05.2023 15:03:44.371 [Thread-1] DEBUG  server.network - Client /127.0.0.1:51313 - Graceful shutdown
+16.05.2023 15:03:44.371 [Thread-0] DEBUG  server.network - Client /127.0.0.1:51312 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 15:03:44.379 [Thread-2] DEBUG  server.network - Client /127.0.0.1:51312 - write response info
+16.05.2023 15:03:44.380 [Thread-3] DEBUG  server.network - Client /127.0.0.1:51312 - Graceful shutdown
+16.05.2023 15:04:21.275 [main] INFO   server - Server app launched
+16.05.2023 15:04:21.659 [main] DEBUG  server.network - Logger initialized
+16.05.2023 15:04:21.662 [main] INFO   server.network - TCP Server initialized
+16.05.2023 15:04:26.142 [main] DEBUG  server.network - Client /127.0.0.1:51320 - connected
+16.05.2023 15:04:26.142 [main] DEBUG  server.network - Client /127.0.0.1:51321 - connected
+16.05.2023 15:04:26.143 [Thread-2] DEBUG  server.network - Client /127.0.0.1:51321 - Graceful shutdown
+16.05.2023 15:04:26.143 [Thread-3] DEBUG  server.network - Client /127.0.0.1:51321 - Graceful shutdown
+16.05.2023 15:04:26.143 [Thread-8] DEBUG  server.network - Client /127.0.0.1:51321 - Graceful shutdown
+16.05.2023 15:04:26.143 [Thread-4] DEBUG  server.network - Client /127.0.0.1:51321 - Graceful shutdown
+16.05.2023 15:04:26.143 [Thread-7] DEBUG  server.network - Client /127.0.0.1:51321 - Graceful shutdown
+16.05.2023 15:04:26.143 [Thread-5] DEBUG  server.network - Client /127.0.0.1:51321 - Graceful shutdown
+16.05.2023 15:04:26.143 [Thread-6] DEBUG  server.network - Client /127.0.0.1:51321 - Graceful shutdown
+16.05.2023 15:04:26.143 [Thread-1] DEBUG  server.network - Client /127.0.0.1:51320 - input:
+
+16.05.2023 15:04:26.143 [Thread-0] DEBUG  server.network - Client /127.0.0.1:51320 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 15:04:26.144 [Thread-9] DEBUG  server.network - Client /127.0.0.1:51321 - Graceful shutdown
+16.05.2023 15:04:26.154 [Thread-14] DEBUG  server.network - Client /127.0.0.1:51320 - write response info
+16.05.2023 15:04:26.154 [Thread-10] DEBUG  server.network - Client /127.0.0.1:51320 - write response info
+16.05.2023 15:04:26.154 [Thread-15] DEBUG  server.network - Client /127.0.0.1:51320 - write response info
+16.05.2023 15:04:26.154 [Thread-11] DEBUG  server.network - Client /127.0.0.1:51320 - write response info
+16.05.2023 15:04:26.154 [Thread-12] DEBUG  server.network - Client /127.0.0.1:51320 - write response info
+16.05.2023 15:04:26.155 [Thread-13] DEBUG  server.network - Client /127.0.0.1:51320 - write response info
+16.05.2023 15:04:26.158 [Thread-21] DEBUG  server.network - Client /127.0.0.1:51320 - Forceful shutdown
+16.05.2023 15:04:26.158 [Thread-23] DEBUG  server.network - Client /127.0.0.1:51320 - Forceful shutdown
+16.05.2023 15:04:26.158 [Thread-22] DEBUG  server.network - Client /127.0.0.1:51320 - Forceful shutdown
+16.05.2023 15:04:26.158 [Thread-24] DEBUG  server.network - Client /127.0.0.1:51320 - Forceful shutdown
+16.05.2023 15:04:26.158 [Thread-25] DEBUG  server.network - Client /127.0.0.1:51320 - Forceful shutdown
+16.05.2023 15:05:06.889 [main] INFO   server - Server app launched
+16.05.2023 15:05:07.262 [main] DEBUG  server.network - Logger initialized
+16.05.2023 15:05:07.265 [main] INFO   server.network - TCP Server initialized
+16.05.2023 15:05:10.911 [main] DEBUG  server.network - Client /127.0.0.1:51327 - connected
+16.05.2023 15:05:10.912 [main] DEBUG  server.network - Client /127.0.0.1:51328 - connected
+16.05.2023 15:05:10.913 [Thread-1] DEBUG  server.network - Client /127.0.0.1:51328 - Graceful shutdown
+16.05.2023 15:05:10.913 [Thread-0] DEBUG  server.network - Client /127.0.0.1:51327 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 15:05:10.932 [Thread-2] DEBUG  server.network - Client /127.0.0.1:51327 - write response info
+16.05.2023 15:05:10.933 [Thread-3] DEBUG  server.network - Client /127.0.0.1:51327 - Graceful shutdown
+16.05.2023 15:05:39.813 [main] DEBUG  server.network - Client /127.0.0.1:51331 - connected
+16.05.2023 15:05:48.042 [main] DEBUG  server.network - Client /127.0.0.1:51334 - connected
+16.05.2023 15:05:48.057 [main] DEBUG  server.network - Client /127.0.0.1:51335 - connected
+16.05.2023 15:05:48.058 [Thread-4] DEBUG  server.network - Client /127.0.0.1:51334 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 15:05:48.058 [Thread-5] DEBUG  server.network - Client /127.0.0.1:51335 - Graceful shutdown
+16.05.2023 15:05:48.059 [Thread-6] DEBUG  server.network - Client /127.0.0.1:51334 - write response info
+16.05.2023 15:05:48.063 [Thread-7] DEBUG  server.network - Client /127.0.0.1:51334 - Graceful shutdown
+16.05.2023 15:07:46.523 [main] INFO   server - Server app launched
+16.05.2023 15:07:46.998 [main] DEBUG  server.network - Logger initialized
+16.05.2023 15:07:47.001 [main] INFO   server.network - TCP Server initialized
+16.05.2023 15:07:48.761 [main] DEBUG  server.network - Client /127.0.0.1:51355 - connected
+16.05.2023 15:07:48.763 [Thread-0] DEBUG  server.network - Client /127.0.0.1:51355 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 15:07:48.770 [Thread-1] DEBUG  server.network - Client /127.0.0.1:51355 - write response info
+16.05.2023 15:07:48.771 [Thread-2] DEBUG  server.network - Client /127.0.0.1:51355 - Graceful shutdown
+16.05.2023 15:34:00.937 [main] INFO   server - Server app launched
+16.05.2023 15:34:01.001 [main] ERROR  server - Fatal error: Подсоединение по адресу localhost:5432 отклонено. Проверьте что хост и порт указаны правильно и что postmaster принимает TCP/IP-подсоединения.
+org.postgresql.util.PSQLException: Подсоединение по адресу localhost:5432 отклонено. Проверьте что хост и порт указаны правильно и что postmaster принимает TCP/IP-подсоединения.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:342)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:263)
+	at org.postgresql.Driver.makeConnection(Driver.java:443)
+	at org.postgresql.Driver.connect(Driver.java:297)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:230)
+	at server.database.DatabaseConnection.<init>(DatabaseConnection.java:15)
+	at server.database.PostgresConnection.<init>(PostgresConnection.java:14)
+	at server.database.PostgresDatabase.createConnection(PostgresDatabase.java:16)
+	at server.database.PostgresDatabase.createConnection(PostgresDatabase.java:7)
+	at server.Main.main(Main.java:30)
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:539)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:594)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at org.postgresql.core.PGStream.createSocket(PGStream.java:243)
+	at org.postgresql.core.PGStream.<init>(PGStream.java:98)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:132)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:258)
+	... 11 common frames omitted
+16.05.2023 15:34:14.606 [main] INFO   server - Server app launched
+16.05.2023 15:34:14.994 [main] DEBUG  server.network - Logger initialized
+16.05.2023 15:34:14.996 [main] INFO   server.network - TCP Server initialized
+16.05.2023 15:34:18.206 [main] DEBUG  server.network - Client /127.0.0.1:51408 - connected
+16.05.2023 15:34:18.207 [Thread-0] DEBUG  server.network - Client /127.0.0.1:51408 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 15:34:18.217 [Thread-1] DEBUG  server.network - Client /127.0.0.1:51408 - write response info
+16.05.2023 15:34:18.217 [Thread-2] DEBUG  server.network - Client /127.0.0.1:51408 - Graceful shutdown
+16.05.2023 15:35:36.145 [main] INFO   server - Server app launched
+16.05.2023 15:35:36.714 [main] DEBUG  server.network - Logger initialized
+16.05.2023 15:35:36.716 [main] INFO   server.network - TCP Server initialized
+16.05.2023 15:35:39.840 [main] DEBUG  server.network - Client /127.0.0.1:51425 - connected
+16.05.2023 15:35:39.842 [Thread-0] DEBUG  server.network - Client /127.0.0.1:51425 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 15:35:39.850 [Thread-1] DEBUG  server.network - Client /127.0.0.1:51425 - write response info
+16.05.2023 15:35:39.851 [Thread-2] DEBUG  server.network - Client /127.0.0.1:51425 - Graceful shutdown
+16.05.2023 15:36:03.404 [main] INFO   server - Server app launched
+16.05.2023 15:36:03.794 [main] DEBUG  server.network - Logger initialized
+16.05.2023 15:36:03.797 [main] INFO   server.network - TCP Server initialized
+16.05.2023 15:36:06.217 [main] DEBUG  server.network - Client /127.0.0.1:51433 - connected
+16.05.2023 15:36:06.218 [Thread-0] DEBUG  server.network - Client /127.0.0.1:51433 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 15:36:06.227 [Thread-1] DEBUG  server.network - Client /127.0.0.1:51433 - write response info
+16.05.2023 15:36:06.227 [Thread-2] DEBUG  server.network - Client /127.0.0.1:51433 - Graceful shutdown
+16.05.2023 15:36:24.509 [main] INFO   server - Server app launched
+16.05.2023 15:36:24.910 [main] DEBUG  server.network - Logger initialized
+16.05.2023 15:36:24.913 [main] INFO   server.network - TCP Server initialized
+16.05.2023 15:36:26.978 [main] DEBUG  server.network - Client /127.0.0.1:51443 - connected
+16.05.2023 15:36:26.978 [main] DEBUG  server.network - Client /127.0.0.1:51444 - connected
+16.05.2023 15:36:26.979 [Thread-1] DEBUG  server.network - Client /127.0.0.1:51444 - Graceful shutdown
+16.05.2023 15:36:26.979 [Thread-0] DEBUG  server.network - Client /127.0.0.1:51443 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 15:36:26.988 [Thread-2] DEBUG  server.network - Client /127.0.0.1:51443 - write response info
+16.05.2023 15:36:26.988 [Thread-3] DEBUG  server.network - Client /127.0.0.1:51443 - Graceful shutdown
+16.05.2023 15:36:28.244 [main] DEBUG  server.network - Client /127.0.0.1:51445 - connected
+16.05.2023 15:36:28.245 [main] DEBUG  server.network - Client /127.0.0.1:51446 - connected
+16.05.2023 15:36:28.245 [Thread-5] DEBUG  server.network - Client /127.0.0.1:51446 - Graceful shutdown
+16.05.2023 15:36:28.245 [Thread-4] DEBUG  server.network - Client /127.0.0.1:51445 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 15:36:28.246 [Thread-6] DEBUG  server.network - Client /127.0.0.1:51445 - write response info
+16.05.2023 15:36:28.247 [Thread-7] DEBUG  server.network - Client /127.0.0.1:51445 - Graceful shutdown
+16.05.2023 15:37:03.204 [main] DEBUG  server.network - Client /127.0.0.1:51458 - connected
+16.05.2023 15:37:06.364 [main] INFO   server - Server app launched
+16.05.2023 15:37:06.728 [main] DEBUG  server.network - Logger initialized
+16.05.2023 15:37:06.731 [main] INFO   server.network - TCP Server initialized
+16.05.2023 15:37:09.590 [main] DEBUG  server.network - Client /127.0.0.1:51464 - connected
+16.05.2023 15:37:09.602 [Thread-0] DEBUG  server.network - Client /127.0.0.1:51464 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 15:37:09.611 [Thread-1] DEBUG  server.network - Client /127.0.0.1:51464 - write response info
+16.05.2023 15:37:09.612 [Thread-2] DEBUG  server.network - Client /127.0.0.1:51464 - Graceful shutdown
+16.05.2023 15:37:22.069 [main] INFO   server - Server app launched
+16.05.2023 15:37:22.431 [main] DEBUG  server.network - Logger initialized
+16.05.2023 15:37:22.434 [main] INFO   server.network - TCP Server initialized
+16.05.2023 15:37:23.222 [main] DEBUG  server.network - Client /127.0.0.1:51472 - connected
+16.05.2023 15:37:23.223 [main] DEBUG  server.network - Client /127.0.0.1:51473 - connected
+16.05.2023 15:37:23.224 [Thread-1] DEBUG  server.network - Client /127.0.0.1:51473 - Graceful shutdown
+16.05.2023 15:37:23.224 [Thread-0] DEBUG  server.network - Client /127.0.0.1:51472 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 15:37:23.232 [Thread-2] DEBUG  server.network - Client /127.0.0.1:51472 - write response info
+16.05.2023 15:37:23.233 [Thread-3] DEBUG  server.network - Client /127.0.0.1:51472 - Graceful shutdown
+16.05.2023 15:37:26.145 [main] DEBUG  server.network - Client /127.0.0.1:51474 - connected
+16.05.2023 15:37:26.146 [main] DEBUG  server.network - Client /127.0.0.1:51475 - connected
+16.05.2023 15:37:26.146 [Thread-5] DEBUG  server.network - Client /127.0.0.1:51475 - Graceful shutdown
+16.05.2023 15:37:26.146 [Thread-4] DEBUG  server.network - Client /127.0.0.1:51474 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 15:37:26.147 [Thread-6] DEBUG  server.network - Client /127.0.0.1:51474 - write response info
+16.05.2023 15:37:26.147 [Thread-7] DEBUG  server.network - Client /127.0.0.1:51474 - Graceful shutdown
+16.05.2023 15:39:23.289 [main] INFO   server - Server app launched
+16.05.2023 15:39:23.605 [main] DEBUG  server.network - Logger initialized
+16.05.2023 15:39:23.607 [main] INFO   server.network - TCP Server initialized
+16.05.2023 15:39:25.153 [main] DEBUG  server.network - Client /127.0.0.1:51483 - connected
+16.05.2023 15:39:25.154 [main] DEBUG  server.network - Client /127.0.0.1:51484 - connected
+16.05.2023 15:39:25.154 [Thread-0] DEBUG  server.network - Client /127.0.0.1:51483 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 15:39:25.154 [Thread-1] DEBUG  server.network - Client /127.0.0.1:51484 - Graceful shutdown
+16.05.2023 15:39:25.162 [Thread-2] DEBUG  server.network - Client /127.0.0.1:51483 - write response info
+16.05.2023 15:39:25.163 [Thread-3] DEBUG  server.network - Client /127.0.0.1:51483 - Graceful shutdown
+16.05.2023 15:39:26.191 [main] DEBUG  server.network - Client /127.0.0.1:51485 - connected
+16.05.2023 15:39:26.191 [main] DEBUG  server.network - Client /127.0.0.1:51486 - connected
+16.05.2023 15:39:26.192 [Thread-5] DEBUG  server.network - Client /127.0.0.1:51486 - Graceful shutdown
+16.05.2023 15:39:26.192 [Thread-4] DEBUG  server.network - Client /127.0.0.1:51485 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 15:39:26.192 [Thread-6] DEBUG  server.network - Client /127.0.0.1:51485 - write response info
+16.05.2023 15:39:26.193 [Thread-7] DEBUG  server.network - Client /127.0.0.1:51485 - Graceful shutdown
+16.05.2023 15:39:30.888 [main] DEBUG  server.network - Client /127.0.0.1:51487 - connected
+16.05.2023 15:39:30.888 [main] DEBUG  server.network - Client /127.0.0.1:51488 - connected
+16.05.2023 15:39:30.889 [Thread-9] DEBUG  server.network - Client /127.0.0.1:51488 - Graceful shutdown
+16.05.2023 15:39:30.889 [Thread-8] DEBUG  server.network - Client /127.0.0.1:51487 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 15:39:30.890 [Thread-10] DEBUG  server.network - Client /127.0.0.1:51487 - write response info
+16.05.2023 15:39:30.890 [Thread-11] DEBUG  server.network - Client /127.0.0.1:51487 - Graceful shutdown
+16.05.2023 15:39:32.664 [main] DEBUG  server.network - Client /127.0.0.1:51489 - connected
+16.05.2023 15:39:32.664 [main] DEBUG  server.network - Client /127.0.0.1:51490 - connected
+16.05.2023 15:39:32.664 [Thread-12] DEBUG  server.network - Client /127.0.0.1:51489 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 15:39:32.664 [Thread-13] DEBUG  server.network - Client /127.0.0.1:51490 - Graceful shutdown
+16.05.2023 15:39:32.664 [Thread-14] DEBUG  server.network - Client /127.0.0.1:51489 - write response info
+16.05.2023 15:39:32.665 [Thread-15] DEBUG  server.network - Client /127.0.0.1:51489 - Graceful shutdown
+16.05.2023 15:45:06.842 [main] INFO   server - Server app launched
+16.05.2023 15:45:07.185 [main] DEBUG  server.network - Logger initialized
+16.05.2023 15:45:07.188 [main] INFO   server.network - TCP Server initialized
+16.05.2023 15:45:09.179 [Thread-0] DEBUG  server.network - Client /127.0.0.1:51509 - connected
+16.05.2023 15:45:09.179 [Thread-1] DEBUG  server.network - Client /127.0.0.1:51509 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 15:45:09.188 [Thread-2] DEBUG  server.network - Client /127.0.0.1:51509 - write response info
+16.05.2023 15:45:09.189 [Thread-3] DEBUG  server.network - Client /127.0.0.1:51509 - Graceful shutdown
+16.05.2023 17:54:24.496 [main] INFO   server - Server app launched
+16.05.2023 17:54:24.564 [main] ERROR  server - Fatal error: Подсоединение по адресу localhost:5432 отклонено. Проверьте что хост и порт указаны правильно и что postmaster принимает TCP/IP-подсоединения.
+org.postgresql.util.PSQLException: Подсоединение по адресу localhost:5432 отклонено. Проверьте что хост и порт указаны правильно и что postmaster принимает TCP/IP-подсоединения.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:342)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:263)
+	at org.postgresql.Driver.makeConnection(Driver.java:443)
+	at org.postgresql.Driver.connect(Driver.java:297)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:230)
+	at server.database.DatabaseConnection.<init>(DatabaseConnection.java:15)
+	at server.database.PostgresConnection.<init>(PostgresConnection.java:14)
+	at server.database.PostgresDatabase.createConnection(PostgresDatabase.java:16)
+	at server.database.PostgresDatabase.createConnection(PostgresDatabase.java:7)
+	at server.Main.main(Main.java:30)
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:539)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:594)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at org.postgresql.core.PGStream.createSocket(PGStream.java:243)
+	at org.postgresql.core.PGStream.<init>(PGStream.java:98)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:132)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:258)
+	... 11 common frames omitted
+16.05.2023 17:54:32.982 [main] INFO   server - Server app launched
+16.05.2023 17:54:33.303 [main] DEBUG  server.network - Logger initialized
+16.05.2023 17:54:33.305 [main] INFO   server.network - TCP Server initialized
+16.05.2023 17:54:40.566 [main] DEBUG  server.network - Client /127.0.0.1:52020 - connected
+16.05.2023 17:54:40.567 [main] DEBUG  server.network - Client /127.0.0.1:52021 - connected
+16.05.2023 17:54:40.568 [Thread-1] DEBUG  server.network - Client /127.0.0.1:52021 - Graceful shutdown
+16.05.2023 17:54:40.568 [Thread-0] DEBUG  server.network - Client /127.0.0.1:52020 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 17:54:40.579 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:52020 - write response info
+16.05.2023 17:54:40.580 [Thread-2] DEBUG  server.network - Client /127.0.0.1:52020 - Graceful shutdown
+16.05.2023 18:08:45.598 [main] INFO   server - Server app launched
+16.05.2023 18:08:45.936 [main] DEBUG  server.network - Logger initialized
+16.05.2023 18:08:45.939 [main] INFO   server.network - TCP Server initialized
+16.05.2023 18:08:51.091 [main] DEBUG  server.network - Client /127.0.0.1:52096 - connected
+16.05.2023 18:08:51.092 [main] DEBUG  server.network - Client /127.0.0.1:52097 - connected
+16.05.2023 18:08:51.093 [Thread-0] DEBUG  server.network - Client /127.0.0.1:52096 - input:
+�� sr common.requests.InfoRequest         xr common.requests.Request�Ni�-� L namet Ljava/lang/String;xpt info
+16.05.2023 18:08:51.093 [Thread-1] DEBUG  server.network - Client /127.0.0.1:52097 - Graceful shutdown
+16.05.2023 18:08:51.102 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:52096 - write response info
+16.05.2023 18:08:51.103 [Thread-3] DEBUG  server.network - Client /127.0.0.1:52096 - Graceful shutdown
+16.05.2023 18:54:11.477 [main] DEBUG  server.network - Client /127.0.0.1:52307 - connected
+16.05.2023 18:55:10.932 [Thread-4] DEBUG  server.network - Client /127.0.0.1:52307 - Graceful shutdown
+16.05.2023 18:55:12.459 [main] DEBUG  server.network - Client /127.0.0.1:52313 - connected
+16.05.2023 18:57:03.748 [Thread-5] DEBUG  server.network - Client /127.0.0.1:52313 - Graceful shutdown
+16.05.2023 18:57:05.349 [main] DEBUG  server.network - Client /127.0.0.1:52319 - connected
+16.05.2023 18:57:07.755 [Thread-6] DEBUG  server.network - Client /127.0.0.1:52319 - Graceful shutdown
+16.05.2023 18:58:11.590 [main] DEBUG  server.network - Client /127.0.0.1:52328 - connected
+16.05.2023 18:58:13.930 [Thread-7] DEBUG  server.network - Client /127.0.0.1:52328 - Graceful shutdown
+16.05.2023 18:59:04.120 [main] DEBUG  server.network - Client /127.0.0.1:52334 - connected
+16.05.2023 18:59:05.281 [Thread-8] DEBUG  server.network - Client /127.0.0.1:52334 - Graceful shutdown
+16.05.2023 19:00:36.949 [main] DEBUG  server.network - Client /127.0.0.1:52343 - connected
+16.05.2023 19:00:39.676 [Thread-9] DEBUG  server.network - Client /127.0.0.1:52343 - Graceful shutdown
+16.05.2023 19:03:16.739 [main] DEBUG  server.network - Client /127.0.0.1:52353 - connected
+16.05.2023 19:04:23.116 [Thread-10] DEBUG  server.network - Client /127.0.0.1:52353 - Graceful shutdown
+16.05.2023 19:04:23.923 [main] DEBUG  server.network - Client /127.0.0.1:52358 - connected
+16.05.2023 19:05:05.922 [Thread-11] DEBUG  server.network - Client /127.0.0.1:52358 - Graceful shutdown
+16.05.2023 19:05:06.780 [main] DEBUG  server.network - Client /127.0.0.1:52361 - connected
+16.05.2023 19:05:16.723 [Thread-12] DEBUG  server.network - Client /127.0.0.1:52361 - Graceful shutdown
+16.05.2023 19:05:20.373 [main] DEBUG  server.network - Client /127.0.0.1:52363 - connected
+16.05.2023 19:07:48.997 [main] DEBUG  server.network - Client /127.0.0.1:52372 - connected
+16.05.2023 19:07:59.502 [Thread-13] DEBUG  server.network - Client /127.0.0.1:52372 - Graceful shutdown
+16.05.2023 20:00:29.111 [main] DEBUG  server.network - Client /127.0.0.1:52565 - connected
+16.05.2023 20:00:33.806 [main] DEBUG  server.network - Client /127.0.0.1:52567 - connected
+16.05.2023 20:00:33.823 [main] DEBUG  server.network - Client /127.0.0.1:52568 - connected
+16.05.2023 20:00:33.824 [Thread-15] DEBUG  server.network - Client /127.0.0.1:52568 - Graceful shutdown
+16.05.2023 20:00:33.826 [Thread-14] DEBUG  server.network - Client /127.0.0.1:52567 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert logint password
+16.05.2023 20:00:39.160 [Thread-17] DEBUG  server.network - Client /127.0.0.1:52565 - Graceful shutdown
+16.05.2023 20:01:23.807 [main] DEBUG  server.network - Client /127.0.0.1:52576 - connected
+16.05.2023 20:01:27.357 [main] DEBUG  server.network - Client /127.0.0.1:52578 - connected
+16.05.2023 20:01:27.370 [main] DEBUG  server.network - Client /127.0.0.1:52579 - connected
+16.05.2023 20:01:27.370 [Thread-18] DEBUG  server.network - Client /127.0.0.1:52578 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert logint psasword
+16.05.2023 20:01:27.371 [Thread-20] DEBUG  server.network - Client /127.0.0.1:52579 - Graceful shutdown
+16.05.2023 20:01:32.873 [main] INFO   server - Server app launched
+16.05.2023 20:01:32.951 [main] ERROR  server - Fatal error: Подсоединение по адресу localhost:5432 отклонено. Проверьте что хост и порт указаны правильно и что postmaster принимает TCP/IP-подсоединения.
+org.postgresql.util.PSQLException: Подсоединение по адресу localhost:5432 отклонено. Проверьте что хост и порт указаны правильно и что postmaster принимает TCP/IP-подсоединения.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:342)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:263)
+	at org.postgresql.Driver.makeConnection(Driver.java:443)
+	at org.postgresql.Driver.connect(Driver.java:297)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:230)
+	at server.database.DatabaseConnection.<init>(DatabaseConnection.java:15)
+	at server.database.PostgresConnection.<init>(PostgresConnection.java:14)
+	at server.database.PostgresDatabase.createConnection(PostgresDatabase.java:16)
+	at server.database.PostgresDatabase.createConnection(PostgresDatabase.java:7)
+	at server.Main.main(Main.java:30)
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:539)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:594)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at org.postgresql.core.PGStream.createSocket(PGStream.java:243)
+	at org.postgresql.core.PGStream.<init>(PGStream.java:98)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:132)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:258)
+	... 11 common frames omitted
+16.05.2023 20:01:44.549 [main] INFO   server - Server app launched
+16.05.2023 20:01:44.886 [main] DEBUG  server.network - Logger initialized
+16.05.2023 20:01:44.893 [main] INFO   server.network - TCP Server initialized
+16.05.2023 20:01:50.546 [main] DEBUG  server.network - Client /127.0.0.1:52599 - connected
+16.05.2023 20:01:54.570 [main] DEBUG  server.network - Client /127.0.0.1:52601 - connected
+16.05.2023 20:01:54.588 [main] DEBUG  server.network - Client /127.0.0.1:52602 - connected
+16.05.2023 20:01:54.590 [Thread-1] DEBUG  server.network - Client /127.0.0.1:52602 - Graceful shutdown
+16.05.2023 20:01:54.590 [Thread-0] DEBUG  server.network - Client /127.0.0.1:52601 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert logint password
+16.05.2023 20:01:54.602 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:52601 - write response error
+16.05.2023 20:01:54.604 [Thread-3] DEBUG  server.network - Client /127.0.0.1:52601 - Graceful shutdown
+16.05.2023 20:01:54.936 [Thread-4] DEBUG  server.network - Client /127.0.0.1:52599 - Graceful shutdown
+16.05.2023 20:05:27.820 [main] DEBUG  server.network - Client /127.0.0.1:52620 - connected
+16.05.2023 20:05:29.301 [main] DEBUG  server.network - Client /127.0.0.1:52622 - connected
+16.05.2023 20:05:29.314 [main] DEBUG  server.network - Client /127.0.0.1:52623 - connected
+16.05.2023 20:05:29.314 [Thread-5] DEBUG  server.network - Client /127.0.0.1:52622 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert  q ~ 
+16.05.2023 20:05:29.315 [Thread-7] DEBUG  server.network - Client /127.0.0.1:52623 - Graceful shutdown
+16.05.2023 20:05:29.316 [ForkJoinPool-1-worker-2] DEBUG  server.network - Client /127.0.0.1:52622 - write response error
+16.05.2023 20:05:29.321 [Thread-8] DEBUG  server.network - Client /127.0.0.1:52622 - Graceful shutdown
+16.05.2023 20:05:29.661 [Thread-9] DEBUG  server.network - Client /127.0.0.1:52620 - Graceful shutdown
+16.05.2023 20:05:53.806 [main] DEBUG  server.network - Client /127.0.0.1:52631 - connected
+16.05.2023 20:05:54.716 [main] DEBUG  server.network - Client /127.0.0.1:52633 - connected
+16.05.2023 20:05:54.729 [main] DEBUG  server.network - Client /127.0.0.1:52634 - connected
+16.05.2023 20:05:54.729 [Thread-10] DEBUG  server.network - Client /127.0.0.1:52633 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert  q ~ 
+16.05.2023 20:05:54.729 [Thread-12] DEBUG  server.network - Client /127.0.0.1:52634 - Graceful shutdown
+16.05.2023 20:05:54.730 [ForkJoinPool-1-worker-2] DEBUG  server.network - Client /127.0.0.1:52633 - write response error
+16.05.2023 20:05:54.735 [Thread-13] DEBUG  server.network - Client /127.0.0.1:52633 - Graceful shutdown
+16.05.2023 20:05:55.070 [Thread-14] DEBUG  server.network - Client /127.0.0.1:52631 - Graceful shutdown
+16.05.2023 20:10:17.095 [main] DEBUG  server.network - Client /127.0.0.1:52660 - connected
+16.05.2023 20:10:17.889 [main] DEBUG  server.network - Client /127.0.0.1:52662 - connected
+16.05.2023 20:10:17.906 [main] DEBUG  server.network - Client /127.0.0.1:52663 - connected
+16.05.2023 20:10:17.906 [Thread-15] DEBUG  server.network - Client /127.0.0.1:52662 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert  q ~ 
+16.05.2023 20:10:17.906 [Thread-17] DEBUG  server.network - Client /127.0.0.1:52663 - Graceful shutdown
+16.05.2023 20:10:17.908 [ForkJoinPool-1-worker-3] DEBUG  server.network - Client /127.0.0.1:52662 - write response error
+16.05.2023 20:10:17.912 [Thread-18] DEBUG  server.network - Client /127.0.0.1:52662 - Graceful shutdown
+16.05.2023 20:10:18.256 [Thread-19] DEBUG  server.network - Client /127.0.0.1:52660 - Graceful shutdown
+16.05.2023 20:10:51.453 [main] DEBUG  server.network - Client /127.0.0.1:52666 - connected
+16.05.2023 20:10:54.717 [main] INFO   server - Server app launched
+16.05.2023 20:10:55.043 [main] DEBUG  server.network - Logger initialized
+16.05.2023 20:10:55.046 [main] INFO   server.network - TCP Server initialized
+16.05.2023 20:10:55.820 [main] DEBUG  server.network - Client /127.0.0.1:52672 - connected
+16.05.2023 20:10:55.833 [main] DEBUG  server.network - Client /127.0.0.1:52673 - connected
+16.05.2023 20:10:55.833 [Thread-0] DEBUG  server.network - Client /127.0.0.1:52672 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert  q ~ 
+16.05.2023 20:10:55.836 [Thread-1] DEBUG  server.network - Client /127.0.0.1:52673 - Graceful shutdown
+16.05.2023 20:10:55.844 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:52672 - write response error
+16.05.2023 20:10:55.845 [Thread-3] DEBUG  server.network - Client /127.0.0.1:52672 - Graceful shutdown
+16.05.2023 20:31:52.165 [main] INFO   server - Server app launched
+16.05.2023 20:31:52.438 [main] DEBUG  server.network - Logger initialized
+16.05.2023 20:31:52.442 [main] INFO   server.network - TCP Server initialized
+16.05.2023 20:31:54.609 [main] DEBUG  server.network - Client /127.0.0.1:52778 - connected
+16.05.2023 20:31:59.955 [main] DEBUG  server.network - Client /127.0.0.1:52780 - connected
+16.05.2023 20:31:59.969 [main] DEBUG  server.network - Client /127.0.0.1:52781 - connected
+16.05.2023 20:31:59.969 [Thread-0] DEBUG  server.network - Client /127.0.0.1:52780 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert testt test
+16.05.2023 20:31:59.969 [Thread-1] DEBUG  server.network - Client /127.0.0.1:52781 - Graceful shutdown
+16.05.2023 20:32:00.011 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:52780 - write response authenticate_user
+16.05.2023 20:32:00.013 [Thread-3] DEBUG  server.network - Client /127.0.0.1:52780 - Graceful shutdown
+16.05.2023 20:32:00.342 [Thread-4] DEBUG  server.network - Client /127.0.0.1:52778 - Graceful shutdown
+16.05.2023 20:32:54.704 [main] INFO   server - Server app launched
+16.05.2023 20:32:55.028 [main] DEBUG  server.network - Logger initialized
+16.05.2023 20:32:55.031 [main] INFO   server.network - TCP Server initialized
+16.05.2023 20:32:55.470 [main] DEBUG  server.network - Client /127.0.0.1:52790 - connected
+16.05.2023 20:32:58.141 [main] DEBUG  server.network - Client /127.0.0.1:52792 - connected
+16.05.2023 20:32:58.155 [main] DEBUG  server.network - Client /127.0.0.1:52793 - connected
+16.05.2023 20:32:58.155 [Thread-1] DEBUG  server.network - Client /127.0.0.1:52793 - Graceful shutdown
+16.05.2023 20:32:58.155 [Thread-0] DEBUG  server.network - Client /127.0.0.1:52792 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert testt test
+16.05.2023 20:32:58.177 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:52792 - write response authenticate_user
+16.05.2023 20:32:58.179 [Thread-3] DEBUG  server.network - Client /127.0.0.1:52792 - Graceful shutdown
+16.05.2023 20:32:58.510 [Thread-4] DEBUG  server.network - Client /127.0.0.1:52790 - Graceful shutdown
+16.05.2023 20:33:05.778 [main] DEBUG  server.network - Client /127.0.0.1:52796 - connected
+16.05.2023 20:33:09.209 [main] DEBUG  server.network - Client /127.0.0.1:52798 - connected
+16.05.2023 20:33:09.221 [main] DEBUG  server.network - Client /127.0.0.1:52799 - connected
+16.05.2023 20:33:09.221 [Thread-5] DEBUG  server.network - Client /127.0.0.1:52798 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert testt  
+16.05.2023 20:33:09.222 [Thread-7] DEBUG  server.network - Client /127.0.0.1:52799 - Graceful shutdown
+16.05.2023 20:33:09.239 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:52798 - write response authenticate_user
+16.05.2023 20:33:09.240 [Thread-8] DEBUG  server.network - Client /127.0.0.1:52798 - Graceful shutdown
+16.05.2023 20:33:09.565 [Thread-9] DEBUG  server.network - Client /127.0.0.1:52796 - Graceful shutdown
+16.05.2023 20:34:03.194 [main] INFO   server - Server app launched
+16.05.2023 20:34:03.459 [main] DEBUG  server.network - Logger initialized
+16.05.2023 20:34:03.462 [main] INFO   server.network - TCP Server initialized
+16.05.2023 20:34:04.288 [main] DEBUG  server.network - Client /127.0.0.1:52809 - connected
+16.05.2023 20:34:08.981 [main] DEBUG  server.network - Client /127.0.0.1:52811 - connected
+16.05.2023 20:34:08.994 [Thread-0] DEBUG  server.network - Client /127.0.0.1:52811 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert logint 	passwqord
+16.05.2023 20:34:08.994 [main] DEBUG  server.network - Client /127.0.0.1:52812 - connected
+16.05.2023 20:34:08.994 [Thread-1] DEBUG  server.network - Client /127.0.0.1:52812 - Graceful shutdown
+16.05.2023 20:34:09.017 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:52811 - write response authenticate_user
+16.05.2023 20:34:09.019 [Thread-3] DEBUG  server.network - Client /127.0.0.1:52811 - Graceful shutdown
+16.05.2023 20:34:09.371 [Thread-4] DEBUG  server.network - Client /127.0.0.1:52809 - Graceful shutdown
+16.05.2023 20:34:11.448 [main] DEBUG  server.network - Client /127.0.0.1:52815 - connected
+16.05.2023 20:34:14.543 [main] DEBUG  server.network - Client /127.0.0.1:52817 - connected
+16.05.2023 20:34:14.556 [main] DEBUG  server.network - Client /127.0.0.1:52818 - connected
+16.05.2023 20:34:14.556 [Thread-5] DEBUG  server.network - Client /127.0.0.1:52817 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert testt  
+16.05.2023 20:34:14.557 [Thread-7] DEBUG  server.network - Client /127.0.0.1:52818 - Graceful shutdown
+16.05.2023 20:34:14.575 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:52817 - write response authenticate_user
+16.05.2023 20:34:14.577 [Thread-8] DEBUG  server.network - Client /127.0.0.1:52817 - Graceful shutdown
+16.05.2023 20:34:14.903 [Thread-9] DEBUG  server.network - Client /127.0.0.1:52815 - Graceful shutdown
+16.05.2023 20:34:18.814 [main] DEBUG  server.network - Client /127.0.0.1:52821 - connected
+16.05.2023 20:34:24.779 [main] DEBUG  server.network - Client /127.0.0.1:52823 - connected
+16.05.2023 20:34:24.792 [main] DEBUG  server.network - Client /127.0.0.1:52824 - connected
+16.05.2023 20:34:24.792 [Thread-10] DEBUG  server.network - Client /127.0.0.1:52823 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert testt test
+16.05.2023 20:34:24.793 [Thread-12] DEBUG  server.network - Client /127.0.0.1:52824 - Graceful shutdown
+16.05.2023 20:34:24.806 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:52823 - write response authenticate_user
+16.05.2023 20:34:24.808 [Thread-13] DEBUG  server.network - Client /127.0.0.1:52823 - Graceful shutdown
+16.05.2023 20:44:52.761 [main] INFO   server - Server app launched
+16.05.2023 20:44:52.818 [main] ERROR  server - Fatal error: Подсоединение по адресу localhost:5432 отклонено. Проверьте что хост и порт указаны правильно и что postmaster принимает TCP/IP-подсоединения.
+org.postgresql.util.PSQLException: Подсоединение по адресу localhost:5432 отклонено. Проверьте что хост и порт указаны правильно и что postmaster принимает TCP/IP-подсоединения.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:342)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:263)
+	at org.postgresql.Driver.makeConnection(Driver.java:443)
+	at org.postgresql.Driver.connect(Driver.java:297)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:230)
+	at server.database.DatabaseConnection.<init>(DatabaseConnection.java:15)
+	at server.database.PostgresConnection.<init>(PostgresConnection.java:14)
+	at server.database.PostgresDatabase.createConnection(PostgresDatabase.java:16)
+	at server.database.PostgresDatabase.createConnection(PostgresDatabase.java:7)
+	at server.Main.main(Main.java:30)
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:539)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:594)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at org.postgresql.core.PGStream.createSocket(PGStream.java:243)
+	at org.postgresql.core.PGStream.<init>(PGStream.java:98)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:132)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:258)
+	... 11 common frames omitted
+16.05.2023 20:45:00.634 [main] INFO   server - Server app launched
+16.05.2023 20:45:00.676 [main] ERROR  server - Fatal error: Подсоединение по адресу localhost:5432 отклонено. Проверьте что хост и порт указаны правильно и что postmaster принимает TCP/IP-подсоединения.
+org.postgresql.util.PSQLException: Подсоединение по адресу localhost:5432 отклонено. Проверьте что хост и порт указаны правильно и что postmaster принимает TCP/IP-подсоединения.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:342)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:263)
+	at org.postgresql.Driver.makeConnection(Driver.java:443)
+	at org.postgresql.Driver.connect(Driver.java:297)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:230)
+	at server.database.DatabaseConnection.<init>(DatabaseConnection.java:15)
+	at server.database.PostgresConnection.<init>(PostgresConnection.java:14)
+	at server.database.PostgresDatabase.createConnection(PostgresDatabase.java:16)
+	at server.database.PostgresDatabase.createConnection(PostgresDatabase.java:7)
+	at server.Main.main(Main.java:30)
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:539)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:594)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at org.postgresql.core.PGStream.createSocket(PGStream.java:243)
+	at org.postgresql.core.PGStream.<init>(PGStream.java:98)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:132)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:258)
+	... 11 common frames omitted
+16.05.2023 20:45:02.905 [main] INFO   server - Server app launched
+16.05.2023 20:45:02.943 [main] ERROR  server - Fatal error: Подсоединение по адресу localhost:5432 отклонено. Проверьте что хост и порт указаны правильно и что postmaster принимает TCP/IP-подсоединения.
+org.postgresql.util.PSQLException: Подсоединение по адресу localhost:5432 отклонено. Проверьте что хост и порт указаны правильно и что postmaster принимает TCP/IP-подсоединения.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:342)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:263)
+	at org.postgresql.Driver.makeConnection(Driver.java:443)
+	at org.postgresql.Driver.connect(Driver.java:297)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:230)
+	at server.database.DatabaseConnection.<init>(DatabaseConnection.java:15)
+	at server.database.PostgresConnection.<init>(PostgresConnection.java:14)
+	at server.database.PostgresDatabase.createConnection(PostgresDatabase.java:16)
+	at server.database.PostgresDatabase.createConnection(PostgresDatabase.java:7)
+	at server.Main.main(Main.java:30)
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:539)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:594)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at org.postgresql.core.PGStream.createSocket(PGStream.java:243)
+	at org.postgresql.core.PGStream.<init>(PGStream.java:98)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:132)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:258)
+	... 11 common frames omitted
+16.05.2023 20:45:13.259 [main] INFO   server - Server app launched
+16.05.2023 20:45:13.567 [main] DEBUG  server.network - Logger initialized
+16.05.2023 20:45:13.569 [main] INFO   server.network - TCP Server initialized
+16.05.2023 20:45:14.238 [main] DEBUG  server.network - Client /127.0.0.1:52883 - connected
+16.05.2023 20:45:16.305 [main] DEBUG  server.network - Client /127.0.0.1:52885 - connected
+16.05.2023 20:45:16.318 [main] DEBUG  server.network - Client /127.0.0.1:52886 - connected
+16.05.2023 20:45:16.318 [Thread-0] DEBUG  server.network - Client /127.0.0.1:52885 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert  q ~ 
+16.05.2023 20:45:16.319 [Thread-1] DEBUG  server.network - Client /127.0.0.1:52886 - Graceful shutdown
+16.05.2023 20:45:16.340 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:52885 - write response authenticate_user
+16.05.2023 20:45:16.341 [Thread-3] DEBUG  server.network - Client /127.0.0.1:52885 - Graceful shutdown
+16.05.2023 20:45:16.677 [Thread-4] DEBUG  server.network - Client /127.0.0.1:52883 - Graceful shutdown
+16.05.2023 20:46:55.298 [main] INFO   server - Server app launched
+16.05.2023 20:46:55.588 [main] DEBUG  server.network - Logger initialized
+16.05.2023 20:46:55.591 [main] INFO   server.network - TCP Server initialized
+16.05.2023 20:46:57.150 [main] DEBUG  server.network - Client /127.0.0.1:52899 - connected
+16.05.2023 20:46:57.962 [main] DEBUG  server.network - Client /127.0.0.1:52901 - connected
+16.05.2023 20:46:57.976 [main] DEBUG  server.network - Client /127.0.0.1:52902 - connected
+16.05.2023 20:46:57.976 [Thread-0] DEBUG  server.network - Client /127.0.0.1:52901 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert  q ~ 
+16.05.2023 20:46:57.976 [Thread-1] DEBUG  server.network - Client /127.0.0.1:52902 - Graceful shutdown
+16.05.2023 20:46:58.016 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:52901 - write response authenticate_user
+16.05.2023 20:46:58.018 [Thread-3] DEBUG  server.network - Client /127.0.0.1:52901 - Graceful shutdown
+16.05.2023 20:46:58.363 [Thread-4] DEBUG  server.network - Client /127.0.0.1:52899 - Graceful shutdown
+16.05.2023 20:53:38.397 [main] INFO   server - Server app launched
+16.05.2023 20:53:38.725 [main] DEBUG  server.network - Logger initialized
+16.05.2023 20:53:38.728 [main] INFO   server.network - TCP Server initialized
+16.05.2023 20:53:39.406 [main] DEBUG  server.network - Client /127.0.0.1:52943 - connected
+16.05.2023 20:53:40.354 [main] DEBUG  server.network - Client /127.0.0.1:52945 - connected
+16.05.2023 20:53:40.368 [Thread-0] DEBUG  server.network - Client /127.0.0.1:52945 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert  q ~ 
+16.05.2023 20:53:40.368 [main] DEBUG  server.network - Client /127.0.0.1:52946 - connected
+16.05.2023 20:53:40.369 [Thread-1] DEBUG  server.network - Client /127.0.0.1:52946 - Graceful shutdown
+16.05.2023 20:53:40.436 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:52945 - write response authenticate_user
+16.05.2023 20:53:40.437 [Thread-3] DEBUG  server.network - Client /127.0.0.1:52945 - Graceful shutdown
+16.05.2023 20:53:45.701 [Thread-4] DEBUG  server.network - Client /127.0.0.1:52943 - Graceful shutdown
+16.05.2023 20:53:46.188 [main] DEBUG  server.network - Client /127.0.0.1:52949 - connected
+16.05.2023 20:53:49.697 [main] DEBUG  server.network - Client /127.0.0.1:52951 - connected
+16.05.2023 20:53:49.710 [main] DEBUG  server.network - Client /127.0.0.1:52952 - connected
+16.05.2023 20:53:49.710 [Thread-5] DEBUG  server.network - Client /127.0.0.1:52951 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert testt  
+16.05.2023 20:53:49.711 [Thread-7] DEBUG  server.network - Client /127.0.0.1:52952 - Graceful shutdown
+16.05.2023 20:53:49.728 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:52951 - write response authenticate_user
+16.05.2023 20:53:49.730 [Thread-8] DEBUG  server.network - Client /127.0.0.1:52951 - Graceful shutdown
+16.05.2023 20:53:50.071 [Thread-9] DEBUG  server.network - Client /127.0.0.1:52949 - Graceful shutdown
+16.05.2023 20:58:24.306 [main] INFO   server - Server app launched
+16.05.2023 20:58:24.581 [main] DEBUG  server.network - Logger initialized
+16.05.2023 20:58:24.583 [main] INFO   server.network - TCP Server initialized
+16.05.2023 20:58:25.349 [main] DEBUG  server.network - Client /127.0.0.1:52970 - connected
+16.05.2023 20:58:27.388 [main] DEBUG  server.network - Client /127.0.0.1:52972 - connected
+16.05.2023 20:58:27.401 [main] DEBUG  server.network - Client /127.0.0.1:52973 - connected
+16.05.2023 20:58:27.401 [Thread-0] DEBUG  server.network - Client /127.0.0.1:52972 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert testt  
+16.05.2023 20:58:27.401 [Thread-1] DEBUG  server.network - Client /127.0.0.1:52973 - Graceful shutdown
+16.05.2023 20:58:27.424 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:52972 - write response authenticate_user
+16.05.2023 20:58:27.426 [Thread-3] DEBUG  server.network - Client /127.0.0.1:52972 - Graceful shutdown
+16.05.2023 20:58:27.762 [Thread-4] DEBUG  server.network - Client /127.0.0.1:52970 - Graceful shutdown
+16.05.2023 20:58:30.392 [main] DEBUG  server.network - Client /127.0.0.1:52977 - connected
+16.05.2023 20:58:32.150 [main] DEBUG  server.network - Client /127.0.0.1:52979 - connected
+16.05.2023 20:58:32.163 [main] DEBUG  server.network - Client /127.0.0.1:52980 - connected
+16.05.2023 20:58:32.163 [Thread-5] DEBUG  server.network - Client /127.0.0.1:52979 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert  q ~ 
+16.05.2023 20:58:32.164 [Thread-7] DEBUG  server.network - Client /127.0.0.1:52980 - Graceful shutdown
+16.05.2023 20:58:32.230 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:52979 - write response authenticate_user
+16.05.2023 20:58:32.232 [Thread-8] DEBUG  server.network - Client /127.0.0.1:52979 - Graceful shutdown
+16.05.2023 20:58:34.234 [Thread-9] DEBUG  server.network - Client /127.0.0.1:52977 - Graceful shutdown
+16.05.2023 20:58:34.723 [main] DEBUG  server.network - Client /127.0.0.1:52983 - connected
+16.05.2023 20:58:39.012 [main] DEBUG  server.network - Client /127.0.0.1:52985 - connected
+16.05.2023 20:58:39.025 [main] DEBUG  server.network - Client /127.0.0.1:52986 - connected
+16.05.2023 20:58:39.025 [Thread-10] DEBUG  server.network - Client /127.0.0.1:52985 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert test1t  
+16.05.2023 20:58:39.026 [Thread-12] DEBUG  server.network - Client /127.0.0.1:52986 - Graceful shutdown
+16.05.2023 20:58:39.077 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:52985 - write response authenticate_user
+16.05.2023 20:58:39.079 [Thread-13] DEBUG  server.network - Client /127.0.0.1:52985 - Graceful shutdown
+16.05.2023 20:59:50.973 [main] INFO   server - Server app launched
+16.05.2023 20:59:51.500 [main] DEBUG  server.network - Logger initialized
+16.05.2023 20:59:51.505 [main] INFO   server.network - TCP Server initialized
+16.05.2023 20:59:55.670 [main] DEBUG  server.network - Client /127.0.0.1:52995 - connected
+16.05.2023 20:59:57.483 [main] DEBUG  server.network - Client /127.0.0.1:52998 - connected
+16.05.2023 20:59:57.496 [main] DEBUG  server.network - Client /127.0.0.1:52999 - connected
+16.05.2023 20:59:57.496 [Thread-0] DEBUG  server.network - Client /127.0.0.1:52998 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert daft qef
+16.05.2023 20:59:57.497 [Thread-1] DEBUG  server.network - Client /127.0.0.1:52999 - Graceful shutdown
+16.05.2023 20:59:57.523 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:52998 - write response authenticate_user
+16.05.2023 20:59:57.524 [Thread-3] DEBUG  server.network - Client /127.0.0.1:52998 - Graceful shutdown
+16.05.2023 20:59:57.850 [Thread-4] DEBUG  server.network - Client /127.0.0.1:52995 - Graceful shutdown
+16.05.2023 21:00:01.331 [main] DEBUG  server.network - Client /127.0.0.1:53002 - connected
+16.05.2023 21:00:04.215 [main] DEBUG  server.network - Client /127.0.0.1:53004 - connected
+16.05.2023 21:00:04.227 [main] DEBUG  server.network - Client /127.0.0.1:53005 - connected
+16.05.2023 21:00:04.228 [Thread-5] DEBUG  server.network - Client /127.0.0.1:53004 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert testt  
+16.05.2023 21:00:04.228 [Thread-7] DEBUG  server.network - Client /127.0.0.1:53005 - Graceful shutdown
+16.05.2023 21:00:04.246 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:53004 - write response authenticate_user
+16.05.2023 21:00:04.248 [Thread-8] DEBUG  server.network - Client /127.0.0.1:53004 - Graceful shutdown
+16.05.2023 21:00:04.616 [Thread-9] DEBUG  server.network - Client /127.0.0.1:53002 - Graceful shutdown
+16.05.2023 21:00:09.036 [main] DEBUG  server.network - Client /127.0.0.1:53008 - connected
+16.05.2023 21:00:11.779 [main] DEBUG  server.network - Client /127.0.0.1:53010 - connected
+16.05.2023 21:00:11.791 [main] DEBUG  server.network - Client /127.0.0.1:53011 - connected
+16.05.2023 21:00:11.792 [Thread-10] DEBUG  server.network - Client /127.0.0.1:53010 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert testt test
+16.05.2023 21:00:11.792 [Thread-12] DEBUG  server.network - Client /127.0.0.1:53011 - Graceful shutdown
+16.05.2023 21:00:11.807 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:53010 - write response authenticate_user
+16.05.2023 21:00:11.809 [Thread-13] DEBUG  server.network - Client /127.0.0.1:53010 - Graceful shutdown
+16.05.2023 21:05:44.169 [Thread-14] DEBUG  server.network - Client /127.0.0.1:53008 - Graceful shutdown
+16.05.2023 21:06:43.931 [main] DEBUG  server.network - Client /127.0.0.1:53032 - connected
+16.05.2023 21:09:49.427 [main] INFO   server - Server app launched
+16.05.2023 21:09:49.710 [main] DEBUG  server.network - Logger initialized
+16.05.2023 21:09:49.712 [main] INFO   server.network - TCP Server initialized
+16.05.2023 21:09:52.046 [main] DEBUG  server.network - Client /127.0.0.1:53045 - connected
+16.05.2023 21:09:58.139 [main] DEBUG  server.network - Client /127.0.0.1:53047 - connected
+16.05.2023 21:09:58.154 [main] DEBUG  server.network - Client /127.0.0.1:53048 - connected
+16.05.2023 21:09:58.154 [Thread-0] DEBUG  server.network - Client /127.0.0.1:53047 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert 	kugweougft wef
+16.05.2023 21:09:58.154 [Thread-1] DEBUG  server.network - Client /127.0.0.1:53048 - Graceful shutdown
+16.05.2023 21:09:58.191 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:53047 - write response authenticate_user
+16.05.2023 21:09:58.193 [Thread-3] DEBUG  server.network - Client /127.0.0.1:53047 - Graceful shutdown
+16.05.2023 21:09:58.516 [Thread-4] DEBUG  server.network - Client /127.0.0.1:53045 - Graceful shutdown
+16.05.2023 21:10:00.841 [main] DEBUG  server.network - Client /127.0.0.1:53052 - connected
+16.05.2023 21:10:03.473 [main] DEBUG  server.network - Client /127.0.0.1:53054 - connected
+16.05.2023 21:10:03.486 [main] DEBUG  server.network - Client /127.0.0.1:53055 - connected
+16.05.2023 21:10:03.486 [Thread-5] DEBUG  server.network - Client /127.0.0.1:53054 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert testt  
+16.05.2023 21:10:03.487 [Thread-7] DEBUG  server.network - Client /127.0.0.1:53055 - Graceful shutdown
+16.05.2023 21:10:03.505 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:53054 - write response authenticate_user
+16.05.2023 21:10:03.506 [Thread-8] DEBUG  server.network - Client /127.0.0.1:53054 - Graceful shutdown
+16.05.2023 21:10:03.846 [Thread-9] DEBUG  server.network - Client /127.0.0.1:53052 - Graceful shutdown
+16.05.2023 21:24:12.064 [main] DEBUG  server.network - Client /127.0.0.1:53122 - connected
+16.05.2023 21:24:18.064 [main] DEBUG  server.network - Client /127.0.0.1:53127 - connected
+16.05.2023 21:24:18.081 [main] DEBUG  server.network - Client /127.0.0.1:53128 - connected
+16.05.2023 21:24:18.081 [Thread-10] DEBUG  server.network - Client /127.0.0.1:53127 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert  q ~ 
+16.05.2023 21:24:18.082 [Thread-12] DEBUG  server.network - Client /127.0.0.1:53128 - Graceful shutdown
+16.05.2023 21:24:18.097 [ForkJoinPool-1-worker-2] DEBUG  server.network - Client /127.0.0.1:53127 - write response authenticate_user
+16.05.2023 21:24:18.099 [Thread-13] DEBUG  server.network - Client /127.0.0.1:53127 - Graceful shutdown
+16.05.2023 21:24:23.022 [Thread-14] DEBUG  server.network - Client /127.0.0.1:53122 - Graceful shutdown
+16.05.2023 21:24:23.596 [main] DEBUG  server.network - Client /127.0.0.1:53132 - connected
+16.05.2023 21:24:26.751 [main] DEBUG  server.network - Client /127.0.0.1:53134 - connected
+16.05.2023 21:24:26.764 [main] DEBUG  server.network - Client /127.0.0.1:53135 - connected
+16.05.2023 21:24:26.764 [Thread-15] DEBUG  server.network - Client /127.0.0.1:53134 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert sdgsegt 12
+16.05.2023 21:24:26.765 [Thread-17] DEBUG  server.network - Client /127.0.0.1:53135 - Graceful shutdown
+16.05.2023 21:24:26.771 [ForkJoinPool-1-worker-2] DEBUG  server.network - Client /127.0.0.1:53134 - write response authenticate_user
+16.05.2023 21:24:26.772 [Thread-18] DEBUG  server.network - Client /127.0.0.1:53134 - Graceful shutdown
+16.05.2023 21:24:27.107 [Thread-19] DEBUG  server.network - Client /127.0.0.1:53132 - Graceful shutdown
+16.05.2023 21:24:29.903 [main] DEBUG  server.network - Client /127.0.0.1:53138 - connected
+16.05.2023 21:26:06.168 [Thread-20] DEBUG  server.network - Client /127.0.0.1:53138 - Graceful shutdown
+16.05.2023 21:26:07.533 [main] DEBUG  server.network - Client /127.0.0.1:53158 - connected
+16.05.2023 21:26:10.591 [main] DEBUG  server.network - Client /127.0.0.1:53161 - connected
+16.05.2023 21:26:10.612 [main] DEBUG  server.network - Client /127.0.0.1:53162 - connected
+16.05.2023 21:26:10.613 [Thread-21] DEBUG  server.network - Client /127.0.0.1:53161 - input:
+�� sr common.requests.AddUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt add_usert  q ~ 
+16.05.2023 21:26:10.613 [Thread-23] DEBUG  server.network - Client /127.0.0.1:53162 - Graceful shutdown
+16.05.2023 21:26:10.617 [ForkJoinPool-1-worker-3] DEBUG  server.network - Client /127.0.0.1:53161 - write response error
+16.05.2023 21:26:10.620 [Thread-24] DEBUG  server.network - Client /127.0.0.1:53161 - Graceful shutdown
+16.05.2023 21:26:10.960 [Thread-25] DEBUG  server.network - Client /127.0.0.1:53158 - Graceful shutdown
+16.05.2023 21:26:41.272 [main] DEBUG  server.network - Client /127.0.0.1:53169 - connected
+16.05.2023 21:26:43.682 [main] INFO   server - Server app launched
+16.05.2023 21:26:43.980 [main] DEBUG  server.network - Logger initialized
+16.05.2023 21:26:43.983 [main] INFO   server.network - TCP Server initialized
+16.05.2023 21:26:46.507 [main] DEBUG  server.network - Client /127.0.0.1:53175 - connected
+16.05.2023 21:26:46.519 [main] DEBUG  server.network - Client /127.0.0.1:53176 - connected
+16.05.2023 21:26:46.519 [Thread-0] DEBUG  server.network - Client /127.0.0.1:53175 - input:
+�� sr common.requests.AddUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt add_usert  q ~ 
+16.05.2023 21:26:46.520 [Thread-1] DEBUG  server.network - Client /127.0.0.1:53176 - Graceful shutdown
+16.05.2023 21:26:46.557 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:53175 - write response add_user
+16.05.2023 21:26:46.558 [Thread-3] DEBUG  server.network - Client /127.0.0.1:53175 - Graceful shutdown
+16.05.2023 21:26:55.671 [main] DEBUG  server.network - Client /127.0.0.1:53179 - connected
+16.05.2023 21:27:11.113 [main] DEBUG  server.network - Client /127.0.0.1:53181 - connected
+16.05.2023 21:27:11.126 [main] DEBUG  server.network - Client /127.0.0.1:53182 - connected
+16.05.2023 21:27:11.126 [Thread-4] DEBUG  server.network - Client /127.0.0.1:53181 - input:
+�� sr common.requests.AddUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt add_usert testt test
+16.05.2023 21:27:11.126 [Thread-6] DEBUG  server.network - Client /127.0.0.1:53182 - Graceful shutdown
+16.05.2023 21:27:11.150 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:53181 - write response add_user
+16.05.2023 21:27:11.151 [Thread-7] DEBUG  server.network - Client /127.0.0.1:53181 - Graceful shutdown
+16.05.2023 21:27:11.518 [Thread-8] DEBUG  server.network - Client /127.0.0.1:53179 - Graceful shutdown
+16.05.2023 21:27:20.550 [main] DEBUG  server.network - Client /127.0.0.1:53185 - connected
+16.05.2023 21:27:26.496 [main] DEBUG  server.network - Client /127.0.0.1:53188 - connected
+16.05.2023 21:27:26.509 [main] DEBUG  server.network - Client /127.0.0.1:53189 - connected
+16.05.2023 21:27:26.509 [Thread-9] DEBUG  server.network - Client /127.0.0.1:53188 - input:
+�� sr 'common.requests.AuthenticateUserRequest        L logint Ljava/lang/String;L passwordq ~ xr common.requests.Request�Ni�-� L nameq ~ xpt authenticate_usert 
+qkfewniepft elfk
+16.05.2023 21:27:26.510 [Thread-11] DEBUG  server.network - Client /127.0.0.1:53189 - Graceful shutdown
+16.05.2023 21:27:26.533 [ForkJoinPool-1-worker-1] DEBUG  server.network - Client /127.0.0.1:53188 - write response authenticate_user
+16.05.2023 21:27:26.535 [Thread-12] DEBUG  server.network - Client /127.0.0.1:53188 - Graceful shutdown
+16.05.2023 21:27:26.890 [Thread-13] DEBUG  server.network - Client /127.0.0.1:53185 - Graceful shutdown

@@ -24,10 +24,10 @@ public class Insert extends AbstractCommand {
     private final Integer weight;
     private final String passportID;
 
-    public Insert(Client client, NetworkClient networkClient, Integer key, String movieName, Integer x,
+    public Insert(Client client, NetworkClient networkClient, String login, String password, Integer key, String movieName, Integer x,
                   Integer y, long oscarsCount, MovieGenre movieGenre, MpaaRating mpaaRating, String directorName,
                   LocalDateTime birthday, Integer weight, String passportID) {
-        super("insert", client, networkClient);
+        super("insert", client, networkClient, login, password);
         this.key = key;
         this.movieName = movieName;
         this.x = x;
@@ -43,7 +43,7 @@ public class Insert extends AbstractCommand {
 
     @Override
     public Response execute() throws NetworkClientException {
-        Request request = new InsertRequest(key, movieName, x, y, oscarsCount,
+        Request request = new InsertRequest(login, password, key, movieName, x, y, oscarsCount,
                 movieGenre, mpaaRating, directorName, birthday, weight, passportID);
         Response response = networkClient.sendRequest(request);
         return response;

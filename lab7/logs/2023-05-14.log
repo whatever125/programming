@@ -1,0 +1,22 @@
+14.05.2023 00:37:52.530 [main] INFO   server - Server app launched
+14.05.2023 00:37:52.533 [main] ERROR  server - Fatal error: Environment variable PROGRAMMING_LAB is null
+server.exceptions.EnvironmentVariableException: Environment variable PROGRAMMING_LAB is null
+	at server.handlers.Executor.checkFile(Executor.java:262)
+	at server.handlers.Executor.<init>(Executor.java:38)
+	at server.Main.main(Main.java:22)
+14.05.2023 00:38:21.644 [main] INFO   server - Server app launched
+14.05.2023 00:38:21.679 [main] INFO   server.network - TCP Server initialized
+14.05.2023 00:39:21.875 [main] INFO   server - Server app launched
+14.05.2023 00:39:21.940 [main] INFO   server.network - TCP Server initialized
+14.05.2023 00:39:40.794 [main] INFO   server - Server app launched
+14.05.2023 00:39:40.884 [main] INFO   server.network - TCP Server initialized
+14.05.2023 00:40:22.895 [main] INFO   server - Server app stopped
+14.05.2023 00:41:04.217 [main] INFO   server - Server app launched
+14.05.2023 00:41:04.258 [main] INFO   server.network - TCP Server initialized
+14.05.2023 00:41:12.494 [main] INFO   server - Server app stopped
+14.05.2023 00:42:27.649 [main] INFO   server - Server app launched
+14.05.2023 00:42:27.681 [main] INFO   server.network - TCP Server initialized
+14.05.2023 00:45:06.919 [main] INFO   server - Server app launched
+14.05.2023 00:45:06.947 [main] INFO   server.network - TCP Server initialized
+14.05.2023 00:45:12.360 [main] INFO   server - Server app launched
+14.05.2023 00:45:12.387 [main] INFO   server.network - TCP Server initialized

@@ -1,21 +1,18 @@
 package server.commands;
 
-import common.exceptions.WrongArgumentException;
 import common.requests.AuthenticateUserRequest;
-import common.requests.InsertRequest;
 import common.requests.Request;
 import common.responses.AuthenticateUserResponse;
-import common.responses.InsertResponse;
 import common.responses.Response;
-import server.exceptions.CollectionKeyException;
 import server.handlers.Executor;
 
 import java.io.Serial;
+import java.sql.SQLException;
 
-public class AuthenticateUserCommand extends AbstractCommand {
+public class AuthenticateUser extends AbstractCommand {
     @Serial
     private static final long serialVersionUID = 1L;
-    public AuthenticateUserCommand(Executor executor) {
+    public AuthenticateUser(Executor executor) {
         super("authenticate_user", executor);
     }
 
@@ -27,9 +24,9 @@ public class AuthenticateUserCommand extends AbstractCommand {
             AuthenticateUserRequest auRequest = (AuthenticateUserRequest) request;
             executor.authenticateUser(auRequest.login, auRequest.password);
             auResponse = new AuthenticateUserResponse(null);
-        } catch (WrongArgumentException | CollectionKeyException e) {
-            iResponse = new InsertResponse(e.getMessage());
+        } catch (SQLException e) {
+            auResponse = new AuthenticateUserResponse(e.getMessage());
         }
-        return iResponse;
+        return auResponse;
     }
 }

@@ -21,8 +21,8 @@ public class UpdateRequest extends Request {
     public final Integer weight;
     public final String passportID;
 
-    public UpdateRequest(Integer id, String movieName, Integer x, Integer y, long oscarsCount, MovieGenre movieGenre, MpaaRating mpaaRating, String directorName, LocalDateTime birthday, Integer weight, String passportID) {
-        super("update");
+    public UpdateRequest(String login, String password, Integer id, String movieName, Integer x, Integer y, long oscarsCount, MovieGenre movieGenre, MpaaRating mpaaRating, String directorName, LocalDateTime birthday, Integer weight, String passportID) {
+        super("update", login, password);
         this.id = id;
         this.movieName = movieName;
         this.x = x;

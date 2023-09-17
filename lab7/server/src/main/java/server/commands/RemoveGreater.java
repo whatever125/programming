@@ -7,6 +7,7 @@ import common.responses.RemoveGreaterResponse;
 import server.handlers.Executor;
 
 import java.io.Serial;
+import java.sql.SQLException;
 
 public class RemoveGreater extends AbstractCommand {
     @Serial
@@ -20,10 +21,10 @@ public class RemoveGreater extends AbstractCommand {
         RemoveGreaterResponse rgResponse;
         try {
             RemoveGreaterRequest rgRequest = (RemoveGreaterRequest) request;
-            int count = executor.removeGreater(rgRequest.movieName, rgRequest.x, rgRequest.y, rgRequest.oscarsCount, rgRequest.movieGenre,
+            int count = executor.removeGreater(rgRequest.login, rgRequest.movieName, rgRequest.x, rgRequest.y, rgRequest.oscarsCount, rgRequest.movieGenre,
                     rgRequest.mpaaRating, rgRequest.directorName, rgRequest.birthday, rgRequest.weight, rgRequest.passportID);
             rgResponse = new RemoveGreaterResponse(null, count);
-        } catch (WrongArgumentException e) {
+        } catch (WrongArgumentException | SQLException e) {
             rgResponse = new RemoveGreaterResponse(e.getMessage(), null);
         }
         return rgResponse;

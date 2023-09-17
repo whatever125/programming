@@ -8,6 +8,7 @@ import server.exceptions.CollectionKeyException;
 import server.handlers.Executor;
 
 import java.io.Serial;
+import java.sql.SQLException;
 
 public class ReplaceIfLowe extends AbstractCommand {
     @Serial
@@ -21,10 +22,10 @@ public class ReplaceIfLowe extends AbstractCommand {
         ReplaceIfLoweRequest rilRequest = (ReplaceIfLoweRequest) request;
         ReplaceIfLoweResponse response;
         try {
-            boolean replaced = executor.replaceIfLowe(rilRequest.key, rilRequest.movieName, rilRequest.x, rilRequest.y, rilRequest.oscarsCount, rilRequest.movieGenre,
+            boolean replaced = executor.replaceIfLowe(rilRequest.login, rilRequest.key, rilRequest.movieName, rilRequest.x, rilRequest.y, rilRequest.oscarsCount, rilRequest.movieGenre,
                     rilRequest.mpaaRating, rilRequest.directorName, rilRequest.birthday, rilRequest.weight, rilRequest.passportID);
             response = new ReplaceIfLoweResponse(null, replaced);
-        } catch (WrongArgumentException | CollectionKeyException e) {
+        } catch (WrongArgumentException | CollectionKeyException | SQLException e) {
             response = new ReplaceIfLoweResponse(e.getMessage(), null);
         }
         return response;

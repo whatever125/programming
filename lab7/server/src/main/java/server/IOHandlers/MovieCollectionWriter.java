@@ -1,11 +1,12 @@
 package server.IOHandlers;
 
 import server.exceptions.CustomIOException;
-import server.exceptions.FilePermissionException;
+import server.exceptions.IOHandlers.IOHandlerException;
+import server.exceptions.IOHandlers.SourcePermissionException;
 import server.collection.MovieCollection;
 
 import java.io.FileNotFoundException;
 
-public interface MovieCollectionFileWriter {
-    void write(MovieCollection movieCollection) throws FileNotFoundException, FilePermissionException, CustomIOException;
+public interface MovieCollectionWriter {
+    void write(MovieCollection movieCollection) throws IOHandlerException;
 }

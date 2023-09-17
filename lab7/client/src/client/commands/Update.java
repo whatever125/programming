@@ -23,10 +23,10 @@ public class Update extends AbstractCommand {
     private final Integer weight;
     private final String passportID;
 
-    public Update(Client client, NetworkClient networkClient, Integer id, String movieName, Integer x, Integer y,
+    public Update(Client client, NetworkClient networkClient, String login, String password, Integer id, String movieName, Integer x, Integer y,
                   long oscarsCount, MovieGenre movieGenre, MpaaRating mpaaRating, String directorName,
                   LocalDateTime birthday, Integer weight, String passportID) {
-        super("update", client, networkClient);
+        super("update", client, networkClient, login, password);
         this.id = id;
         this.movieName = movieName;
         this.x = x;
@@ -42,7 +42,7 @@ public class Update extends AbstractCommand {
 
     @Override
     public Response execute() throws NetworkClientException {
-        UpdateRequest request = new UpdateRequest(id, movieName, x, y, oscarsCount,
+        UpdateRequest request = new UpdateRequest(login, password, id, movieName, x, y, oscarsCount,
                 movieGenre, mpaaRating, directorName, birthday, weight, passportID);
         Response response = networkClient.sendRequest(request);
         return response;

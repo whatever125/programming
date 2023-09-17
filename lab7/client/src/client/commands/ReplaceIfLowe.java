@@ -23,10 +23,10 @@ public class ReplaceIfLowe extends AbstractCommand {
     private final Integer weight;
     private final String passportID;
 
-    public ReplaceIfLowe(Client client, NetworkClient networkClient, Integer key, String movieName, Integer x,
+    public ReplaceIfLowe(Client client, NetworkClient networkClient, String login, String password, Integer key, String movieName, Integer x,
                          Integer y, long oscarsCount, MovieGenre movieGenre, MpaaRating mpaaRating, String directorName,
                          LocalDateTime birthday, Integer weight, String passportID) {
-        super("replace_if_lowe", client, networkClient);
+        super("replace_if_lowe", client, networkClient, login, password);
         this.key = key;
         this.movieName = movieName;
         this.x = x;
@@ -42,7 +42,7 @@ public class ReplaceIfLowe extends AbstractCommand {
 
     @Override
     public Response execute() throws NetworkClientException {
-        ReplaceIfLoweRequest request = new ReplaceIfLoweRequest(key, movieName, x, y, oscarsCount,
+        ReplaceIfLoweRequest request = new ReplaceIfLoweRequest(login, password, key, movieName, x, y, oscarsCount,
                 movieGenre, mpaaRating, directorName, birthday, weight, passportID);
         Response response = networkClient.sendRequest(request);
         return response;

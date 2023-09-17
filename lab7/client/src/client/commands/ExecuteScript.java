@@ -8,8 +8,8 @@ import common.responses.Response;
 public class ExecuteScript extends AbstractCommand {
     private final String path;
 
-    public ExecuteScript(Client client, NetworkClient networkClient, String path) {
-        super("execute_script", client, networkClient);
+    public ExecuteScript(Client client, NetworkClient networkClient, String login, String password, String path) {
+        super("execute_script", client, networkClient, login, password);
         this.path = path;
     }
 

@@ -7,6 +7,7 @@ import server.exceptions.CollectionKeyException;
 import server.handlers.Executor;
 
 import java.io.Serial;
+import java.sql.SQLException;
 
 public class RemoveKey extends AbstractCommand {
     @Serial
@@ -20,9 +21,9 @@ public class RemoveKey extends AbstractCommand {
         RemoveKeyResponse response;
         try {
             RemoveKeyRequest rkRequeest = (RemoveKeyRequest) request;
-            executor.removeKey(rkRequeest.key);
+            executor.removeKey(rkRequeest.login, rkRequeest.key);
             response = new RemoveKeyResponse(null);
-        } catch (CollectionKeyException e) {
+        } catch (CollectionKeyException | SQLException e) {
             response = new RemoveKeyResponse(e.getMessage());
         }
         return response;

@@ -2,8 +2,8 @@
 
 show
 
-replace_if_lowe 1
-Film test
+replace_if_lowe 3
+Film a
 100
 200
 700

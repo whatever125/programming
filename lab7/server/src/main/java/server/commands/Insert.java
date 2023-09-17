@@ -8,6 +8,7 @@ import server.exceptions.CollectionKeyException;
 import server.handlers.Executor;
 
 import java.io.Serial;
+import java.sql.SQLException;
 
 public class Insert extends AbstractCommand {
     @Serial
@@ -21,11 +22,11 @@ public class Insert extends AbstractCommand {
         InsertResponse iResponse;
         try {
             InsertRequest iRequest = (InsertRequest) request;
-            executor.insert(iRequest.key, iRequest.movieName, iRequest.x, iRequest.y,
+            executor.insert(iRequest.login, iRequest.key, iRequest.movieName, iRequest.x, iRequest.y,
                     iRequest.oscarsCount, iRequest.movieGenre, iRequest.mpaaRating,
                     iRequest.directorName, iRequest.birthday, iRequest.weight, iRequest.passportID);
             iResponse = new InsertResponse(null);
-        } catch (WrongArgumentException | CollectionKeyException e) {
+        } catch (WrongArgumentException | CollectionKeyException | SQLException e) {
             iResponse = new InsertResponse(e.getMessage());
         }
         return iResponse;

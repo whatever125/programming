@@ -7,13 +7,13 @@ import common.requests.ShowRequest;
 import common.responses.Response;
 
 public class Show extends AbstractCommand {
-    public Show(Client client, NetworkClient networkClient) {
-        super("show", client, networkClient);
+    public Show(Client client, NetworkClient networkClient, String login, String password) {
+        super("show", client, networkClient, login, password);
     }
 
     @Override
     public Response execute() throws NetworkClientException {
-        ShowRequest request = new ShowRequest();
+        ShowRequest request = new ShowRequest(login, password);
         Response response = networkClient.sendRequest(request);
         return response;
     }

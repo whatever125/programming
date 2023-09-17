@@ -1,2 +1,7 @@
-package server.exceptions.db;public class WrongPasswordException {
+package server.exceptions.db;
+
+public class WrongPasswordException extends DatabaseException {
+    public WrongPasswordException() {
+        super("WrongPassword");
+    }
 }

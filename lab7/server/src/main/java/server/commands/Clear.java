@@ -2,9 +2,11 @@ package server.commands;
 
 import common.requests.Request;
 import common.responses.ClearResponse;
+import common.responses.Response;
 import server.handlers.Executor;
 
 import java.io.Serial;
+import java.sql.SQLException;
 
 public class Clear extends AbstractCommand {
     @Serial
@@ -15,7 +17,13 @@ public class Clear extends AbstractCommand {
 
     @Override
     public ClearResponse execute(Request request) {
-        executor.clear();
-        return new ClearResponse(null);
+        ClearResponse response;
+        try {
+            executor.clear(request.login);
+            response = new ClearResponse(null);
+        } catch (SQLException e) {
+            response = new ClearResponse(e.getMessage());
+        }
+        return response;
     }
 }
