@@ -2,7 +2,7 @@ package server.IOHandlers;
 
 import server.exceptions.FilePermissionException;
 import server.exceptions.InvalidFileDataException;
-import common.models.MovieCollection;
+import server.collection.MovieCollection;
 
 import java.io.FileNotFoundException;
 
