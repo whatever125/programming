@@ -1,0 +1,29 @@
+JFDML JFormDesigner: "8.1.0.0.283" Java: "17.0.3" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
+			"axis": 1
+		} ) {
+			name: "panel"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "headingLabel"
+				"text": "Movie Collection Editor"
+				"horizontalAlignment": 0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "loadingLabel"
+				"text": "Loading..."
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "statusLabel"
+				"text": "status"
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 0, false )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 300 )
+		} )
+	}
+}

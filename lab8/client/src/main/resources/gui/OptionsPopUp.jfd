@@ -1,0 +1,29 @@
+JFDML JFormDesigner: "8.1.0.0.283" Java: "17.0.3" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPopupMenu", new FormLayoutManager( class javax.swing.JPopupMenu ) ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JMenuItem" ) {
+				name: "infoMenuItem"
+				"text": "Info"
+			} )
+			add( new FormComponent( "javax.swing.JMenuItem" ) {
+				name: "executeMenuItem"
+				"text": "Execute script"
+			} )
+			add( new FormComponent( "javax.swing.JSeparator" ) {
+				name: "separator"
+			} )
+			add( new FormComponent( "javax.swing.JMenuItem" ) {
+				name: "clearMenuItem"
+				"text": "Clear"
+				"foreground": new com.jformdesigner.model.SwingColor( "Actions.Red" )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 160, 125 )
+		} )
+	}
+}

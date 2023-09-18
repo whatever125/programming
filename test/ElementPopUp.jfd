@@ -1,0 +1,32 @@
+JFDML JFormDesigner: "8.1.0.0.283" Java: "17.0.3" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPopupMenu", new FormLayoutManager( class javax.swing.JPopupMenu ) ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "updateLabel"
+				"text": "Update"
+			} )
+			add( new FormComponent( "javax.swing.JSeparator" ) {
+				name: "separator"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "removeLabel"
+				"text": "Remove"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "removeGreaterLabel"
+				"text": "Remove greater"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "riltLabel"
+				"text": "Remove if lower than {...}"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 165, 90 )
+		} )
+	}
+}

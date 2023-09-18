@@ -1,0 +1,62 @@
+JFDML JFormDesigner: "8.1.0.0.283" Java: "17.0.3" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
+			"axis": 1
+		} ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "welcomeLabel"
+				"text": "Welcome back"
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 11, false )
+				"horizontalAlignment": 0
+				"border": new javax.swing.border.EmptyBorder( 10, 0, 10, 0 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "loginLabel"
+				"text": "Login"
+				"horizontalAlignment": 0
+				"border": &EmptyBorder0 new javax.swing.border.EmptyBorder( 5, 0, 0, 0 )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "loginTextField"
+				"preferredSize": new java.awt.Dimension( 150, 30 )
+				"maximumSize": new java.awt.Dimension( 2147483647, 30 )
+				"horizontalAlignment": 0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "passwordLabel"
+				"text": "Password"
+				"horizontalAlignment": 0
+				"border": #EmptyBorder0
+			} )
+			add( new FormComponent( "javax.swing.JPasswordField" ) {
+				name: "passwordField"
+				"maximumSize": new java.awt.Dimension( 2147483647, 30 )
+				"preferredSize": new java.awt.Dimension( 150, 30 )
+				"horizontalAlignment": 0
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "loginButton"
+				"text": "Login"
+				"background": new com.jformdesigner.model.SwingColor( "Button.default.background" )
+				"foreground": new com.jformdesigner.model.SwingColor( "Button.default.foreground" )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "helpLabel"
+				"text": "Don't have account?"
+				"horizontalAlignment": 0
+				"border": new javax.swing.border.EmptyBorder( 5, 0, 0, 0 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "registerButton"
+				"text": "Register"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 300, 300 )
+		} )
+	}
+}

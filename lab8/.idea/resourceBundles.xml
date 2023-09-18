@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ResourceBundleManager">
+    <file url="file://$PROJECT_DIR$/client/src/main/resources/loading_el.properties" />
+    <file url="file://$PROJECT_DIR$/client/src/main/resources/loading_en.properties" />
+    <file url="file://$PROJECT_DIR$/client/src/main/resources/loading_es_NI.properties" />
+    <file url="file://$PROJECT_DIR$/client/src/main/resources/loading_is.properties" />
+    <file url="file://$PROJECT_DIR$/client/src/main/resources/loading_ru.properties" />
+    <file url="file://$PROJECT_DIR$/client/src/main/resources/login_el.properties" />
+    <file url="file://$PROJECT_DIR$/client/src/main/resources/login_en.properties" />
+    <file url="file://$PROJECT_DIR$/client/src/main/resources/login_es_NI.properties" />
+    <file url="file://$PROJECT_DIR$/client/src/main/resources/login_is.properties" />
+    <file url="file://$PROJECT_DIR$/client/src/main/resources/login_ru.properties" />
+    <file url="file://$PROJECT_DIR$/client/src/main/resources/mainWindow_el.properties" />
+    <file url="file://$PROJECT_DIR$/client/src/main/resources/mainWindow_en.properties" />
+    <file url="file://$PROJECT_DIR$/client/src/main/resources/mainWindow_ru.properties" />
+    <file url="file://$PROJECT_DIR$/client/src/main/resources/splashScreen_el.properties" />
+    <file url="file://$PROJECT_DIR$/client/src/main/resources/splashScreen_en.properties" />
+    <file url="file://$PROJECT_DIR$/client/src/main/resources/splashScreen_es_NI.properties" />
+    <file url="file://$PROJECT_DIR$/client/src/main/resources/splashScreen_is.properties" />
+    <file url="file://$PROJECT_DIR$/client/src/main/resources/splashScreen_ru.properties" />
+    <custom-resource-bundle>
+      <file value="file://$PROJECT_DIR$/client/src/main/resources/mainWindow_el.properties" />
+      <file value="file://$PROJECT_DIR$/client/src/main/resources/mainWindow_en.properties" />
+      <file value="file://$PROJECT_DIR$/client/src/main/resources/mainWindow_es_NI.properties" />
+      <file value="file://$PROJECT_DIR$/client/src/main/resources/mainWindow_is.properties" />
+      <file value="file://$PROJECT_DIR$/client/src/main/resources/mainWindow_ru.properties" />
+      <base-name>mainWindow</base-name>
+    </custom-resource-bundle>
+    <custom-resource-bundle>
+      <file value="file://$PROJECT_DIR$/client/src/main/resources/login_el.properties" />
+      <file value="file://$PROJECT_DIR$/client/src/main/resources/login_en.properties" />
+      <file value="file://$PROJECT_DIR$/client/src/main/resources/login_es_NI.properties" />
+      <file value="file://$PROJECT_DIR$/client/src/main/resources/login_is.properties" />
+      <file value="file://$PROJECT_DIR$/client/src/main/resources/login_ru.properties" />
+      <base-name>login</base-name>
+    </custom-resource-bundle>
+    <custom-resource-bundle>
+      <file value="file://$PROJECT_DIR$/client/src/main/resources/loading_el.properties" />
+      <file value="file://$PROJECT_DIR$/client/src/main/resources/loading_en.properties" />
+      <file value="file://$PROJECT_DIR$/client/src/main/resources/loading_es_NI.properties" />
+      <file value="file://$PROJECT_DIR$/client/src/main/resources/loading_is.properties" />
+      <file value="file://$PROJECT_DIR$/client/src/main/resources/loading_ru.properties" />
+      <base-name>loading</base-name>
+    </custom-resource-bundle>
+    <custom-resource-bundle>
+      <file value="file://$PROJECT_DIR$/client/src/main/resources/splashScreen_el.properties" />
+      <file value="file://$PROJECT_DIR$/client/src/main/resources/splashScreen_en.properties" />
+      <file value="file://$PROJECT_DIR$/client/src/main/resources/splashScreen_es_NI.properties" />
+      <file value="file://$PROJECT_DIR$/client/src/main/resources/splashScreen_is.properties" />
+      <file value="file://$PROJECT_DIR$/client/src/main/resources/splashScreen_ru.properties" />
+      <base-name>splashScreen</base-name>
+    </custom-resource-bundle>
+  </component>
+</project>

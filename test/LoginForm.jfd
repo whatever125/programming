@@ -1,0 +1,50 @@
+JFDML JFormDesigner: "8.1.0.0.283" Java: "17.0.3" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
+			"axis": 1
+		} ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "welcomeLabel"
+				"text": "Welcome back"
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 11, false )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "loginLabel"
+				"text": "Login"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "loginTextField"
+				"preferredSize": new java.awt.Dimension( 150, 30 )
+				"maximumSize": new java.awt.Dimension( 2147483647, 30 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "passwordLabel"
+				"text": "Password"
+			} )
+			add( new FormComponent( "javax.swing.JPasswordField" ) {
+				name: "passwordField"
+				"maximumSize": new java.awt.Dimension( 2147483647, 30 )
+				"preferredSize": new java.awt.Dimension( 150, 30 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "loginButton"
+				"text": "Login"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "helpLabel"
+				"text": "Don't have account?"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "registerButton"
+				"text": "Register"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 290, 355 )
+		} )
+	}
+}

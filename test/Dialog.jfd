@@ -1,0 +1,206 @@
+JFDML JFormDesigner: "8.1.0.0.283" Java: "17.0.3" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "dialogPane"
+				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "contentPanel"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "headingLabel"
+						"text": "Insert"
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 7, false )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "North"
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
+						"axis": 1
+					} ) {
+						name: "panel1"
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
+							"axis": 0
+						} ) {
+							name: "panel2"
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
+								"axis": 1
+							} ) {
+								name: "moviePanel"
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label1"
+									"text": "Movie"
+									"font": &SwingDerivedFont0 new com.jformdesigner.model.SwingDerivedFont( null, 0, 3, false )
+								} )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label2"
+									"text": "Name"
+								} )
+								add( new FormComponent( "javax.swing.JTextField" ) {
+									name: "textField1"
+									"preferredSize": new java.awt.Dimension( 150, 30 )
+									"maximumSize": new java.awt.Dimension( 2147483647, 30 )
+								} )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label3"
+									"text": "Oscars"
+								} )
+								add( new FormComponent( "javax.swing.JTextField" ) {
+									name: "textField2"
+									"preferredSize": new java.awt.Dimension( 150, 30 )
+									"maximumSize": new java.awt.Dimension( 2147483647, 30 )
+								} )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label4"
+									"text": "Genre"
+								} )
+								add( new FormComponent( "javax.swing.JComboBox" ) {
+									name: "comboBox1"
+									"preferredSize": new java.awt.Dimension( 150, 30 )
+									"maximumSize": new java.awt.Dimension( 2147483647, 30 )
+								} )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label5"
+									"text": "Rating"
+								} )
+								add( new FormComponent( "javax.swing.JComboBox" ) {
+									name: "comboBox2"
+									"preferredSize": new java.awt.Dimension( 150, 30 )
+									"maximumSize": new java.awt.Dimension( 2147483647, 30 )
+								} )
+							} )
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
+								"axis": 1
+							} ) {
+								name: "directorPanel"
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label6"
+									"text": "Director"
+									"font": #SwingDerivedFont0
+								} )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label7"
+									"text": "Name"
+								} )
+								add( new FormComponent( "javax.swing.JTextField" ) {
+									name: "textField3"
+									"preferredSize": new java.awt.Dimension( 150, 30 )
+									"maximumSize": new java.awt.Dimension( 2147483647, 30 )
+								} )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label8"
+									"text": "Height"
+								} )
+								add( new FormComponent( "javax.swing.JSpinner" ) {
+									name: "spinner1"
+									"preferredSize": new java.awt.Dimension( 150, 30 )
+									"maximumSize": new java.awt.Dimension( 2147483647, 30 )
+									"model": new javax.swing.SpinnerNumberModel {
+										minimum: 0
+									}
+								} )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label9"
+									"text": "Weight"
+								} )
+								add( new FormComponent( "javax.swing.JSpinner" ) {
+									name: "spinner2"
+									"preferredSize": new java.awt.Dimension( 150, 30 )
+									"maximumSize": new java.awt.Dimension( 2147483647, 30 )
+									"model": new javax.swing.SpinnerNumberModel {
+										minimum: 0
+									}
+								} )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label10"
+									"text": "Passport ID"
+								} )
+								add( new FormComponent( "javax.swing.JTextField" ) {
+									name: "textField4"
+									"preferredSize": new java.awt.Dimension( 150, 30 )
+									"maximumSize": new java.awt.Dimension( 2147483647, 30 )
+								} )
+							} )
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) ) {
+							name: "panel3"
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label11"
+								"text": "Coordinates"
+							} )
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
+							"axis": 0
+						} ) {
+							name: "panel4"
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
+								"axis": 1
+							} ) {
+								name: "panel5"
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label12"
+									"text": "X"
+								} )
+								add( new FormComponent( "javax.swing.JTextField" ) {
+									name: "textField5"
+									"preferredSize": new java.awt.Dimension( 150, 30 )
+									"maximumSize": new java.awt.Dimension( 2147483647, 30 )
+								} )
+							} )
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
+								"axis": 1
+							} ) {
+								name: "panel6"
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label13"
+									"text": "Y"
+								} )
+								add( new FormComponent( "javax.swing.JTextField" ) {
+									name: "textField6"
+									"preferredSize": new java.awt.Dimension( 150, 30 )
+									"maximumSize": new java.awt.Dimension( 2147483647, 30 )
+								} )
+							} )
+						} )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "Center"
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+					"$columnSpecs": "0:1.0, 80, 80"
+					"$rowSpecs": "0"
+					"$hGap": 5
+					"$vGap": 5
+				} ) {
+					name: "buttonBar"
+					"border": new javax.swing.border.EmptyBorder( 12, 0, 0, 0 )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "okButton"
+						"text": "OK"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 1
+						"gridy": 0
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "cancelButton"
+						"text": "Cancel"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 2
+						"gridy": 0
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "South"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 355, 410 )
+		} )
+	}
+}

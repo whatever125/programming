@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_INJECTED_CODE" value="false" />
+  </component>
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="client:jar" />
+      <artifact name="server:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="265d25ab-4543-4181-9ca3-f452bdd66374" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/client_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/server_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/intellij-javadocs-4.0.1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/resourceBundles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.pgpass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/icons/el.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/icons/en.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/icons/es.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/icons/help.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/icons/is.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/icons/logout.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/icons/movie.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/icons/options.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/icons/ru.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/AbstractClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/GUIClient/GUI/LocaleActionListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/GUIClient/GUI/login/LoginWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/GUIClient/GUI/mainWindow/ElementPopUp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/GUIClient/GUI/mainWindow/LoadingDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/GUIClient/GUI/mainWindow/MainWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/GUIClient/GUI/mainWindow/MoviesRetrieverWorker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/GUIClient/GUI/mainWindow/OptionsPopUp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/GUIClient/GUI/mainWindow/movieDialog/MovieDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/GUIClient/GUI/mainWindow/movieDialog/MovieInfoDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/GUIClient/GUI/mainWindow/movieDialog/RILTMovieDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/GUIClient/GUI/mainWindow/movieDialog/UpdateMovieDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/GUIClient/GUI/mainWindow/movieTable/MovieTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/GUIClient/GUI/mainWindow/movieTable/MovieTableModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/GUIClient/GUI/mainWindow/movieTable/TableMouseListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/GUIClient/GUI/mainWindow/movieTable/TablePopUp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/GUIClient/GUI/mainWindow/visualizationTab/GraphPopUp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/GUIClient/GUI/mainWindow/visualizationTab/VisualizationPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/GUIClient/GUI/splashScreen/ConnectWorker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/GUIClient/GUI/splashScreen/SplashScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/GUIClient/GUIClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/Invoker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/commands/AbstractCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/commands/AddUserCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/commands/AuthenticateUserCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/commands/Clear.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/commands/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/commands/ExecuteScript.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/commands/Exit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/commands/Help.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/commands/History.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/commands/Info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/commands/Insert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/commands/PrintAscending.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/commands/PrintDescending.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/commands/PrintFieldDescendingOscarsCount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/commands/RemoveGreater.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/commands/RemoveKey.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/commands/RemoveLowerKey.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/commands/ReplaceIfLowe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/commands/Show.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/commands/Update.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/consoleClient/ConsoleClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/consoleClient/MovieDataConsoleReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/consoleClient/PrettyPrinter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/exceptions/AuthenticationException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/exceptions/CustomIOException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/exceptions/DialogAlreadyOpenedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/exceptions/ErrorResponseException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/exceptions/FileRecursionError.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/exceptions/InvalidFileDataException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/exceptions/InvalidScriptException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/exceptions/NetworkClientException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/network/NetworkClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/client/network/TCPClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/gui/ClearDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/gui/ClearDialog.jfd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/gui/ElementPopUp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/gui/ElementPopUp.jfd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/gui/LoginForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/gui/LoginForm.jfd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/gui/MainForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/gui/MainForm.jfd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/gui/OptionsPopUp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/gui/OptionsPopUp.jfd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/gui/RegisterForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/gui/RegisterForm.jfd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/gui/StartUp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/gui/StartUp.jfd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/gui/movieDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/gui/movieDialog.jfd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/gui/test.jfdproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/icons/dark/dots(1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/icons/dark/dots.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/icons/el.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/icons/en.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/icons/es.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/icons/help.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/icons/is.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/icons/light/dots(1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/icons/light/dots.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/icons/logout.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/icons/movie.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/icons/options.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/icons/ru.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/images/connecting.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/loading_el.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/loading_en.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/loading_es_NI.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/loading_is.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/loading_ru.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/login_el.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/login_en.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/login_es_NI.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/login_is.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/login_ru.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/mainWindow_el.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/mainWindow_en.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/mainWindow_es_NI.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/mainWindow_is.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/mainWindow_ru.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/movie (1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/movie.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/splashScreen_el.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/splashScreen_en.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/splashScreen_es_NI.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/splashScreen_is.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/splashScreen_ru.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collection.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/IOHandlers/BasicReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/IOHandlers/BufferedConsoleReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/IOHandlers/ConsolePasswordReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/IOHandlers/ScannerConsoleReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/IOHandlers/ScriptReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/exceptions/EndOfInputException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/exceptions/FilePermissionException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/exceptions/InvalidCommandException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/exceptions/WrongArgumentException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/exceptions/WrongNumberOfArgumentsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/models/Coordinates.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/models/Movie.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/models/MovieGenre.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/models/MpaaRating.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/models/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/models/helpers/ArgumentChecker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/models/helpers/MovieArgumentChecker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/models/helpers/PersonArgumentChecker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/requests/AddUserRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/requests/AuthenticateUserRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/requests/ClearRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/requests/ExitRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/requests/InfoRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/requests/InsertRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/requests/PrintAscendingRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/requests/PrintDescendingRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/requests/PrintFieldDescendingOscarsCountRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/requests/RemoveGreaterRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/requests/RemoveKeyRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/requests/RemoveLowerKeyRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/requests/ReplaceIfLoweRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/requests/Request.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/requests/SaveRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/requests/ShowRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/requests/UpdateRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/responses/AddUserResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/responses/AuthenticateUserResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/responses/ClearResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/responses/EmptyResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/responses/ErrorResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/responses/ExitResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/responses/HelpResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/responses/InfoResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/responses/InsertResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/responses/PrintAscendingResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/responses/PrintDescendingResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/responses/PrintFieldDescendingOscarsCountResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/responses/RemoveGreaterResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/responses/RemoveKeyResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/responses/RemoveLowerKeyResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/responses/ReplaceIfLoweResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/responses/Response.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/responses/SaveResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/responses/ShowResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/common/responses/UpdateResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ideas.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab8.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/db/script.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/IOHandlers/MovieCollectionReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/IOHandlers/MovieCollectionWriter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/IOHandlers/MovieCollectionXMLFileReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/IOHandlers/MovieCollectionXMLFileWriter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/IOHandlers/MovieDatabaseReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/collection/Database.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/collection/DatabaseConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/collection/MovieCollection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/collection/Passwords.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/collection/PostgresConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/collection/PostgresDatabase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/commands/AbstractCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/commands/AbstractCommandWithResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/commands/AddUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/commands/AuthenticateUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/commands/Clear.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/commands/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/commands/CommandWithResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/commands/Exit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/commands/Info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/commands/Insert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/commands/PrintAscending.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/commands/PrintDescending.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/commands/PrintFieldDescendingOscarsCount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/commands/RemoveGreater.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/commands/RemoveKey.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/commands/RemoveLowerKey.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/commands/ReplaceIfLowe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/commands/Save.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/commands/Show.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/commands/Update.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/exceptions/CollectionKeyException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/exceptions/CustomIOException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/exceptions/EnvironmentVariableException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/exceptions/IOHandlers/IOHandlerException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/exceptions/IOHandlers/InvalidDataException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/exceptions/IOHandlers/SourceNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/exceptions/IOHandlers/SourcePermissionException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/exceptions/InvalidRequestException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/exceptions/db/AuthorizationException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/exceptions/db/DatabaseException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/exceptions/db/UserAlreadyExistsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/exceptions/db/UserNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/exceptions/db/WrongPasswordException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/handlers/ClientCommandHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/handlers/CommandHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/handlers/Executor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/handlers/ServerCommandHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/network/NetworkServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/network/TCPServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2RSk2EZKh4Q2j3DWDjHlmuBJvnc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "jbr-17",
+    "last_opened_file_path": "/Users/whatever125/Desktop/programming/lab8/client/src/icons",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "File.Encoding",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/icons" />
+      <recent name="$PROJECT_DIR$/client/src/main/resources" />
+      <recent name="$PROJECT_DIR$/client/src/main/resources/localization" />
+      <recent name="$PROJECT_DIR$/client/src/main/java/client/GUIClient/GUI" />
+      <recent name="$PROJECT_DIR$/" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/main/resources" />
+      <recent name="$PROJECT_DIR$/client/src/main/resources/localization" />
+      <recent name="$PROJECT_DIR$/client/src/main/resources/localization/splasScreen" />
+      <recent name="$PROJECT_DIR$/client/src/main/resources/localization/login" />
+      <recent name="$PROJECT_DIR$/server/src/main" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="server.commands" />
+      <recent name="common.responses" />
+      <recent name="common.requests" />
+      <recent name="client.commands" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.client">
+    <configuration name="client" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="client.Main" />
+      <module name="client" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="client1" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="client.Main" />
+      <module name="client" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="server" type="Application" factoryName="Application">
+      <envs>
+        <env name="PROGRAMMING_LAB" value="$PROJECT_DIR$/collection.xml" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="server.Main" />
+      <module name="server" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.client" />
+      <item itemvalue="Application.client1" />
+      <item itemvalue="Application.server" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="265d25ab-4543-4181-9ca3-f452bdd66374" name="Changes" comment="" />
+      <created>1687250662534</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1687250662534</updated>
+      <workItem from="1687250664054" duration="1818000" />
+      <workItem from="1687376199425" duration="40489000" />
+      <workItem from="1687617921484" duration="6927000" />
+      <workItem from="1687627138654" duration="61153000" />
+      <workItem from="1687817977257" duration="175000" />
+      <workItem from="1687818191538" duration="37058000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/server/IOHandlers/MovieDatabaseReader.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/client/src/main/java/client/GUIClient/GUI/mainWindow/MainWindow.java</url>
+          <line>295</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/client/src/main/java/client/AbstractClient.java</url>
+          <line>122</line>
+          <properties class="client.AbstractClient" method="readAndExecuteCommand">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
