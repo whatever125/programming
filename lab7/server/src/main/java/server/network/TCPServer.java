@@ -1,10 +1,7 @@
 package server.network;
 
-import ch.qos.logback.classic.Level;
 import common.IOHandlers.BufferedConsoleReader;
 import jdk.net.ExtendedSocketOptions;
-import org.slf4j.LoggerFactory;
-import ch.qos.logback.classic.Logger;
 
 import common.exceptions.InvalidCommandException;
 import common.exceptions.WrongNumberOfArgumentsException;
@@ -14,7 +11,6 @@ import common.requests.SaveRequest;
 import common.responses.EmptyResponse;
 import common.responses.ServerErrorResponse;
 import common.responses.Response;
-import server.handlers.ClientCommandHandler;
 import server.exceptions.InvalidRequestException;
 import server.handlers.CommandHandler;
 import server.handlers.Executor;
@@ -47,14 +43,10 @@ public class TCPServer implements NetworkServer {
 
     private boolean canExit = false;
     private final BufferedConsoleReader consoleReader = new BufferedConsoleReader();
-    private static final Logger logger = (Logger) LoggerFactory.getLogger("server.network");
 
     public TCPServer(Executor executor, CommandHandler clientCommandHandler) throws IOException {
         this.clientCommandHandler = clientCommandHandler;
         this.serverCommandHandler = new ServerCommandHandler(executor, this);
-
-        logger.setLevel(Level.INFO);
-        logger.debug("Logger initialized");
 
         this.openConnection();
         this.selector = initSelector();
@@ -75,10 +67,10 @@ public class TCPServer implements NetworkServer {
             serverSocketChannel.bind(address);
         } catch (BindException e) {
             String message = "Unable to use address " + address.getHostName() + ":" + address.getPort() + " - " + e.getMessage();
-            logger.warn(message);
+            System.out.println(message);
             throw new BindException(message);
         }
-        logger.info("TCP Server initialized");
+        System.out.println("TCP Server initialized");
     }
 
     private Selector initSelector() throws IOException {
@@ -158,8 +150,6 @@ public class TCPServer implements NetworkServer {
         SocketChannel socketChannel = ssc.accept();
         socketChannel.configureBlocking(false);
         socketChannel.register(selector, SelectionKey.OP_READ);
-
-        ClientLogger.info(socketChannel, "connected");
     }
 
     private void read(SelectionKey key) {
@@ -173,24 +163,21 @@ public class TCPServer implements NetworkServer {
                     try {
                         bytesRead = sc.read(readBuffer);
                     } catch (IOException e) {
-                        ClientLogger.info(sc, "Forceful shutdown");
+                        System.out.println(sc + "Forceful shutdown");
                         key.cancel();
                         sc.close();
                         return;
                     }
                     if (bytesRead == -1) {
-                        ClientLogger.info(sc, "Graceful shutdown");
+                        System.out.println(sc + "Graceful shutdown");
                         key.cancel();
                         return;
                     }
                     String input = new String(readBuffer.array(), 0, bytesRead, StandardCharsets.UTF_8);
-                    ClientLogger.debug(sc, "input:\n" + input);
 
                     createResponse(sc);
                 } catch (IOException e) {
-                    logger.error(e.getMessage());
-//                    throw new RuntimeException(e);
-                    // TODO: 16/5/2023 exception handling
+                    System.out.println(e.getMessage());
                 }
             }
         };
@@ -209,13 +196,10 @@ public class TCPServer implements NetworkServer {
                         response = handleRequest(readBuffer);
                     } catch (ClassNotFoundException e) {
                         response = new ServerErrorResponse(e.getMessage());
-                        ClientLogger.debug(sc, "Unknown command");
                     }
                     sc.register(selector, SelectionKey.OP_WRITE, response);
                 } catch (IOException e) {
-                    logger.error(e.getMessage());
-//                    throw new RuntimeException(e);
-                    // TODO: 16/5/2023 exception handling
+                    System.out.println(e.getMessage());
                 }
             }
         };
@@ -234,11 +218,8 @@ public class TCPServer implements NetworkServer {
             }
             response = clientCommandHandler.handle(request);
         } catch (ClassNotFoundException e) {
-            String message = "Unknown request type";
-            logger.debug(message);
             throw new ClassNotFoundException("Unknown request type");
         } catch (InvalidRequestException e) {
-            logger.debug(e.getMessage());
             response = new ServerErrorResponse(e.getMessage());
         }
 
@@ -259,33 +240,14 @@ public class TCPServer implements NetworkServer {
                         sc.write(writeBuffer);
                     }
 
-                    ClientLogger.debug(sc, "write response " + response.name);
-
                     sc.register(selector, SelectionKey.OP_READ);
                 } catch (IOException e) {
-                    logger.error(e.getMessage());
-//                    throw new RuntimeException(e);
-                    // TODO: 16/5/2023 exception handling
+                    System.out.println(e.getMessage());
                 }
             }
         };
 
         sendPool.execute(writeAction);
-
-
-        // Get socket channel and response
-//        SocketChannel sc = (SocketChannel) key.channel();
-//        Response response = (Response) key.attachment();
-//
-//        ByteBuffer writeBuffer = serializeObject(response);
-//        writeBuffer.flip();
-//        while (writeBuffer.hasRemaining()) {
-//            sc.write(writeBuffer);
-//        }
-//
-//        ClientLogger.debug(sc, "write response " + response.name);
-//
-//        sc.register(selector, SelectionKey.OP_READ);
     }
 
     private ByteBuffer serializeObject(Object object) throws IOException {
@@ -304,11 +266,9 @@ public class TCPServer implements NetworkServer {
             return ois.readObject();
         }  catch (StreamCorruptedException e) {
             String message = "Unknown request";
-            logger.debug(message);
             throw new InvalidRequestException(message);
         } catch (EOFException e) {
             String message = "Request is too big";
-            logger.debug(message);
             throw new InvalidRequestException(message);
         }
     }
@@ -325,7 +285,7 @@ public class TCPServer implements NetworkServer {
                 serverSocketChannel.close();
             }
         } catch (IOException e) {
-            logger.warn("Unable to close server socket channel: {}", e.getMessage());
+            System.out.println("Unable to close server socket channel: " + e.getMessage());
         }
     }
 
@@ -333,19 +293,5 @@ public class TCPServer implements NetworkServer {
     public Response exit() {
         canExit = true;
         return new EmptyResponse();
-    }
-
-    public static class ClientLogger {
-        private static void debug(SocketChannel sc, String message) throws IOException {
-            logger.debug("Client {} - {}", sc.getRemoteAddress(), message);
-        }
-
-        public static void info(SocketChannel sc, String message) throws IOException {
-            logger.debug("Client {} - {}", sc.getRemoteAddress(), message);
-        }
-
-        private static void warn(SocketChannel sc, String message) throws IOException {
-            logger.debug("Client {} - {}", sc.getRemoteAddress(), message);
-        }
     }
 }

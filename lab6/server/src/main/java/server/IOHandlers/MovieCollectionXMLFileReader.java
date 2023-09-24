@@ -31,7 +31,7 @@ public class MovieCollectionXMLFileReader implements MovieCollectionFileReader {
 
     public MovieCollectionXMLFileReader(String path) {
         this.path = path;
-        logger.setLevel(Level.INFO);
+        logger.setLevel(Level.ERROR);
     }
 
     @Override

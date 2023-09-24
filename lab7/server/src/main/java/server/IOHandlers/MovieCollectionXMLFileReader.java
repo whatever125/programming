@@ -1,8 +1,5 @@
 package server.IOHandlers;
 
-import ch.qos.logback.classic.Level;
-import ch.qos.logback.classic.Logger;
-import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -21,7 +18,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
@@ -30,11 +26,9 @@ import java.time.format.DateTimeParseException;
 
 public class MovieCollectionXMLFileReader implements MovieCollectionReader {
     private final String path;
-    private static final Logger logger = (Logger) LoggerFactory.getLogger("server.IOHandlers");
 
     public MovieCollectionXMLFileReader(String path) {
         this.path = path;
-        logger.setLevel(Level.INFO);
     }
 
     @Override
@@ -51,7 +45,6 @@ public class MovieCollectionXMLFileReader implements MovieCollectionReader {
             // Empty file
             File file = new File(path);
             if (file.length() == 0) {
-                logger.info("Created empty movie collection");
                 movieCollection.setCreationDate(ZonedDateTime.now());
                 return movieCollection;
             }
@@ -176,12 +169,12 @@ public class MovieCollectionXMLFileReader implements MovieCollectionReader {
         File file = new File(path);
         if (!file.exists()) {
             String message = "! file " + path + " not found !";
-            logger.warn(message);
+            System.out.println(message);
             throw new SourceNotFoundException(message);
         }
         if (!file.canRead()) {
             String message = "! no read permission for file " + path + "  !";
-            logger.warn(message);
+            System.out.println(message);
             throw new SourcePermissionException(message);
         }
     }

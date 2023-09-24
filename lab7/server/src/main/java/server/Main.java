@@ -1,8 +1,5 @@
 package server;
 
-import ch.qos.logback.classic.Level;
-import ch.qos.logback.classic.Logger;
-import org.slf4j.LoggerFactory;
 import server.IOHandlers.*;
 import server.collection.Database;
 import server.collection.DatabaseConnection;
@@ -19,12 +16,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class Main {
-    private static final Logger logger = (Logger) LoggerFactory.getLogger("server");
-
     public static void main(String[] args) {
         try {
-            logger.setLevel(Level.DEBUG);
-            logger.info("Server app launched");
+            System.out.println("Server app launched");
 
             Database database = new PostgresDatabase(".pgpass");
             DatabaseConnection databaseConnection = database.createConnection();
@@ -39,12 +33,12 @@ public class Main {
             MovieCollectionWriter movieCollectionWriter = new MovieCollectionXMLFileWriter(path);
 
             Executor executor = new Executor(movieCollectionReader, movieCollectionWriter, databaseConnection);
-            CommandHandler clientCommandHandler = new ClientCommandHandler(executor, databaseConnection);;
+            CommandHandler clientCommandHandler = new ClientCommandHandler(executor, databaseConnection);
             NetworkServer server = new TCPServer(executor, clientCommandHandler);
 
-            logger.info("Server app stopped");
+            System.out.println("Server app stopped");
         } catch (IOHandlerException | EnvironmentVariableException | IOException | SQLException e) {
-            logger.error("Fatal error: {}", e.getMessage(), e);
+            System.out.println("Fatal error: " + e.getMessage());
             System.exit(-1);
         }
     }

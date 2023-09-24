@@ -12,6 +12,7 @@ public class Main {
      * @param args an array of command-line arguments
      */
     public static void main(String[] args) {
+        // voice:.idea/1695332137180.wav
         ConsoleClient consoleClient = new ConsoleClient();
         consoleClient.main();
     }

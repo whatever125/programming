@@ -17,7 +17,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            logger.setLevel(Level.INFO);
+            logger.setLevel(Level.ERROR);
             logger.info("Server app launched");
             Executor executor = new Executor();
             TCPServer server = new TCPServer(executor);

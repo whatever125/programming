@@ -48,7 +48,6 @@ public class Executor {
             list.add(movieCollection.getElementByKey(2));
             movieList.add(list);
         }
-        movieCollection.test(movieList);
     }
 
     /**
